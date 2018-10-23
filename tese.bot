@@ -1,0 +1,18 @@
+{
+    "name": "tese",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3984/api/messages",
+            "id": "1d5f3cf0-caf1-11e8-8ebb-a39b473c400e",
+            "name": "http://localhost:3984/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "C:\\Users\\Nayola\\source\\repos\\AkaratakBot\\tese.bot"
+}

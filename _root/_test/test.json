@@ -1,0 +1,34 @@
+﻿{
+  "update_id": 123456789,
+  "callback_query": {
+    "id": "123456789123456",
+    "from": {
+      "id": 123456789,
+      "is_bot": false,
+      "first_name": "FirstName",
+      "last_name": "LastName",
+      "username": "userName",
+      "language_code": "en-US"
+    },
+    "message": {
+      "message_id": 1234,
+      "from": {
+        "id": 123456789,
+        "is_bot": true,
+        "first_name": "TestBotName",
+        "username": "TestBotID"
+      },
+      "chat": {
+        "id": 466850160,
+        "first_name": "FirstName",
+        "last_name": "LastName",
+        "username": "userid",
+        "type": "private"
+      },
+      "date": 1539706331,
+      "text": "Welcome to Akaratak Bot"
+    },
+    "chat_instance": "-1597939972502835307",
+    "data": "Test Channel Data"
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "AkaratakBot",
+    "description": "",
+    "secretKey": "",
+    "services": [
+        {
+            "appId": "01f85008-eead-4fb7-b616-7eba7462499d",
+            "id": "34f255d0-bc07-11e8-acb9-df844c09c17c",
+            "type": "endpoint",
+            "appPassword": "nwcofS022=|[ghLYGQJN71=",
+            "endpoint": "http://localhost:3984/api/messages",
+            "name": "http://localhost:3984/api/messages"
+        },
+        {
+            "appId": "",
+            "id": "805c3790-c01a-11e8-88ae-b7efc70100f4",
+            "type": "endpoint",
+            "appPassword": "",
+            "endpoint": "http://localhost:3979/api/messages",
+            "name": "http://localhost:3979/api/messages"
+        },
+        {
+            "appId": "",
+            "id": "707931f0-c634-11e8-864d-d5604e31048d",
+            "type": "endpoint",
+            "appPassword": "",
+            "endpoint": "http://localhost:3980/",
+            "name": "http://localhost:3980/"
+        }
+    ]
+}

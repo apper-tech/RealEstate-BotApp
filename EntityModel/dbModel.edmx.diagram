@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c42f444412dd4ca6baf21797d1fe9ae1" Name="Diagram1">
+        <EntityTypeShape EntityType="AkaratakDbModel.City" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.Contract_Type" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.Country" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.Property" Width="2.125" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.Property_Category" Width="2.75" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.Property_Type" Width="1.5" PointX="4.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.User" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AkaratakDbModel.Property_Photos" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Cities_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Property_Type_Property_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Properties_City_ID" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Properties_Country_ID" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Properties_Property_Category_ID" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Properties_Property_Type_ID" />
+        <AssociationConnector Association="AkaratakDbModel.FK_Properties_User_ID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

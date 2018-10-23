@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AkaratakDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="City_ID" />
+          </Key>
+          <Property Name="City_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country_ID" Type="int" Nullable="false" />
+          <Property Name="City_Native_Name" Type="ntext" Nullable="false" />
+          <Property Name="Latitude" Type="text" />
+          <Property Name="Longitude" Type="text" />
+          <Property Name="City_Latin_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contract_Type">
+          <Key>
+            <PropertyRef Name="Contract_Type_ID" />
+          </Key>
+          <Property Name="Contract_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contract_Type_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_Code" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Country_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country_Native_Name" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_Category_ID" Type="int" Nullable="false" />
+          <Property Name="Property_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Property_Size" Type="int" Nullable="false" />
+          <Property Name="Date_Added" Type="datetime" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Has_Garage" Type="bit" />
+          <Property Name="Has_Garden" Type="bit" />
+          <Property Name="Num_Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Num_Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Expire_Date" Type="datetime" Nullable="false" />
+          <Property Name="Contract_Type" Type="int" />
+          <Property Name="City_ID" Type="int" />
+          <Property Name="Country_ID" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Zip_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Other_Details" Type="ntext" />
+          <Property Name="Sale_Price" Type="int" />
+          <Property Name="Rent_Price" Type="int" />
+          <Property Name="Num_Floors" Type="int" />
+          <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Property_Photo" Type="text" />
+          <Property Name="Url_ext" Type="varchar(max)" />
+          <Property Name="Property_Id_ext" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Property_Category">
+          <Key>
+            <PropertyRef Name="Cat_ID" />
+          </Key>
+          <Property Name="Cat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cat_Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Property_Photos">
+          <Key>
+            <PropertyRef Name="Property_Photo_ID" />
+            <PropertyRef Name="Photo_Num" />
+            <PropertyRef Name="Photo_Description" />
+            <PropertyRef Name="Photo_Path" />
+          </Key>
+          <Property Name="Property_Photo_ID" Type="int" Nullable="false" />
+          <Property Name="Photo_Num" Type="int" Nullable="false" />
+          <Property Name="Photo_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo_Path" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property_Type">
+          <Key>
+            <PropertyRef Name="Property_Type_ID" />
+          </Key>
+          <Property Name="Property_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_Type_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Property_Type_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cat_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Has_Office" Type="bit" Nullable="false" />
+          <Property Name="Allow_Prom" Type="bit" Nullable="false" />
+          <Property Name="Sub_NewsLetter" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone_Num" Type="varchar(max)" />
+          <Property Name="Telegram_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_City_ID">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_ID" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="City_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Country_ID">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Property_Category_ID">
+          <End Role="Property_Category" Type="Self.Property_Category" Multiplicity="1" />
+          <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Category">
+              <PropertyRef Name="Cat_ID" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="Property_Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Property_Type_ID">
+          <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="1" />
+          <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Type">
+              <PropertyRef Name="Property_Type_ID" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="Property_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_User_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Type_Property_Category">
+          <End Role="Property_Category" Type="Self.Property_Category" Multiplicity="1" />
+          <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Category">
+              <PropertyRef Name="Cat_ID" />
+            </Principal>
+            <Dependent Role="Property_Type">
+              <PropertyRef Name="Cat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AkaratakDbModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contract_Type" EntityType="Self.Contract_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Category" EntityType="Self.Property_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Property_Photos].[Property_Photo_ID] AS [Property_Photo_ID], 
+    [Property_Photos].[Photo_Num] AS [Photo_Num], 
+    [Property_Photos].[Photo_Description] AS [Photo_Description], 
+    [Property_Photos].[Photo_Path] AS [Photo_Path]
+    FROM [dbo].[Property_Photos] AS [Property_Photos]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_City_ID" Association="Self.FK_Properties_City_ID">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Country_ID" Association="Self.FK_Properties_Country_ID">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Property_Category_ID" Association="Self.FK_Properties_Property_Category_ID">
+            <End Role="Property_Category" EntitySet="Property_Category" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Property_Type_ID" Association="Self.FK_Properties_Property_Type_ID">
+            <End Role="Property_Type" EntitySet="Property_Type" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_User_ID" Association="Self.FK_Properties_User_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Type_Property_Category" Association="Self.FK_Property_Type_Property_Category">
+            <End Role="Property_Category" EntitySet="Property_Category" />
+            <End Role="Property_Type" EntitySet="Property_Type" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AkaratakDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="City_ID" />
+          </Key>
+          <Property Name="City_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country_ID" Type="Int32" Nullable="false" />
+          <Property Name="City_Native_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="City_Latin_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Cities_Countries" FromRole="Cities" ToRole="Countries" />
+          <NavigationProperty Name="Properties" Relationship="AkaratakDbModel.FK_Properties_City_ID" FromRole="City" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Contract_Type">
+          <Key>
+            <PropertyRef Name="Contract_Type_ID" />
+          </Key>
+          <Property Name="Contract_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contract_Type_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country_Native_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Countries" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Properties" Relationship="AkaratakDbModel.FK_Properties_Country_ID" FromRole="Country" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="Property_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Property_Size" Type="Int32" Nullable="false" />
+          <Property Name="Date_Added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Has_Garage" Type="Boolean" />
+          <Property Name="Has_Garden" Type="Boolean" />
+          <Property Name="Num_Bedrooms" Type="Int32" Nullable="false" />
+          <Property Name="Num_Bathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Expire_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Contract_Type" Type="Int32" />
+          <Property Name="City_ID" Type="Int32" />
+          <Property Name="Country_ID" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Other_Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sale_Price" Type="Int32" />
+          <Property Name="Rent_Price" Type="Int32" />
+          <Property Name="Num_Floors" Type="Int32" />
+          <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Property_Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Url_ext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Property_Id_ext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City" Relationship="AkaratakDbModel.FK_Properties_City_ID" FromRole="Property" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="AkaratakDbModel.FK_Properties_Country_ID" FromRole="Property" ToRole="Country" />
+          <NavigationProperty Name="Property_Category" Relationship="AkaratakDbModel.FK_Properties_Property_Category_ID" FromRole="Property" ToRole="Property_Category" />
+          <NavigationProperty Name="Property_Type" Relationship="AkaratakDbModel.FK_Properties_Property_Type_ID" FromRole="Property" ToRole="Property_Type" />
+          <NavigationProperty Name="User" Relationship="AkaratakDbModel.FK_Properties_User_ID" FromRole="Property" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Property_Category">
+          <Key>
+            <PropertyRef Name="Cat_ID" />
+          </Key>
+          <Property Name="Cat_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cat_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Property_Type" Relationship="Self.FK_Property_Type_Property_Category" FromRole="Property_Category" ToRole="Property_Type" />
+          <NavigationProperty Name="Properties" Relationship="AkaratakDbModel.FK_Properties_Property_Category_ID" FromRole="Property_Category" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property_Type">
+          <Key>
+            <PropertyRef Name="Property_Type_ID" />
+          </Key>
+          <Property Name="Property_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Property_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cat_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Property_Category" Relationship="Self.FK_Property_Type_Property_Category" FromRole="Property_Type" ToRole="Property_Category" />
+          <NavigationProperty Name="Properties" Relationship="AkaratakDbModel.FK_Properties_Property_Type_ID" FromRole="Property_Type" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Has_Office" Type="Boolean" Nullable="false" />
+          <Property Name="Allow_Prom" Type="Boolean" Nullable="false" />
+          <Property Name="Sub_NewsLetter" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone_Num" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telegram_ID" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="AkaratakDbModel.FK_Properties_User_ID" FromRole="User" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property_Photos">
+          <Key>
+            <PropertyRef Name="Property_Photo_ID" />
+            <PropertyRef Name="Photo_Num" />
+            <PropertyRef Name="Photo_Description" />
+            <PropertyRef Name="Photo_Path" />
+          </Key>
+          <Property Name="Property_Photo_ID" Type="Int32" Nullable="false" />
+          <Property Name="Photo_Num" Type="Int32" Nullable="false" />
+          <Property Name="Photo_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Photo_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Type_Property_Category">
+          <End Role="Property_Category" Type="Self.Property_Category" Multiplicity="1" />
+          <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Category">
+              <PropertyRef Name="Cat_ID" />
+            </Principal>
+            <Dependent Role="Property_Type">
+              <PropertyRef Name="Cat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AkaratakModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Contract_Type" EntityType="Self.Contract_Type" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Properties" EntityType="Self.Property" />
+          <EntitySet Name="Property_Category" EntityType="Self.Property_Category" />
+          <EntitySet Name="Property_Type" EntityType="Self.Property_Type" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" />
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Type_Property_Category" Association="Self.FK_Property_Type_Property_Category">
+            <End Role="Property_Category" EntitySet="Property_Category" />
+            <End Role="Property_Type" EntitySet="Property_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_City_ID" Association="AkaratakDbModel.FK_Properties_City_ID">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Country_ID" Association="AkaratakDbModel.FK_Properties_Country_ID">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Property_Category_ID" Association="AkaratakDbModel.FK_Properties_Property_Category_ID">
+            <End Role="Property_Category" EntitySet="Property_Category" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Property_Type_ID" Association="AkaratakDbModel.FK_Properties_Property_Type_ID">
+            <End Role="Property_Type" EntitySet="Property_Type" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_User_ID" Association="AkaratakDbModel.FK_Properties_User_ID">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Properties_City_ID">
+          <End Type="AkaratakDbModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="AkaratakDbModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="City_ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="City_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Country_ID">
+          <End Type="AkaratakDbModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="AkaratakDbModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Property_Category_ID">
+          <End Type="AkaratakDbModel.Property_Category" Role="Property_Category" Multiplicity="1" />
+          <End Type="AkaratakDbModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Category">
+              <PropertyRef Name="Cat_ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Property_Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Property_Type_ID">
+          <End Type="AkaratakDbModel.Property_Type" Role="Property_Type" Multiplicity="1" />
+          <End Type="AkaratakDbModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Type">
+              <PropertyRef Name="Property_Type_ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Property_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_User_ID">
+          <End Type="AkaratakDbModel.User" Role="User" Multiplicity="1" />
+          <End Type="AkaratakDbModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AkaratakDbModelStoreContainer" CdmEntityContainer="AkaratakModel">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="AkaratakDbModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="City_Native_Name" ColumnName="City_Native_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="City_Latin_Name" ColumnName="City_Latin_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contract_Type">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Contract_Type">
+              <MappingFragment StoreEntitySet="Contract_Type">
+                <ScalarProperty Name="Contract_Type_ID" ColumnName="Contract_Type_ID" />
+                <ScalarProperty Name="Contract_Type_Desc" ColumnName="Contract_Type_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Country_Native_Name" ColumnName="Country_Native_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Property">
+              <MappingFragment StoreEntitySet="Properties">
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="Property_Category_ID" ColumnName="Property_Category_ID" />
+                <ScalarProperty Name="Property_Type_ID" ColumnName="Property_Type_ID" />
+                <ScalarProperty Name="Property_Size" ColumnName="Property_Size" />
+                <ScalarProperty Name="Date_Added" ColumnName="Date_Added" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Has_Garage" ColumnName="Has_Garage" />
+                <ScalarProperty Name="Has_Garden" ColumnName="Has_Garden" />
+                <ScalarProperty Name="Num_Bedrooms" ColumnName="Num_Bedrooms" />
+                <ScalarProperty Name="Num_Bathrooms" ColumnName="Num_Bathrooms" />
+                <ScalarProperty Name="Expire_Date" ColumnName="Expire_Date" />
+                <ScalarProperty Name="Contract_Type" ColumnName="Contract_Type" />
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Zip_Code" ColumnName="Zip_Code" />
+                <ScalarProperty Name="Other_Details" ColumnName="Other_Details" />
+                <ScalarProperty Name="Sale_Price" ColumnName="Sale_Price" />
+                <ScalarProperty Name="Rent_Price" ColumnName="Rent_Price" />
+                <ScalarProperty Name="Num_Floors" ColumnName="Num_Floors" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Property_Photo" ColumnName="Property_Photo" />
+                <ScalarProperty Name="Url_ext" ColumnName="Url_ext" />
+                <ScalarProperty Name="Property_Id_ext" ColumnName="Property_Id_ext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Category">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Property_Category">
+              <MappingFragment StoreEntitySet="Property_Category">
+                <ScalarProperty Name="Cat_ID" ColumnName="Cat_ID" />
+                <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
+                <ScalarProperty Name="Cat_Description" ColumnName="Cat_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Type">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Property_Type">
+              <MappingFragment StoreEntitySet="Property_Type">
+                <ScalarProperty Name="Property_Type_ID" ColumnName="Property_Type_ID" />
+                <ScalarProperty Name="Property_Type_Description" ColumnName="Property_Type_Description" />
+                <ScalarProperty Name="Property_Type_Name" ColumnName="Property_Type_Name" />
+                <ScalarProperty Name="Cat_ID" ColumnName="Cat_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AkaratakDbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AkaratakDbModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Has_Office" ColumnName="Has_Office" />
+                <ScalarProperty Name="Allow_Prom" ColumnName="Allow_Prom" />
+                <ScalarProperty Name="Sub_NewsLetter" ColumnName="Sub_NewsLetter" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Num" ColumnName="Phone_Num" />
+                <ScalarProperty Name="Telegram_ID" ColumnName="Telegram_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Photos">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Property_Photos">
+              <MappingFragment StoreEntitySet="Property_Photos">
+                <ScalarProperty Name="Property_Photo_ID" ColumnName="Property_Photo_ID" />
+                <ScalarProperty Name="Photo_Num" ColumnName="Photo_Num" />
+                <ScalarProperty Name="Photo_Description" ColumnName="Photo_Description" />
+                <ScalarProperty Name="Photo_Path" ColumnName="Photo_Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

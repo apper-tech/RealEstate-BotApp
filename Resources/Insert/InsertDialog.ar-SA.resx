@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>هنالك خطأ في القيمة المدخلة , رجاء اعد الادخال</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>أضافة عقار</value>
+  </data>
+  <data name="InsertFieldAddressText" xml:space="preserve">
+    <value>ادخل عنوان العقار</value>
+  </data>
+  <data name="InsertFieldBathroomCount" xml:space="preserve">
+    <value>ادخل عدد الحمامات</value>
+  </data>
+  <data name="InsertFieldBedroomCount" xml:space="preserve">
+    <value>ادخل عدد غرف النوم</value>
+  </data>
+  <data name="InsertFieldCategoryType" xml:space="preserve">
+    <value>اختر فئة العقار</value>
+  </data>
+  <data name="InsertFieldCountryCity" xml:space="preserve">
+    <value>ادخل موقع العقار (البلد و المدينة)</value>
+  </data>
+  <data name="InsertFieldFloorCount" xml:space="preserve">
+    <value>عدد الطوابق</value>
+  </data>
+  <data name="InsertFieldFloorLevelCount" xml:space="preserve">
+    <value>رقم طابق العقار</value>
+  </data>
+  <data name="InsertFieldGardenGarageChoice" xml:space="preserve">
+    <value>معلومات عن ملحقات العقار</value>
+  </data>
+  <data name="InsertFieldLocationLatLng" xml:space="preserve">
+    <value>اختر موقع العقار</value>
+  </data>
+  <data name="InsertFieldOtherDetailsText" xml:space="preserve">
+    <value>معلومات اضافية</value>
+  </data>
+  <data name="InsertFieldPropertySize" xml:space="preserve">
+    <value>مساحة العقار</value>
+  </data>
+  <data name="InsertFieldSaleRentPriceCount" xml:space="preserve">
+    <value>سعر الشراء/الإيجار</value>
+  </data>
+  <data name="InsertFieldZipCodeText" xml:space="preserve">
+    <value>رقم العقار البريدي (إن وُجد)</value>
+  </data>
+  <data name="InsertFormAddressTextDescription" xml:space="preserve">
+    <value>ادخل عنوان العقار</value>
+  </data>
+  <data name="InsertFormBathroomCountDescription" xml:space="preserve">
+    <value>ادخل عدد الحمامات</value>
+  </data>
+  <data name="InsertFormBedroomCountDescription" xml:space="preserve">
+    <value>ادخل عدد غرف النوم</value>
+  </data>
+  <data name="InsertFormCountryNext" xml:space="preserve">
+    <value>التالي&gt;&gt;</value>
+  </data>
+  <data name="InsertFormFloorCountDescription" xml:space="preserve">
+    <value>ادخل عدد طوابق العقار</value>
+  </data>
+  <data name="InsertFormFloorLevelCountDescription" xml:space="preserve">
+    <value>ادخل طابق العقار (-1 للقبو ,2 للطابق الثاني)</value>
+  </data>
+  <data name="InsertFormHeader" xml:space="preserve">
+    <value>اختر اضافة لاضافة العقار</value>
+  </data>
+  <data name="InsertFormLocationLatLngDescription" xml:space="preserve">
+    <value>ادخل عنوان للعقار لاظهار النتائج المحتملة</value>
+  </data>
+  <data name="InsertFormOtherDetailsTextDescription" xml:space="preserve">
+    <value>ادخل ميزات اضافية للعقار</value>
+  </data>
+  <data name="InsertFormPropertySizeDescription" xml:space="preserve">
+    <value>ادخل مساحة العقار بالمتر المربع</value>
+  </data>
+  <data name="InsertFormRentPriceCountDescription" xml:space="preserve">
+    <value>كم هي قيمة الايجار؟</value>
+  </data>
+  <data name="InsertFormSalePriceCountDescription" xml:space="preserve">
+    <value>كم هو سعر البيع ؟</value>
+  </data>
+  <data name="InsertFormZipCodeTextDescription" xml:space="preserve">
+    <value>ما رقم العقار البريدي</value>
+  </data>
+  <data name="InsertGarageSelection" xml:space="preserve">
+    <value>هل العقار ملحق بكراج ؟</value>
+  </data>
+  <data name="InsertGardenSelection" xml:space="preserve">
+    <value>هل العقار ملحق حديقة ؟</value>
+  </data>
+</root>
