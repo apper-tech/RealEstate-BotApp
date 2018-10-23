@@ -67,7 +67,8 @@ namespace AkaratakBot.Dialogs
                 }
                 if (optionSelected == "Test Channel Data")
                 {
-                    await context.PostAsync($"User ID: {_userProfile.telegramData.callback_query.from.id}");
+                    string id= _userProfile.telegramData.callback_query != null? _userProfile.telegramData.callback_query.from.id.ToString():"emulator";
+                    await context.PostAsync($"User ID: {id}");
                 }
 
             }
@@ -92,7 +93,9 @@ namespace AkaratakBot.Dialogs
         }
         public TelegramData GetUserTelegramData(IDialogContext context)
         {
-            return JsonConvert.DeserializeObject<TelegramData>(((string)context.Activity.ChannelData));
+            var message = context.Activity;
+            string data = message.ChannelData.ToString();
+            return JsonConvert.DeserializeObject<TelegramData>(data);
         }
 
     }
