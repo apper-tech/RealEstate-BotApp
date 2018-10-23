@@ -23,7 +23,7 @@ namespace RealEstateBot.Dialogs
             int length = (activity.Text ?? string.Empty).Length;
 
             // Return our reply to the user
-            await context.PostAsync($"You sent {activity.Text} which was {length} characters LBL");
+            await context.PostAsync($"You sent {activity.Text} which was {length} characters Mezo");
 
             context.Wait(MessageReceivedAsync);
         }
