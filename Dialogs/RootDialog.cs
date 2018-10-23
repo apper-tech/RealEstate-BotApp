@@ -1,6 +1,8 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using AkaratakBot.Shared;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Location;
 using Microsoft.Bot.Connector;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +35,7 @@ namespace AkaratakBot.Dialogs
                       Resources.Settings.SettingsDialog.Settings,
                       Resources.Insert.InsertDialog.Insert,
                     //"Test Cards",
-                    //"Test Channel Data"
+                    "Test Channel Data"
             };
             PromptDialog.Choice(context, this.OnOptionSelected, _options, Resources.BaseDialog.Greetings, "Not a valid option", 3);
         }
@@ -48,6 +50,7 @@ namespace AkaratakBot.Dialogs
                     searchParameters = new SearchParameters(),
                     insertParameters = new InsertParameters(),
                     settingsParameters = new SettingsParameters(),
+                    telegramData = GetUserTelegramData(context)
                 } : _userProfile;
                 context.PrivateConversationData.SetValue("@userProfile", _userProfile);
 
@@ -64,7 +67,7 @@ namespace AkaratakBot.Dialogs
                 }
                 if (optionSelected == "Test Channel Data")
                 {
-                    
+                    await context.PostAsync($"User ID:{_userProfile.telegramData.callback_query.from.id}");
                 }
 
             }
@@ -86,6 +89,10 @@ namespace AkaratakBot.Dialogs
             {
                 await context.PostAsync($"Failed with message: {ex.Message}");
             }
+        }
+        public TelegramData GetUserTelegramData(IDialogContext context)
+        {
+            return JsonConvert.DeserializeObject<TelegramData>(((string)context.Activity.ChannelData));
         }
 
     }
