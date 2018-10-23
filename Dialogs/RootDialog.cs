@@ -67,7 +67,7 @@ namespace AkaratakBot.Dialogs
                 }
                 if (optionSelected == "Test Channel Data")
                 {
-                    await context.PostAsync($"User ID:{_userProfile.telegramData.callback_query.from.id}");
+                    await context.PostAsync($"User ID: {_userProfile.telegramData.callback_query.from.id}");
                 }
 
             }
