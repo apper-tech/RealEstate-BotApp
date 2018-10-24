@@ -17,6 +17,7 @@ namespace AkaratakBot
         public int insertBathRoomCount { get; set; }
         public int insertSalePrice { get; set; }
         public int insertRentPrice { get; set; }
+        public string insertPhoneNumber { get; set; }
         public string insertCountry { get; set; }
         public string insertCity { get; set; }
         public string insertCategory { get; set; }

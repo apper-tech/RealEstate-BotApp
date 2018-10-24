@@ -61,8 +61,7 @@ namespace AkaratakBot.Dialogs.InsertDialog
             
             else if(message.searchKey=="InsertKey")
             {
-               await context.PostAsync("added");
-               context.Done(context.MakeMessage());
+                context.Call(new PhoneNumberDialog(), InsertPhoneCallback);
             }
         }
         public async Task InsertOptionCallback(IDialogContext context, IAwaitable<SearchEntry> argument)
@@ -74,6 +73,15 @@ namespace AkaratakBot.Dialogs.InsertDialog
                 _optionList.Add(new SearchEntry { searchKey = "InsertKey", searchValue = Resources.Insert.InsertDialog.Insert+ " ✔" });
 
             await this.ShowProgress(context);
+        }
+        public async Task InsertPhoneCallback(IDialogContext context,IAwaitable<object> result)
+        {
+            context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
+            if (Shared.Common.Insert.InsertForm(context, _userProfile))
+                await context.PostAsync(Resources.Insert.InsertDialog.InsertDone);
+            else
+                await context.PostAsync("Error");
+            context.Done(context.MakeMessage());
         }
     }
 }

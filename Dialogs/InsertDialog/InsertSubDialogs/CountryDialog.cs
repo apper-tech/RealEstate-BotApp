@@ -53,7 +53,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         private void AskForCity(IDialogContext context, SearchEntry message)
         {
             PromptDialog.Choice(context,
-               AfteCityChoice, Shared.Common.Insert.GetCitryList(context, message),
+               AfteCityChoice, Shared.Common.Insert.GetCityList(context, message),
                Resources.Search.SearchDialog.SearchTypeSelection, Resources.BaseDialog.NotAValidOption,
                3, PromptStyle.Auto);
         }

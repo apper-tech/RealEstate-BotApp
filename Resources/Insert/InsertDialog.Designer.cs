@@ -79,6 +79,15 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Done! Listing Added.
+        /// </summary>
+        internal static string InsertDone {
+            get {
+                return ResourceManager.GetString("InsertDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the property address .
         /// </summary>
         internal static string InsertFieldAddressText {
@@ -345,6 +354,33 @@ namespace AkaratakBot.Resources.Insert {
         internal static string InsertGardenSelection {
             get {
                 return ResourceManager.GetString("InsertGardenSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter your Phone Number.
+        /// </summary>
+        internal static string InsertPhoneNumber {
+            get {
+                return ResourceManager.GetString("InsertPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not A valid Phone Enter Again.
+        /// </summary>
+        internal static string InsertPhoneNumberError {
+            get {
+                return ResourceManager.GetString("InsertPhoneNumberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Files Please Send Again.
+        /// </summary>
+        internal static string InsertPhotosErrorMessage {
+            get {
+                return ResourceManager.GetString("InsertPhotosErrorMessage", resourceCulture);
             }
         }
     }

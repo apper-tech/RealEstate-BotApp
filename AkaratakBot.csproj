@@ -255,6 +255,7 @@
     <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\CategoryDialog.cs" />
     <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\CountryDialog.cs" />
     <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\LocationDialog.cs" />
+    <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\PhoneNumberDialog.cs" />
     <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\PhotoDialog.cs" />
     <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\SaleRentDialog.cs" />
     <Compile Include="Dialogs\InsertDialog\InsertSubDialogs\GardenGarageDialog.cs" />
@@ -302,6 +303,9 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\sysdiagram.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\TestTable.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\User.cs">

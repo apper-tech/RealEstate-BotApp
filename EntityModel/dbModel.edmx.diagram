@@ -21,6 +21,7 @@
         <AssociationConnector Association="AkaratakDbModel.FK_Properties_Property_Category_ID" />
         <AssociationConnector Association="AkaratakDbModel.FK_Properties_Property_Type_ID" />
         <AssociationConnector Association="AkaratakDbModel.FK_Properties_User_ID" />
+        <EntityTypeShape EntityType="AkaratakDbModel.TestTable" Width="1.5" PointX="8.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

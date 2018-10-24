@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Resources;
 using System.Web;
+using System.Web.Configuration;
 
 namespace AkaratakBot.Shared
 {
@@ -210,6 +211,12 @@ namespace AkaratakBot.Shared
 
                 return entry;
             }
+            public static SearchEntry CheckField(IDialogContext context, SearchEntry entry, bool clear)
+            {
+                if (entry.searchValue.Contains("✅"))
+                    entry.searchValue = entry.searchValue.Replace("  ✅", "");
+                return entry;
+            }
             public static bool CheckForm(IDialogContext context, List<SearchEntry> entries)
             {
                 foreach (var item in entries)
@@ -217,11 +224,87 @@ namespace AkaratakBot.Shared
                         return false;
                 return true;
             }
-            public static SearchEntry CheckField(IDialogContext context, SearchEntry entry, bool clear)
+            public static bool InsertForm(IDialogContext context, UserProfile userProfile)
             {
-                if (entry.searchValue.Contains("✅"))
-                    entry.searchValue = entry.searchValue.Replace("  ✅", "");
-                return entry;
+                using (AkaratakModel model = new AkaratakModel())
+                {
+                    UserProfile profile = null;
+                    if (userProfile.telegramData.callback_query != null)
+                        profile = userProfile;
+                    else
+                        context.PrivateConversationData.TryGetValue("@userProfile", out profile);
+
+
+                    var property = GenerateProperty(profile);
+                    model.Properties.Add(property);
+                    try
+                    {
+                        model.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        return false;
+                    }
+
+                }
+            }
+            private static Property GenerateProperty(UserProfile userProfile)
+            {
+                var param = userProfile.insertParameters;
+                return new Property
+                {
+                    Property_Size = param.insertSize,
+                    Address = param.insertAddress,
+                    City_ID = int.Parse(param.insertCity),
+                    Country_ID = int.Parse(param.insertCountry),
+                    Property_Category_ID = int.Parse(param.insertCategory),
+                    Property_Type_ID = int.Parse(param.insertType),
+                    Date_Added = DateTime.UtcNow,
+                    Expire_Date = DateTime.UtcNow.AddMonths(3).Date,
+                    Floor = param.insertFloorLevel,
+                    Has_Garage = param.insertHasGarage,
+                    Has_Garden = param.insertHasGarden,
+                    Location = param.insertLocation,
+                    Num_Floors = param.insertFloorCount,
+                    Num_Bedrooms = param.insertBedRoomCount,
+                    Num_Bathrooms = param.insertBathRoomCount,
+                    Other_Details = param.insertOtherDetails,
+                    Property_Photo = API.IOCommon.PhotoManager.UploadPhotoToHost(param.insertPhotoPath),
+                    Rent_Price = param.insertRentPrice,
+                    Sale_Price = param.insertSalePrice,
+
+                    User_ID = userProfile.telegramData.callback_query != null ?
+                    CreateOrGetUserID(userProfile) :
+                    WebConfigurationManager.AppSettings["AkaratakBotUserID"],
+
+                    Zip_Code = param.insertZipCode
+
+                };
+            }
+            private static string CreateOrGetUserID(UserProfile userProfile)
+            {
+                From from = userProfile.telegramData.callback_query.from;
+                using (AkaratakModel model = new AkaratakModel())
+                {
+                    model.Users.Add(new User
+                    {
+                        Telegram_ID=from.id,
+                        User_ID= Guid.NewGuid().ToString(),
+                        First_Name=from.first_name,
+                        Last_Name=from.last_name
+                    });
+                    try
+                    {
+                        model.SaveChanges();
+                        return model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
+                    }
+                    catch (Exception ex)
+                    {
+                        return string.Empty;
+                    }
+                }
             }
             public static List<SearchEntry> GetCategoryList(IDialogContext context)
             {
@@ -296,7 +379,7 @@ namespace AkaratakBot.Shared
                     countries = countries.GetRange(range.RangeStart, countries.Count - range.RangeStart);
                 return countries;
             }
-            public static List<SearchEntry> GetCitryList(IDialogContext context, SearchEntry country)
+            public static List<SearchEntry> GetCityList(IDialogContext context, SearchEntry country)
             {
                 List<SearchEntry> cities = new List<SearchEntry>();
                 using (var model = new AkaratakModel())
@@ -375,21 +458,54 @@ namespace AkaratakBot.Shared
                         userID = JsonConvert.DeserializeObject<TelegramData>(File.ReadAllText(contextServer.MapPath("~/_root/_test/test.json")));
 
 
-                    var userPhotoPath = contextServer.MapPath( $"{_photoHomePath}/_temp/") + userID.callback_query.from.id;
+                    var userPhotoPath = contextServer.MapPath($"{_photoHomePath}/_temp/") + userID.callback_query.from.id;
                     if (!Directory.Exists(userPhotoPath))
                         Directory.CreateDirectory(userPhotoPath);
 
-
-
+                    foreach (var item in Directory.GetFiles(userPhotoPath))
+                        File.Delete(item);
+                    int count = 1;
                     foreach (var item in attachments)
                         using (var client = new WebClient())
                         {
-                            var photoLocalPath = $"{userPhotoPath}/{item.Name}";
+
+                            var photoLocalPath = $"{userPhotoPath}\\p{count}.jpg";
                             client.DownloadFile($"{item.ContentUrl}", photoLocalPath);
-                            userPhotosNames += photoLocalPath + "|";
+                            userPhotosNames += photoLocalPath + "|"; count++;
                         }
+                    
 
                     return userPhotosNames;
+                }
+                private static string GeneratePhotoName()
+                {
+                    int length = 15;
+                    Random random = new Random();
+                    string name = new string((from s in Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", length)
+                                              select s[random.Next(s.Length)]).ToArray());
+                    return name;
+                }
+                public static string UploadPhotoToHost(string photoPath)
+                {
+                    string _photoNames = string.Empty;
+                    var ftpUsername = WebConfigurationManager.AppSettings["AkaratakFtpUsername"];
+                    var ftpPassword = WebConfigurationManager.AppSettings["AkaratakFtpPassword"];
+                    var ftpUrl = WebConfigurationManager.AppSettings["AkaratakFtpUrl"];
+
+
+
+                    foreach (var item in photoPath.Split('|'))
+                    {
+                        FileInfo file = new FileInfo(item);
+                        string _photopath = GeneratePhotoName() + file.Extension;
+                        using (WebClient client = new WebClient())
+                        {
+                            client.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
+                            client.UploadFile($"{ftpUrl}/{_photopath}", WebRequestMethods.Ftp.UploadFile, file.FullName);
+                        }
+                        _photoNames += _photopath + "|";
+                    }
+                    return _photoNames;
                 }
             }
         }

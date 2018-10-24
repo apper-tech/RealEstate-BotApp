@@ -15,12 +15,14 @@ namespace AkaratakBot.EntityModel
 using System;
     using System.Collections.Generic;
     
-public partial class Contract_Type
+public partial class TestTable
 {
 
-    public int Contract_Type_ID { get; set; }
+    public int id { get; set; }
 
-    public string Contract_Type_Desc { get; set; }
+    public Nullable<System.DateTime> TestDate { get; set; }
+
+    public Nullable<System.DateTime> TestDate2 { get; set; }
 
 }
 

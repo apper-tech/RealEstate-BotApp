@@ -41,7 +41,7 @@
           <Property Name="Property_Category_ID" Type="int" Nullable="false" />
           <Property Name="Property_Type_ID" Type="int" Nullable="false" />
           <Property Name="Property_Size" Type="int" Nullable="false" />
-          <Property Name="Date_Added" Type="datetime" Nullable="false" />
+          <Property Name="Date_Added" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Floor" Type="int" Nullable="false" />
           <Property Name="Has_Garage" Type="bit" />
           <Property Name="Has_Garden" Type="bit" />
@@ -103,6 +103,14 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TestTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestDate" Type="datetime" />
+          <Property Name="TestDate2" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -211,6 +219,7 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <EntitySet Name="Property_Category" EntityType="Self.Property_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestTable" EntityType="Self.TestTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -293,7 +302,7 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <Property Name="Property_Category_ID" Type="Int32" Nullable="false" />
           <Property Name="Property_Type_ID" Type="Int32" Nullable="false" />
           <Property Name="Property_Size" Type="Int32" Nullable="false" />
-          <Property Name="Date_Added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Added" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Floor" Type="Int32" Nullable="false" />
           <Property Name="Has_Garage" Type="Boolean" />
           <Property Name="Has_Garden" Type="Boolean" />
@@ -441,6 +450,7 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
             <End Role="User" EntitySet="Users" />
             <End Role="Property" EntitySet="Properties" />
           </AssociationSet>
+          <EntitySet Name="TestTables" EntityType="AkaratakDbModel.TestTable" />
         </EntityContainer>
         <Association Name="FK_Properties_City_ID">
           <End Type="AkaratakDbModel.City" Role="City" Multiplicity="0..1" />
@@ -502,6 +512,14 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TestTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestDate" Type="DateTime" Precision="3" />
+          <Property Name="TestDate2" Type="DateTime" Precision="7" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -623,6 +641,15 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
                 <ScalarProperty Name="Photo_Num" ColumnName="Photo_Num" />
                 <ScalarProperty Name="Photo_Description" ColumnName="Photo_Description" />
                 <ScalarProperty Name="Photo_Path" ColumnName="Photo_Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestTables">
+            <EntityTypeMapping TypeName="AkaratakDbModel.TestTable">
+              <MappingFragment StoreEntitySet="TestTable">
+                <ScalarProperty Name="TestDate2" ColumnName="TestDate2" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

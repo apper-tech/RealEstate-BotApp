@@ -26,51 +26,29 @@ namespace AkaratakBot.Dialogs
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<Activity> argument)
         {
             var message = await argument;
-            this.ShowOptions(context);
+            await ShowOptions(context, message);
         }
-        private void ShowOptions(IDialogContext context)
+        private async Task ShowOptions(IDialogContext context, Activity activity)
         {
             _options = new List<string>() {
                       Resources.Search.SearchDialog.Search,
                       Resources.Settings.SettingsDialog.Settings,
                       Resources.Insert.InsertDialog.Insert,
                     //"Test Cards",
-                    "Test Channel Data"
+                    //"Test Channel Data",
+                    //"Test Date"
             };
-            PromptDialog.Choice(context, this.OnOptionSelected, _options, Resources.BaseDialog.Greetings, "Not a valid option", 3);
+            if (_options.Contains(activity.Text))
+                await RedirectUserInput(context, activity.Text);
+            else
+                PromptDialog.Choice(context, this.OnOptionSelected, _options, Resources.BaseDialog.Greetings, Resources.BaseDialog.NotAValidOption, 3);
         }
         UserProfile _userProfile;
         private async Task OnOptionSelected(IDialogContext context, IAwaitable<string> result)
         {
             try
             {
-                string optionSelected = await result;
-                _userProfile = _userProfile == null ? new UserProfile()
-                {
-                    searchParameters = new SearchParameters(),
-                    insertParameters = new InsertParameters(),
-                    settingsParameters = new SettingsParameters(),
-                    telegramData = GetUserTelegramData(context)
-                } : _userProfile;
-                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
-
-                if (optionSelected == Resources.Search.SearchDialog.Search)
-                    context.Call(new SearchDialogs.BaseDialog(), this.ResumeAfterOptionDialog);
-                if (optionSelected == Resources.Settings.SettingsDialog.Settings)
-                    context.Call(new SettingsDialog.BaseDialog(), this.ResumeAfterOptionDialog);
-                if (optionSelected == Resources.Insert.InsertDialog.Insert)
-                    context.Call(new InsertDialog.BaseDialog(), this.ResumeAfterOptionDialog);
-
-                if (optionSelected == "Test Cards")
-                {
-                    context.Call(new Test_Dialogs.TestCarouselCardsDialog(), this.ResumeAfterOptionDialog);
-                }
-                if (optionSelected == "Test Channel Data")
-                {
-                    string id= _userProfile.telegramData.callback_query != null? _userProfile.telegramData.callback_query.from.id.ToString():"emulator";
-                    await context.PostAsync($"User ID: {id}");
-                }
-
+                await RedirectUserInput(context, await result);
             }
             catch (TooManyAttemptsException ex)
             {
@@ -79,12 +57,61 @@ namespace AkaratakBot.Dialogs
                 context.Wait<Activity>(this.MessageReceivedAsync);
             }
         }
+        private async Task RedirectUserInput(IDialogContext context, string input)
+        {
+            string optionSelected = input;
+            _userProfile = _userProfile == null ? new UserProfile()
+            {
+                searchParameters = new SearchParameters(),
+                insertParameters = new InsertParameters(),
+                settingsParameters = new SettingsParameters(),
+                telegramData = GetUserTelegramData(context)
+            } : _userProfile;
+            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+
+            if (optionSelected == Resources.Search.SearchDialog.Search)
+                context.Call(new SearchDialogs.BaseDialog(), this.ResumeAfterOptionDialog);
+            if (optionSelected == Resources.Settings.SettingsDialog.Settings)
+                context.Call(new SettingsDialog.BaseDialog(), this.ResumeAfterOptionDialog);
+            if (optionSelected == Resources.Insert.InsertDialog.Insert)
+                context.Call(new InsertDialog.BaseDialog(), this.ResumeAfterOptionDialog);
+
+            if (optionSelected == "Test Cards")
+            {
+                context.Call(new Test_Dialogs.TestCarouselCardsDialog(), this.ResumeAfterOptionDialog);
+            }
+            if (optionSelected == "Test Channel Data")
+            {
+                string id = _userProfile.telegramData.callback_query != null ? _userProfile.telegramData.callback_query.from.id.ToString() : "emulator";
+                await context.PostAsync($"User ID: {id}");
+            }
+            if (optionSelected == "Test Date")
+            {
+                using (EntityModel.AkaratakModel model = new EntityModel.AkaratakModel())
+                {
+                    model.TestTables.Add(new EntityModel.TestTable
+                    {
+                        TestDate = DateTime.Now,
+                        TestDate2 = DateTime.Now.AddMonths(3)
+                    });
+                    try
+                    {
+                        model.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+                }
+            }
+        }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)
         {
             try
             {
                 var message = await result;
-                this.ShowOptions(context);
+                await ShowOptions(context, new Activity { Text = "None" });
             }
             catch (Exception ex)
             {

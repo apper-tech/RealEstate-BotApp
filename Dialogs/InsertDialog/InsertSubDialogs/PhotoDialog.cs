@@ -15,7 +15,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         public async Task StartAsync(IDialogContext context)
         {
             context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
-            this.AskFoPhoto(context);
+            this.AskFoPhoto(context,false);
         }
         private SearchEntry _userOption;
         private UserProfile _userProfile;
@@ -23,16 +23,20 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             _userOption = entry;
         }
-        public void AskFoPhoto(IDialogContext context)
+        public void AskFoPhoto(IDialogContext context,bool error)
         {
+            if (error)
+                context.PostAsync(Resources.Insert.InsertDialog.InsertPhotosErrorMessage);
+
             PromptDialog.Attachment(context, AfterPhotoChoice, Resources.Insert.InsertDialog.InsertFormPropertyPhotoDescription);
         }
         public async Task AfterPhotoChoice(IDialogContext context, IAwaitable<IEnumerable<Attachment>> argument)
         {
-            _userProfile.insertParameters.insertPhotoPath = PhotoManager.DownloadUserInsertPhotos(
-                context.Activity, PhotoManager.ValidateUserPhotos((await argument).Take(4))
-                );
-            //validation
+            var photos = PhotoManager.ValidateUserPhotos((await argument).Take(4));
+            if (photos.Count() > 0)
+                _userProfile.insertParameters.insertPhotoPath = PhotoManager.DownloadUserInsertPhotos(context.Activity, photos);
+            else
+                this.AskFoPhoto(context,true);
             context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             context.Done(Shared.Common.Insert.CheckField(context, _userOption));
         }

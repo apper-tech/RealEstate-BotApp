@@ -123,6 +123,9 @@
   <data name="Insert" xml:space="preserve">
     <value>Insert</value>
   </data>
+  <data name="InsertDone" xml:space="preserve">
+    <value>Done! Listing Added</value>
+  </data>
   <data name="InsertFieldAddressText" xml:space="preserve">
     <value>Enter the property address </value>
   </data>
@@ -212,5 +215,14 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>Does the Property come with a Garden?</value>
+  </data>
+  <data name="InsertPhoneNumber" xml:space="preserve">
+    <value>Please Enter your Phone Number</value>
+  </data>
+  <data name="InsertPhoneNumberError" xml:space="preserve">
+    <value>Not A valid Phone Enter Again</value>
+  </data>
+  <data name="InsertPhotosErrorMessage" xml:space="preserve">
+    <value>Invalid Files Please Send Again</value>
   </data>
 </root>

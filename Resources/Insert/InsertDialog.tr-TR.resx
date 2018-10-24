@@ -123,6 +123,9 @@
   <data name="Insert" xml:space="preserve">
     <value>Ekle</value>
   </data>
+  <data name="InsertDone" xml:space="preserve">
+    <value>Bitti! İlan Eklendi</value>
+  </data>
   <data name="InsertFieldAddressText" xml:space="preserve">
     <value>Mülk adresini girin</value>
   </data>
@@ -206,5 +209,14 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>Mülkiyet bir bahçe ile geliyor mu?</value>
+  </data>
+  <data name="InsertPhoneNumber" xml:space="preserve">
+    <value>Lütfen telefon numaranızı girin</value>
+  </data>
+  <data name="InsertPhoneNumberError" xml:space="preserve">
+    <value>Geçerli Bir Telefon Değil Tekrar Girin</value>
+  </data>
+  <data name="InsertPhotosErrorMessage" xml:space="preserve">
+    <value>Yanlış dosyalar lütfen dosyaları yeniden yükleyin</value>
   </data>
 </root>

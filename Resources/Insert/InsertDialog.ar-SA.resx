@@ -123,6 +123,9 @@
   <data name="Insert" xml:space="preserve">
     <value>أضافة عقار</value>
   </data>
+  <data name="InsertDone" xml:space="preserve">
+    <value> تم اضافة العقار</value>
+  </data>
   <data name="InsertFieldAddressText" xml:space="preserve">
     <value>ادخل عنوان العقار</value>
   </data>
@@ -206,5 +209,14 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>هل العقار ملحق حديقة ؟</value>
+  </data>
+  <data name="InsertPhoneNumber" xml:space="preserve">
+    <value>ادخل رقم الهاتف</value>
+  </data>
+  <data name="InsertPhoneNumberError" xml:space="preserve">
+    <value>رقم خاطئ حاول مجددا</value>
+  </data>
+  <data name="InsertPhotosErrorMessage" xml:space="preserve">
+    <value>الملفات خاطئة الرجاء اعادة رفع الملقات</value>
   </data>
 </root>
