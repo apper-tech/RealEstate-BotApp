@@ -26,11 +26,11 @@ namespace AkaratakBot.Dialogs.UpdateDialog
                                  "test",
                                 "test",
                                  "test",
-                                 new CardImage(url: ""),
+                                 new CardImage(url: "tsts"),
                                  new CardAction(ActionTypes.ImBack, "tet")
                                  ));
             //if (reply.Attachments.Count > 0)
-            //    await context.PostAsync(reply);
+                await context.PostAsync(reply);
             //else
             await context.PostAsync("Nothing to Update");
             context.Wait<Activity>(AfterPropertyList);
