@@ -89,7 +89,7 @@ namespace AkaratakBot.Dialogs
             }
             if (optionSelected == "Test PList")
             {
-                context.Call(new UpdateDialog.BaseDialog(), this.ResumeAfterOptionDialog);
+              await  context.PostAsync(_userProfile.telegramData.callback_query.from.id.ToString());
             }
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)
