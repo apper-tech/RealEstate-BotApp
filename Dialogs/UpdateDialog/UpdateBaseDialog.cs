@@ -20,18 +20,18 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task ShowPropertyList(IDialogContext context)
         {
             var reply = context.MakeMessage();
-            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            //reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile,true));
-            reply.Attachments.Add(Shared.Cards.GetHeroCard(
-                                 "test",
-                                "test",
-                                 "test",
-                                 new CardImage(url: ("https://www.google.com/favicon.ico")),
-                                 new CardAction(ActionTypes.ImBack,"tet")
-                                 ));
-            if (reply.Attachments.Count > 0)
-                await context.PostAsync(reply);
-            else
+            //reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            ////reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile,true));
+            //reply.Attachments.Add(Shared.Cards.GetHeroCard(
+            //                     "test",
+            //                    "test",
+            //                     "test",
+            //                     new CardImage(url: ("https://www.google.com/favicon.ico")),
+            //                     new CardAction(ActionTypes.ImBack,"tet")
+            //                     ));
+            //if (reply.Attachments.Count > 0)
+            //    await context.PostAsync(reply);
+            //else
                 await context.PostAsync("Nothing to Update");
             context.Wait<Activity>(AfterPropertyList);
         }
