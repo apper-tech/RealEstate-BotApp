@@ -400,45 +400,46 @@ namespace AkaratakBot.Shared
         {
             public static bool CheckUserHasProperty(UserProfile userProfile)
             {
-                var id = API.IOCommon.UserManager.GetUserID(userProfile);
+                var id = API.IOCommon.UserManager.GetUserID(userProfile,false);
                 using (AkaratakModel model = new AkaratakModel())
                 {
                     var properties = model.Properties.Where(x => x.User_ID == id).ToList();
                     return properties.Count > 0;
                 }
             }
-        }
-        public class CultureResourceManager
-        {
-            public static bool Contains(ResourceManager resourceManager, string value, bool allCulture)
+            public static IList<Attachment> GetPropertyList(string UserID)
             {
-                if (allCulture)
-                    foreach (var item in LanguageOption.CreateListOption())
+                IList<Attachment> attachments = new List<Attachment>();
+                using (var context = new AkaratakModel())
+                {
+                    var L2EQuery = from item in context.Properties
+                                   where item.User_ID == UserID
+                                   select item;
+                    try
                     {
-                        var entry = resourceManager.GetResourceSet(new CultureInfo(item.Locale), true, true)
-                            .OfType<DictionaryEntry>()
-                            .FirstOrDefault(dictionaryEntry => dictionaryEntry.Value.ToString() == value);
-                        if (entry.Key != null && !string.IsNullOrEmpty(entry.Key.ToString()))
-                            return true;
+                        var result = L2EQuery.ToList();
+                        int count = 1;
+                        foreach (var item in result)
+                            attachments.Add(Cards.GetHeroCard(
+                                 item.Property_Type.Property_Type_Name,
+                                 item.Address,
+                                 item.Other_Details,
+                                 new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
+                                 new CardAction(ActionTypes.ImBack,$"{count++}.Update this")
+                                 ));
                     }
-                return string.IsNullOrEmpty(resourceManager.GetString(value));
-
-            }
-            public static string GetKey(ResourceManager resourceManager, string value, bool allCulture)
-            {
-                if (allCulture)
-                    foreach (var item in LanguageOption.CreateListOption())
+                    catch (Exception ex)
                     {
-                        var _entry = resourceManager.GetResourceSet(new CultureInfo(item.Locale), true, true)
-                            .OfType<DictionaryEntry>()
-                            .FirstOrDefault(dictionaryEntry => dictionaryEntry.Value.ToString() == value);
-                        if (_entry.Key != null && !string.IsNullOrEmpty(_entry.Key.ToString()))
-                            return _entry.Key.ToString();
-                    }
-                return string.Empty;
 
+
+                    }
+
+                }
+                return attachments;
             }
+
         }
+      
 
     }
 }

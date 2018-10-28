@@ -1,4 +1,5 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,19 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         UserProfile _userProfile;
         public async Task ShowPropertyList(IDialogContext context)
         {
-
+            var reply = context.MakeMessage();
+            reply.AttachmentLayout = AttachmentLayoutTypes.List;
+            reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile,true));
+            if (reply.Attachments.Count > 0)
+                await context.PostAsync(reply);
+            else
+                await context.PostAsync("Nothing to Update");
+            context.Wait<Activity>(AfterPropertyList);
         }
-        public async Task AfterPropertyList(IDialogContext context,IAwaitable<object> argument)
+        public async Task AfterPropertyList(IDialogContext context,IAwaitable<Activity> argument)
         {
+            var message = await argument;
+            await context.PostAsync(message.Text[0].ToString());
             //show list of options to edit
             //rediect same as insert
             //save and ask 

@@ -44,8 +44,8 @@ namespace AkaratakBot.Dialogs
                       Resources.Settings.SettingsDialog.Settings,//Settings
                       Resources.Insert.InsertDialog.Insert,//Insert
                       Shared.Common.Update.CheckUserHasProperty(_userProfile)?//Update
-                      Resources.Update.UpdateDialog.Update:string.Empty
-                    //"Test Cards",
+                      Resources.Update.UpdateDialog.Update:string.Empty,
+                      "Test PList",
                     //"Test Channel Data",
                     //"Test Date"
             };
@@ -87,10 +87,9 @@ namespace AkaratakBot.Dialogs
             {
                 context.Call(new Test_Dialogs.TestCarouselCardsDialog(), this.ResumeAfterOptionDialog);
             }
-            if (optionSelected == "Test Channel Data")
+            if (optionSelected == "Test PList")
             {
-                string id = _userProfile.telegramData.callback_query != null ? _userProfile.telegramData.callback_query.from.id.ToString() : "emulator";
-                await context.PostAsync($"User ID: {id}");
+                context.Call(new UpdateDialog.BaseDialog(), this.ResumeAfterOptionDialog);
             }
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)

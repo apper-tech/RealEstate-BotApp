@@ -22,7 +22,7 @@ namespace AkaratakBot.Dialogs.InsertDialog
         List<SearchEntry> _optionList;
         public bool CheckInsertFieldResource(SearchEntry message, string resource)
         {
-            return message.searchKey == Shared.Common.CultureResourceManager.GetKey(Resources.Insert.InsertDialog.ResourceManager,
+            return message.searchKey == Shared.API.IOCommon.CultureResourceManager.GetKey(Resources.Insert.InsertDialog.ResourceManager,
                 resource, true);
         }
 

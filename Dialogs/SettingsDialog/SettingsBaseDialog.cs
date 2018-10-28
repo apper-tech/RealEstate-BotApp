@@ -37,7 +37,7 @@ namespace AkaratakBot.Dialogs.SettingsDialog
 
             if (message == Resources.Settings.SettingsDialog.SettingsLanguage)
             { this.ShowLanguageMenu(context); }
-            else if (Shared.Common.CultureResourceManager.Contains(Resources.Settings.SettingsDialog.ResourceManager, message, true))
+            else if (Shared.API.IOCommon.CultureResourceManager.Contains(Resources.Settings.SettingsDialog.ResourceManager, message, true))
             { context.Done(context.MakeMessage()); }
         }
         public async Task AfterLanguageChoice(IDialogContext context, IAwaitable<LanguageOption> argument)

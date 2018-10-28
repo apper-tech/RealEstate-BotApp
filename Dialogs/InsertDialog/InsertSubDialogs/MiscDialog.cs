@@ -183,7 +183,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         }
         public static bool Contains(MiscEntry miscEntry, ResourceManager manager)
         {
-            return (miscEntry.insertResource.searchKey == Shared.Common.CultureResourceManager.GetKey(
+            return (miscEntry.insertResource.searchKey == Shared.API.IOCommon.CultureResourceManager.GetKey(
                 manager, Shared.Common.Insert.CheckField(null, miscEntry.insertResource, true).searchValue, true));
 
         }

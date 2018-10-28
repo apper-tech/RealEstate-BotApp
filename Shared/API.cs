@@ -100,13 +100,45 @@ namespace AkaratakBot.Shared
                         userID = JsonConvert.DeserializeObject<TelegramData>(File.ReadAllText(contextServer.MapPath("~/_root/_test/test.json")));
                     return userID;
                 }
-                public static string GetUserID(UserProfile userProfile)
+                public static string GetUserID(UserProfile userProfile,bool emulator)
                 {
-                    if (userProfile.telegramData.callback_query != null)
+
+                    if (!emulator && userProfile.telegramData.callback_query != null)
                         using (AkaratakModel model = new AkaratakModel())
                             return model.Users.Where(x => x.Telegram_ID == userProfile.telegramData.callback_query.from.id).FirstOrDefault().User_ID;
                     else
                         return WebConfigurationManager.AppSettings["AkaratakBotUserID"];
+                }
+            }
+            public class CultureResourceManager
+            {
+                public static bool Contains(ResourceManager resourceManager, string value, bool allCulture)
+                {
+                    if (allCulture)
+                        foreach (var item in LanguageOption.CreateListOption())
+                        {
+                            var entry = resourceManager.GetResourceSet(new CultureInfo(item.Locale), true, true)
+                                .OfType<DictionaryEntry>()
+                                .FirstOrDefault(dictionaryEntry => dictionaryEntry.Value.ToString() == value);
+                            if (entry.Key != null && !string.IsNullOrEmpty(entry.Key.ToString()))
+                                return true;
+                        }
+                    return string.IsNullOrEmpty(resourceManager.GetString(value));
+
+                }
+                public static string GetKey(ResourceManager resourceManager, string value, bool allCulture)
+                {
+                    if (allCulture)
+                        foreach (var item in LanguageOption.CreateListOption())
+                        {
+                            var _entry = resourceManager.GetResourceSet(new CultureInfo(item.Locale), true, true)
+                                .OfType<DictionaryEntry>()
+                                .FirstOrDefault(dictionaryEntry => dictionaryEntry.Value.ToString() == value);
+                            if (_entry.Key != null && !string.IsNullOrEmpty(_entry.Key.ToString()))
+                                return _entry.Key.ToString();
+                        }
+                    return string.Empty;
+
                 }
             }
         }
