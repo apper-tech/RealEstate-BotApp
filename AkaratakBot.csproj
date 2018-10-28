@@ -266,6 +266,8 @@
     <Compile Include="Dialogs\SettingsDialog\SettingsBaseDialog.cs" />
     <Compile Include="Dialogs\SettingsDialog\SettingsParameters.cs" />
     <Compile Include="Dialogs\Test Dialogs\TestChannelDataDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateBaseDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateParameters.cs" />
     <Compile Include="EntityModel\City.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -347,8 +349,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Property_Type.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Update\UpdateDialog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateDialog.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\API.cs" />
     <Compile Include="Shared\Cards.cs" />
-    <Compile Include="Shared\SharedAssets.cs" />
+    <Compile Include="Shared\Common.cs" />
     <Compile Include="Shared\TelegramData.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -412,6 +420,10 @@
       <LastGenOutput>Property_Type.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Shared\Property_Type.tr-TR.resx" />
+    <EmbeddedResource Include="Resources\Update\UpdateDialog.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UpdateDialog.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

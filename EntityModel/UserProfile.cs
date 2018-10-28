@@ -12,6 +12,7 @@ namespace AkaratakBot
         public SearchParameters searchParameters { get; set; }
         public SettingsParameters settingsParameters { get; set; }
         public InsertParameters insertParameters { get; set; }
+        public UpdateParameters updateParameters { get; set; }
         public TelegramData telegramData { get; set; }
     }
 }

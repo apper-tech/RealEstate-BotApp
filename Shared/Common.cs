@@ -1,17 +1,13 @@
 ﻿using AkaratakBot.EntityModel;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Resources;
-using System.Web;
 using System.Web.Configuration;
 
 namespace AkaratakBot.Shared
@@ -199,7 +195,9 @@ namespace AkaratakBot.Shared
                 ResourceSet resourceSet = resourceManager.GetResourceSet(new CultureInfo(context.PrivateConversationData.GetValueOrDefault<string>("ULTN") != null ? context.PrivateConversationData.GetValueOrDefault<string>("ULTN") : "en-US"), true, true);
                 foreach (DictionaryEntry item in resourceSet)
                     if (item.Key.ToString().Contains("InsertField"))
-                        entries.Add(new SearchEntry() { searchKey = item.Key.ToString(), searchValue = item.Value.ToString() });
+                        entries.Add(new SearchEntry { searchKey = item.Key.ToString(), searchValue = item.Value.ToString() });
+
+                entries.Add(new SearchEntry { searchKey = "InsertCancel", searchValue = Resources.Insert.InsertDialog.InsertCancel });
 
                 return entries;
             }
@@ -290,10 +288,10 @@ namespace AkaratakBot.Shared
                 {
                     model.Users.Add(new User
                     {
-                        Telegram_ID=from.id,
-                        User_ID= Guid.NewGuid().ToString(),
-                        First_Name=from.first_name,
-                        Last_Name=from.last_name
+                        Telegram_ID = from.id,
+                        User_ID = Guid.NewGuid().ToString(),
+                        First_Name = from.first_name,
+                        Last_Name = from.last_name
                     });
                     try
                     {
@@ -398,6 +396,18 @@ namespace AkaratakBot.Shared
                 return cities;
             }
         }
+        public class Update
+        {
+            public static bool CheckUserHasProperty(UserProfile userProfile)
+            {
+                var id = API.IOCommon.UserManager.GetUserID(userProfile);
+                using (AkaratakModel model = new AkaratakModel())
+                {
+                    var properties = model.Properties.Where(x => x.User_ID == id).ToList();
+                    return properties.Count > 0;
+                }
+            }
+        }
         public class CultureResourceManager
         {
             public static bool Contains(ResourceManager resourceManager, string value, bool allCulture)
@@ -431,84 +441,4 @@ namespace AkaratakBot.Shared
         }
 
     }
-    public class API
-    {
-        public class IOCommon
-        {
-            public class PhotoManager
-            {
-                private static string _photoHomePath = ConfigurationManager.AppSettings["PhotosRootDialog"];
-                public static IEnumerable<Attachment> ValidateUserPhotos(IEnumerable<Attachment> attachments)
-                {
-                    var res = new List<Attachment>();
-                    foreach (var item in attachments)
-                        if (item.ContentType.Contains("image"))
-                            res.Add(item);
-                    return res;
-                }
-                public static string DownloadUserInsertPhotos(IActivity activity, IEnumerable<Attachment> attachments)
-                {
-
-                    string userPhotosNames = string.Empty;
-                    TelegramData userID = null;
-                    var contextServer = HttpContext.Current.Server;
-                    if (activity.ChannelId != "emulator")
-                        userID = JsonConvert.DeserializeObject<TelegramData>(activity.ChannelData.ToString());
-                    else
-                        userID = JsonConvert.DeserializeObject<TelegramData>(File.ReadAllText(contextServer.MapPath("~/_root/_test/test.json")));
-
-
-                    var userPhotoPath = contextServer.MapPath($"{_photoHomePath}/_temp/") + userID.callback_query.from.id;
-                    if (!Directory.Exists(userPhotoPath))
-                        Directory.CreateDirectory(userPhotoPath);
-
-                    foreach (var item in Directory.GetFiles(userPhotoPath))
-                        File.Delete(item);
-                    int count = 1;
-                    foreach (var item in attachments)
-                        using (var client = new WebClient())
-                        {
-
-                            var photoLocalPath = $"{userPhotoPath}\\p{count}.jpg";
-                            client.DownloadFile($"{item.ContentUrl}", photoLocalPath);
-                            userPhotosNames += photoLocalPath + "|"; count++;
-                        }
-                    
-
-                    return userPhotosNames;
-                }
-                private static string GeneratePhotoName()
-                {
-                    int length = 15;
-                    Random random = new Random();
-                    string name = new string((from s in Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", length)
-                                              select s[random.Next(s.Length)]).ToArray());
-                    return name;
-                }
-                public static string UploadPhotoToHost(string photoPath)
-                {
-                    string _photoNames = string.Empty;
-                    var ftpUsername = WebConfigurationManager.AppSettings["AkaratakFtpUsername"];
-                    var ftpPassword = WebConfigurationManager.AppSettings["AkaratakFtpPassword"];
-                    var ftpUrl = WebConfigurationManager.AppSettings["AkaratakFtpUrl"];
-
-
-
-                    foreach (var item in photoPath.Split('|'))
-                    {
-                        FileInfo file = new FileInfo(item);
-                        string _photopath = GeneratePhotoName() + file.Extension;
-                        using (WebClient client = new WebClient())
-                        {
-                            client.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
-                            client.UploadFile($"{ftpUrl}/{_photopath}", WebRequestMethods.Ftp.UploadFile, file.FullName);
-                        }
-                        _photoNames += _photopath + "|";
-                    }
-                    return _photoNames;
-                }
-            }
-        }
-    }
-
 }

@@ -20,6 +20,15 @@ namespace AkaratakBot.Dialogs
 
         public async Task StartAsync(IDialogContext context)
         {
+            _userProfile = _userProfile == null ? new UserProfile()
+            {
+                searchParameters = new SearchParameters(),
+                insertParameters = new InsertParameters(),
+                settingsParameters = new SettingsParameters(),
+                updateParameters=new UpdateParameters(),
+                telegramData = GetUserTelegramData(context)
+            } : _userProfile;
+            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             context.PrivateConversationData.SetValue(SettingsDialog.BaseDialog.UserLanguageToken, "en-US");
             context.Wait<Activity>(MessageReceivedAsync);
         }
@@ -31,9 +40,11 @@ namespace AkaratakBot.Dialogs
         private async Task ShowOptions(IDialogContext context, Activity activity)
         {
             _options = new List<string>() {
-                      Resources.Search.SearchDialog.Search,
-                      Resources.Settings.SettingsDialog.Settings,
-                      Resources.Insert.InsertDialog.Insert,
+                      Resources.Search.SearchDialog.Search,//Search
+                      Resources.Settings.SettingsDialog.Settings,//Settings
+                      Resources.Insert.InsertDialog.Insert,//Insert
+                      Shared.Common.Update.CheckUserHasProperty(_userProfile)?//Update
+                      Resources.Update.UpdateDialog.Update:string.Empty
                     //"Test Cards",
                     //"Test Channel Data",
                     //"Test Date"
@@ -60,14 +71,7 @@ namespace AkaratakBot.Dialogs
         private async Task RedirectUserInput(IDialogContext context, string input)
         {
             string optionSelected = input;
-            _userProfile = _userProfile == null ? new UserProfile()
-            {
-                searchParameters = new SearchParameters(),
-                insertParameters = new InsertParameters(),
-                settingsParameters = new SettingsParameters(),
-                telegramData = GetUserTelegramData(context)
-            } : _userProfile;
-            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+
 
             if (optionSelected == Resources.Search.SearchDialog.Search)
                 context.Call(new SearchDialogs.BaseDialog(), this.ResumeAfterOptionDialog);
@@ -75,6 +79,9 @@ namespace AkaratakBot.Dialogs
                 context.Call(new SettingsDialog.BaseDialog(), this.ResumeAfterOptionDialog);
             if (optionSelected == Resources.Insert.InsertDialog.Insert)
                 context.Call(new InsertDialog.BaseDialog(), this.ResumeAfterOptionDialog);
+            if (optionSelected == Resources.Update.UpdateDialog.Update)
+                context.Call(new UpdateDialog.BaseDialog(), this.ResumeAfterOptionDialog);
+
 
             if (optionSelected == "Test Cards")
             {
@@ -84,26 +91,6 @@ namespace AkaratakBot.Dialogs
             {
                 string id = _userProfile.telegramData.callback_query != null ? _userProfile.telegramData.callback_query.from.id.ToString() : "emulator";
                 await context.PostAsync($"User ID: {id}");
-            }
-            if (optionSelected == "Test Date")
-            {
-                using (EntityModel.AkaratakModel model = new EntityModel.AkaratakModel())
-                {
-                    model.TestTables.Add(new EntityModel.TestTable
-                    {
-                        TestDate = DateTime.Now,
-                        TestDate2 = DateTime.Now.AddMonths(3)
-                    });
-                    try
-                    {
-                        model.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                    }
-                }
             }
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)

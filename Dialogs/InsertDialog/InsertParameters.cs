@@ -8,7 +8,6 @@ namespace AkaratakBot
     [Serializable]
     public class InsertParameters
     {
-        // public EntityModel.Property insertProperty { get; set; }
         public int insertSize { get; set; }
         public int insertFloorCount { get; set; }
         public int insertFloorLevel { get; set; }

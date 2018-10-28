@@ -123,6 +123,9 @@
   <data name="Insert" xml:space="preserve">
     <value>Ekle</value>
   </data>
+  <data name="InsertCancel" xml:space="preserve">
+    <value>Iptal</value>
+  </data>
   <data name="InsertDone" xml:space="preserve">
     <value>Bitti! İlan Eklendi</value>
   </data>

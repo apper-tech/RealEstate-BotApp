@@ -4,10 +4,10 @@
     "id": "123456789123456",
     "from": {
       "id": 123456789,
-      "is_bot": false,
+      "is_bot": true,
       "first_name": "FirstName",
       "last_name": "LastName",
-      "username": "userName",
+      "username": "emulator",
       "language_code": "en-US"
     },
     "message": {
@@ -16,7 +16,7 @@
         "id": 123456789,
         "is_bot": true,
         "first_name": "TestBotName",
-        "username": "TestBotID"
+        "username": "emulator"
       },
       "chat": {
         "id": 466850160,

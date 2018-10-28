@@ -123,6 +123,9 @@
   <data name="Insert" xml:space="preserve">
     <value>Insert</value>
   </data>
+  <data name="InsertCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="InsertDone" xml:space="preserve">
     <value>Done! Listing Added</value>
   </data>

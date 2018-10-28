@@ -79,6 +79,15 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string InsertCancel {
+            get {
+                return ResourceManager.GetString("InsertCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Done! Listing Added.
         /// </summary>
         internal static string InsertDone {
