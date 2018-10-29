@@ -19,14 +19,16 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         UserProfile _userProfile;
         public async Task ShowPropertyList(IDialogContext context)
         {
-            var replay = context.MakeMessage();
-            replay.Attachments.Add(GetProfileHeroCard());
-            await context.PostAsync(replay);
+            PromptDialog.Choice<SearchEntry>(
+                context,
+                AfterPropertyList,
+                Shared.Common.Search._GetPropertyCategoryList(context, true),
+                Resources.Search.SearchDialog.SearchCategorySelection);
         }
-        public async Task AfterPropertyList(IDialogContext context,IAwaitable<Attachment> argument)
+        public async Task AfterPropertyList(IDialogContext context,IAwaitable<SearchEntry> argument)
         {
             var message = await argument;
-            await context.PostAsync(message.Name);
+            await context.PostAsync(message.searchKey);
             //show list of options to edit
             //rediect same as insert
             //save and ask 
