@@ -14,21 +14,19 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task StartAsync(IDialogContext context)
         {
             context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
-             this.ShowPropertyList(context);
+            await this.ShowPropertyList(context);
         }
         UserProfile _userProfile;
-        public void ShowPropertyList(IDialogContext context)
+        public async Task ShowPropertyList(IDialogContext context)
         {
-            var replyMessage = context.MakeMessage();
-            Attachment attachment = GetProfileHeroCard(); ;
-            replyMessage.Attachments = new List<Attachment> { attachment };
-            context.PostAsync(replyMessage);
-            context.Wait<Activity>(AfterPropertyList);
+            var replay = context.MakeMessage();
+            replay.Attachments.Add(GetProfileHeroCard());
+            await context.PostAsync(replay);
         }
-        public async Task AfterPropertyList(IDialogContext context,IAwaitable<Activity> argument)
+        public async Task AfterPropertyList(IDialogContext context,IAwaitable<Attachment> argument)
         {
             var message = await argument;
-            await context.PostAsync(message.Text[0].ToString());
+            await context.PostAsync(message.Name);
             //show list of options to edit
             //rediect same as insert
             //save and ask 
