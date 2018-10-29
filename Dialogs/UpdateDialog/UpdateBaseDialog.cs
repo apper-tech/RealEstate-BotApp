@@ -19,11 +19,21 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         UserProfile _userProfile;
         public async Task ShowPropertyList(IDialogContext context)
         {
-            PromptDialog.Choice<SearchEntry>(
-                context,
-                AfterPropertyList,
-                Shared.Common.Search._GetPropertyCategoryList(context, true),
-                Resources.Search.SearchDialog.SearchCategorySelection);
+            var reply = context.MakeMessage();
+            _userProfile.searchParameters.searchMaxCount = 10;
+            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            _userProfile.searchParameters = new SearchParameters {
+                searchCategory="Residental",
+                searchType="Apartment",
+                searchHasGarage=true,
+                searchHasGarden=true,
+                searchMaxCount=10
+            };
+            reply.Attachments = Shared.Common.Search._GetSearchResults(_userProfile.searchParameters);
+            if (reply.Attachments.Count > 0)
+                await context.PostAsync(reply);
+            else
+                await context.PostAsync(Resources.Search.SearchDialog.SearchEmptyResult);
         }
         public async Task AfterPropertyList(IDialogContext context,IAwaitable<SearchEntry> argument)
         {
