@@ -14,15 +14,15 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task StartAsync(IDialogContext context)
         {
             context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
-            await this.ShowPropertyList(context);
+             this.ShowPropertyList(context);
         }
         UserProfile _userProfile;
-        public async Task ShowPropertyList(IDialogContext context)
+        public void ShowPropertyList(IDialogContext context)
         {
             var replyMessage = context.MakeMessage();
             Attachment attachment = GetProfileHeroCard(); ;
             replyMessage.Attachments = new List<Attachment> { attachment };
-            await context.PostAsync(replyMessage);
+            context.PostAsync(replyMessage);
             context.Wait<Activity>(AfterPropertyList);
         }
         public async Task AfterPropertyList(IDialogContext context,IAwaitable<Activity> argument)
