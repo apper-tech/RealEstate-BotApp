@@ -27,7 +27,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog
                                 "test",
                                  "test",
                                  new CardImage(url: "tstsd"),
-                                 new CardAction(ActionTypes.ImBack, "tet")
+                                 new CardAction(ActionTypes.OpenUrl, "tet")
                                  ));
             //if (reply.Attachments.Count > 0)
                 await context.PostAsync(reply);
