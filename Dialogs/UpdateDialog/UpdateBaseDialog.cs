@@ -26,11 +26,12 @@ namespace AkaratakBot.Dialogs.UpdateDialog
                 await context.PostAsync(reply);
             else
                 await context.PostAsync(Resources.Search.SearchDialog.SearchEmptyResult);
+            context.Wait<CardAction>(AfterPropertyList);
         }
-        public async Task AfterPropertyList(IDialogContext context,IAwaitable<SearchEntry> argument)
+        public async Task AfterPropertyList(IDialogContext context,IAwaitable<CardAction> argument)
         {
             var message = await argument;
-            await context.PostAsync(message.searchKey);
+            await context.PostAsync(message.Value.ToString());
             //show list of options to edit
             //rediect same as insert
             //save and ask 
