@@ -424,9 +424,7 @@ namespace AkaratakBot.Shared
                                  item.Zip_Code,
                                  item.Other_Details,
                                  new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
-                                 new CardAction(ActionTypes.PostBack,
-                                Resources.Search.SearchDialog.SearchViewDetails,
-                                 value: item.PropertyID)
+                                 new CardAction(ActionTypes.ImBack,"test")
                                  ));
                     }
                     catch (Exception ex)

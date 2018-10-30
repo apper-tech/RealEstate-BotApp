@@ -26,7 +26,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog
                 await context.PostAsync(reply);
             else
                 await context.PostAsync(Resources.Search.SearchDialog.SearchEmptyResult);
-            //context.Wait<CardAction>(AfterPropertyList);
+            context.Wait<CardAction>(AfterPropertyList);
         }
         public async Task AfterPropertyList(IDialogContext context,IAwaitable<CardAction> argument)
         {
