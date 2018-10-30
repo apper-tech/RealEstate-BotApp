@@ -428,7 +428,7 @@ namespace AkaratakBot.Shared
                                      type:ActionTypes.MessageBack,
                                      title:"Update This",
                                      displayText: "Update this",
-                                     value:item.PropertyID)
+                                     value:"test")
                                  ));
                     }
                     catch (Exception ex)
