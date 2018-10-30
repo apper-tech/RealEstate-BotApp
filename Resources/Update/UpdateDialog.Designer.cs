@@ -68,5 +68,14 @@ namespace AkaratakBot.Resources.Update {
                 return ResourceManager.GetString("Update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update This Property.
+        /// </summary>
+        internal static string UpdateSelectProperty {
+            get {
+                return ResourceManager.GetString("UpdateSelectProperty", resourceCulture);
+            }
+        }
     }
 }
