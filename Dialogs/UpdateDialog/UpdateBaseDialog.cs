@@ -20,16 +20,8 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task ShowPropertyList(IDialogContext context)
         {
             var reply = context.MakeMessage();
-            _userProfile.searchParameters.searchMaxCount = 10;
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            _userProfile.searchParameters = new SearchParameters {
-                searchCategory="Residental",
-                searchType="Apartment",
-                searchHasGarage=true,
-                searchHasGarden=true,
-                searchMaxCount=10
-            };
-            reply.Attachments = Shared.Common.Search._GetSearchResults(_userProfile.searchParameters);
+            reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile, false));
             if (reply.Attachments.Count > 0)
                 await context.PostAsync(reply);
             else

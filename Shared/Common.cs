@@ -413,19 +413,20 @@ namespace AkaratakBot.Shared
                 using (var context = new AkaratakModel())
                 {
                     var L2EQuery = from item in context.Properties
-                                   where item.User_ID == UserID
+                                   where item.User_ID == UserID 
                                    select item;
                     try
                     {
                         var result = L2EQuery.ToList();
-                        int count = 1;
                         foreach (var item in result)
                             attachments.Add(Cards.GetHeroCard(
-                                 item.Property_Type.Property_Type_Name,
                                  item.Address,
+                                 item.Zip_Code,
                                  item.Other_Details,
                                  new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
-                                 new CardAction(ActionTypes.ImBack,$"{count++}.Update this")
+                                 new CardAction(ActionTypes.OpenUrl,
+                                Resources.Search.SearchDialog.SearchViewDetails,
+                                 value: Search._ConstructPropertyDetailsUrl(item))
                                  ));
                     }
                     catch (Exception ex)
