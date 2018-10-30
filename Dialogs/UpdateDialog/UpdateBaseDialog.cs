@@ -31,7 +31,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task AfterPropertyList(IDialogContext context, IAwaitable<Activity> argument)
         {
             var message = await argument;
-            await context.PostAsync($"{message.Value},{message.Text}");
+            await context.PostAsync($"{message.Text}");
             //show list of options to edit
             //rediect same as insert
             //save and ask 
