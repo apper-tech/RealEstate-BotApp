@@ -8,6 +8,7 @@ namespace AkaratakBot
     [Serializable]
     public class UpdateParameters
     {
+        public int updatePropertyID { get; set; }
         public int updateSize { get; set; }
         public int updateFloorCount { get; set; }
         public int updateFloorLevel { get; set; }

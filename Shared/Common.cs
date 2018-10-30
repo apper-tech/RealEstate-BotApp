@@ -398,6 +398,27 @@ namespace AkaratakBot.Shared
         }
         public class Update
         {
+            public static List<SearchEntry> CreateForm(IDialogContext context)
+            {
+                List<SearchEntry> entries = new List<SearchEntry>();
+                ResourceManager resourceManager = new ResourceManager(typeof(Resources.Update.UpdateDialog));
+                ResourceSet resourceSet = resourceManager.GetResourceSet(new CultureInfo(context.PrivateConversationData.GetValueOrDefault<string>("ULTN") != null ? 
+                    context.PrivateConversationData.GetValueOrDefault<string>("ULTN") : "en-US"), true, true);
+                foreach (DictionaryEntry item in resourceSet)
+                    if (item.Key.ToString().Contains("UpdateField"))
+                        entries.Add(new SearchEntry { searchKey = item.Key.ToString(), searchValue = item.Value.ToString() });
+
+                entries.Add(new SearchEntry { searchKey = "UpdateCancel", searchValue = Resources.Update.UpdateDialog.UpdateCancel });
+
+                return entries;
+            }
+            public static bool CheckForm(IDialogContext context, List<SearchEntry> entries)
+            {
+                foreach (var item in entries)
+                    if (item.searchValue.Contains("✅"))
+                        return true;
+                return false;
+            }
             public static bool CheckUserHasProperty(UserProfile userProfile)
             {
                 var id = API.IOCommon.UserManager.GetUserID(userProfile,false);
@@ -440,7 +461,19 @@ namespace AkaratakBot.Shared
                 }
                 return attachments;
             }
+            public static IList<Property> GetPropertyList(UserProfile profile)
+            {
+                using (var context = new AkaratakModel())
+                {
+                    var userID = API.IOCommon.UserManager.GetUserID(profile, false);
+                    var L2EQuery = from item in context.Properties
+                                   where item.User_ID == userID
+                                   select item;
 
+                    var result = L2EQuery.ToList();
+                    return result;
+                }
+            }
         }
       
 

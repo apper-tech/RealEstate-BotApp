@@ -70,6 +70,276 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string UpdateCancel {
+            get {
+                return ResourceManager.GetString("UpdateCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done or Change Other?.
+        /// </summary>
+        internal static string UpdateDoneConfirm {
+            get {
+                return ResourceManager.GetString("UpdateDoneConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the property address .
+        /// </summary>
+        internal static string UpdateFieldAddressText {
+            get {
+                return ResourceManager.GetString("UpdateFieldAddressText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Number of Bathrooms.
+        /// </summary>
+        internal static string UpdateFieldBathroomCount {
+            get {
+                return ResourceManager.GetString("UpdateFieldBathroomCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Number of Bedrooms.
+        /// </summary>
+        internal static string UpdateFieldBedroomCount {
+            get {
+                return ResourceManager.GetString("UpdateFieldBedroomCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select category details.
+        /// </summary>
+        internal static string UpdateFieldCategoryType {
+            get {
+                return ResourceManager.GetString("UpdateFieldCategoryType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Country details.
+        /// </summary>
+        internal static string UpdateFieldCountryCity {
+            get {
+                return ResourceManager.GetString("UpdateFieldCountryCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Floor Count.
+        /// </summary>
+        internal static string UpdateFieldFloorCount {
+            get {
+                return ResourceManager.GetString("UpdateFieldFloorCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property&apos;s Floor.
+        /// </summary>
+        internal static string UpdateFieldFloorLevelCount {
+            get {
+                return ResourceManager.GetString("UpdateFieldFloorLevelCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Exterior Details.
+        /// </summary>
+        internal static string UpdateFieldGardenGarageChoice {
+            get {
+                return ResourceManager.GetString("UpdateFieldGardenGarageChoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the property Location.
+        /// </summary>
+        internal static string UpdateFieldLocationLatLng {
+            get {
+                return ResourceManager.GetString("UpdateFieldLocationLatLng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra details for the property.
+        /// </summary>
+        internal static string UpdateFieldOtherDetailsText {
+            get {
+                return ResourceManager.GetString("UpdateFieldOtherDetailsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Property Photo.
+        /// </summary>
+        internal static string UpdateFieldPhotoSelection {
+            get {
+                return ResourceManager.GetString("UpdateFieldPhotoSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property size.
+        /// </summary>
+        internal static string UpdateFieldPropertySize {
+            get {
+                return ResourceManager.GetString("UpdateFieldPropertySize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sale /Rent Price.
+        /// </summary>
+        internal static string UpdateFieldSaleRentPriceCount {
+            get {
+                return ResourceManager.GetString("UpdateFieldSaleRentPriceCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property&apos;s Area Zip Code( if exists ).
+        /// </summary>
+        internal static string UpdateFieldZipCodeText {
+            get {
+                return ResourceManager.GetString("UpdateFieldZipCodeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the Property&apos;s Address.
+        /// </summary>
+        internal static string UpdateFormAddressTextDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormAddressTextDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the property&apos;s number of bathrooms.
+        /// </summary>
+        internal static string UpdateFormBathroomCountDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormBathroomCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the property&apos;s number of bedrooms.
+        /// </summary>
+        internal static string UpdateFormBedroomCountDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormBedroomCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next &gt;&gt;.
+        /// </summary>
+        internal static string UpdateFormCountryNext {
+            get {
+                return ResourceManager.GetString("UpdateFormCountryNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the number of floors for the property.
+        /// </summary>
+        internal static string UpdateFormFloorCountDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormFloorCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In which floor is the property( -1 is basment , 2 is secnd floor).
+        /// </summary>
+        internal static string UpdateFormFloorLevelCountDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormFloorLevelCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an option to add a property.
+        /// </summary>
+        internal static string UpdateFormHeader {
+            get {
+                return ResourceManager.GetString("UpdateFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the address of the property to show avalable locations.
+        /// </summary>
+        internal static string UpdateFormLocationLatLngDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormLocationLatLngDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the details about the property ( features).
+        /// </summary>
+        internal static string UpdateFormOtherDetailsTextDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormOtherDetailsTextDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload the Photos of the Property (4 Max).
+        /// </summary>
+        internal static string UpdateFormPropertyPhotoDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormPropertyPhotoDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the Property Size in square meters.
+        /// </summary>
+        internal static string UpdateFormPropertySizeDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormPropertySizeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What is the rent Price?.
+        /// </summary>
+        internal static string UpdateFormRentPriceCountDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormRentPriceCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What is the sale Price?.
+        /// </summary>
+        internal static string UpdateFormSalePriceCountDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormSalePriceCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What is the Zip Code?.
+        /// </summary>
+        internal static string UpdateFormZipCodeTextDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormZipCodeTextDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update This Property.
         /// </summary>
         internal static string UpdateSelectProperty {
