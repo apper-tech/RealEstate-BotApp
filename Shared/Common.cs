@@ -426,8 +426,8 @@ namespace AkaratakBot.Shared
                                  new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
                                  new CardAction(
                                      type:ActionTypes.MessageBack,
-                                     title:Resources.Update.UpdateDialog.UpdateSelectProperty,
-                                     displayText: Resources.Update.UpdateDialog.Update,
+                                     title:"Update This",
+                                     displayText: "Update this",
                                      value:item.PropertyID)
                                  ));
                     }
