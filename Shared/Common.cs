@@ -423,8 +423,7 @@ namespace AkaratakBot.Shared
                                  item.Address,
                                  item.Zip_Code,
                                  item.Other_Details,
-                                 new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
-                                 new CardAction(ActionTypes.ImBack,"test")
+                                 new CardImage(url: (Search._ConstructPropertyImageUrl(item))),null
                                  ));
                     }
                     catch (Exception ex)
