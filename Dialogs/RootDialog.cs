@@ -45,7 +45,7 @@ namespace AkaratakBot.Dialogs
                       Resources.Insert.InsertDialog.Insert,//Insert
                       Shared.Common.Update.CheckUserHasProperty(_userProfile)?//Update
                       Resources.Update.UpdateDialog.Update:string.Empty,
-                      "Test PList",
+                      //"Test PList",
                     //"Test Channel Data",
                     //"Test Date"
             };
