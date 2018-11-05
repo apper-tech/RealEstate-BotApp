@@ -118,102 +118,102 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UpdateFieldCategoryType" xml:space="preserve">
-    <value>Select category details</value>
+    <value>Kategori detaylarını seç</value>
   </data>
   <data name="UpdateFieldCountryCity" xml:space="preserve">
-    <value>Select Country details</value>
+    <value>Ülke ayrıntılarını seç</value>
   </data>
   <data name="UpdateFieldFloorCount" xml:space="preserve">
-    <value> Floor Count</value>
+    <value>Kat Sayısı</value>
   </data>
   <data name="UpdateFieldFloorLevelCount" xml:space="preserve">
-    <value>Property's Floor</value>
+    <value>Mülkün Kat</value>
   </data>
   <data name="UpdateFieldGardenGarageChoice" xml:space="preserve">
-    <value>Property Exterior Details</value>
+    <value>Mülkiyet Dış Detayları</value>
   </data>
   <data name="UpdateFieldLocationLatLng" xml:space="preserve">
-    <value>Select the property Location</value>
+    <value>Emlak Konumunu Seç</value>
   </data>
   <data name="UpdateFieldOtherDetailsText" xml:space="preserve">
-    <value>Extra details for the property</value>
+    <value>Mülkiyet için ekstra detaylar</value>
   </data>
   <data name="UpdateFieldPhotoSelection" xml:space="preserve">
-    <value>Upload Property Photo</value>
+    <value>Mülk Fotoğrafını Yükle</value>
   </data>
   <data name="UpdateFieldPropertySize" xml:space="preserve">
-    <value>Property size</value>
+    <value>Özellik boyutu</value>
   </data>
   <data name="UpdateFieldSaleRentPriceCount" xml:space="preserve">
-    <value>Sale /Rent Price</value>
+    <value>Satış / Kira Fiyatı</value>
   </data>
   <data name="UpdateFieldZipCodeText" xml:space="preserve">
-    <value>Property's Area Zip Code( if exists )</value>
+    <value>Mülkün Alanı Posta Kodu (varsa)</value>
   </data>
   <data name="UpdateFormAddressTextDescription" xml:space="preserve">
-    <value>Enter the Property's Address</value>
+    <value>Mülkün Adresini Girin</value>
   </data>
   <data name="UpdateFormBathroomCountDescription" xml:space="preserve">
-    <value>Enter the property's number of bathrooms</value>
+    <value>Tesisin banyo sayısını girin</value>
   </data>
   <data name="UpdateFormBedroomCountDescription" xml:space="preserve">
-    <value>Enter the property's number of bedrooms</value>
+    <value>Tesisin yatak odasını girin</value>
   </data>
   <data name="UpdateFormCountryNext" xml:space="preserve">
-    <value>Next &gt;&gt;</value>
+    <value>İleri &gt;&gt;</value>
   </data>
   <data name="UpdateFormFloorCountDescription" xml:space="preserve">
-    <value>Enter the number of floors for the property</value>
+    <value>Mülk için kat sayısını girin</value>
   </data>
   <data name="UpdateFormFloorLevelCountDescription" xml:space="preserve">
-    <value>In which floor is the property( -1 is basment , 2 is secnd floor)</value>
+    <value>Hangi katta mülkiyet (-1 taban, 2 sekizinci kat)</value>
   </data>
   <data name="UpdateFormHeader" xml:space="preserve">
-    <value>Select an option to add a property</value>
+    <value>Özellik eklemek için bir seçenek belirleyin</value>
   </data>
   <data name="UpdateFormLocationLatLngDescription" xml:space="preserve">
-    <value>Enter the address of the property to show avalable locations</value>
+    <value>Kullanılabilir yerleri göstermek için mülkün adresini girin</value>
   </data>
   <data name="UpdateFormOtherDetailsTextDescription" xml:space="preserve">
-    <value>Enter the details about the property ( features)</value>
+    <value>Özellikle ilgili ayrıntıları girin (özellikler)</value>
   </data>
   <data name="UpdateFormPropertyPhotoDescription" xml:space="preserve">
-    <value>Upload the Photos of the Property (4 Max)</value>
+    <value>Mülkiyet Fotoğrafları Yükleyin (4 Maks.)</value>
   </data>
   <data name="UpdateFormPropertySizeDescription" xml:space="preserve">
-    <value>Enter the Property Size in square meters</value>
+    <value>Mülk Boyutunu metrekare olarak girin</value>
   </data>
   <data name="UpdateFormRentPriceCountDescription" xml:space="preserve">
-    <value>What is the rent Price?</value>
+    <value>Kira fiyatı nedir?</value>
   </data>
   <data name="UpdateFormSalePriceCountDescription" xml:space="preserve">
-    <value>What is the sale Price?</value>
+    <value>Satış fiyatı nedir?</value>
   </data>
   <data name="UpdateFormZipCodeTextDescription" xml:space="preserve">
-    <value>What is the Zip Code?</value>
+    <value>Posta Kodu nedir?</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Update</value>
+    <value>Güncelleştirme</value>
   </data>
   <data name="UpdateFieldAddressText" xml:space="preserve">
-    <value>Enter the property address </value>
+    <value>Mülk adresini girin</value>
   </data>
   <data name="UpdateFieldBathroomCount" xml:space="preserve">
-    <value>Enter Number of Bathrooms</value>
+    <value>Banyo Sayısı Girin</value>
   </data>
   <data name="UpdateFieldBedroomCount" xml:space="preserve">
-    <value>Enter Number of Bedrooms</value>
+    <value>Yatak Sayısı Girin</value>
   </data>
   <data name="UpdateSelectProperty" xml:space="preserve">
-    <value>Update This Property</value>
+    <value>Bu Mülkü Güncelle</value>
   </data>
   <data name="UpdateCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>İptal etmek</value>
   </data>
   <data name="UpdateDoneConfirm" xml:space="preserve">
-    <value>Done or Change Other?</value>
+    <value>Done veya Diğer Değiştir?</value>
   </data>
   <data name="UpdatePhotosErrorMessage" xml:space="preserve">
-    <value>Error Please Upload Images Only</value>
+    <value>Hata Lütfen Sadece Resim Yükle</value>
   </data>
 </root>

@@ -340,6 +340,15 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error Please Upload Images Only.
+        /// </summary>
+        internal static string UpdatePhotosErrorMessage {
+            get {
+                return ResourceManager.GetString("UpdatePhotosErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update This Property.
         /// </summary>
         internal static string UpdateSelectProperty {

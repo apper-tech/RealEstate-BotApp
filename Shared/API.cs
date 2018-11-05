@@ -23,6 +23,7 @@ namespace AkaratakBot.Shared
             public class PhotoManager
             {
                 private static string _photoHomePath = ConfigurationManager.AppSettings["PhotosRootDialog"];
+                private const char _photoSpliter = '|';
                 public static IEnumerable<Attachment> ValidateUserPhotos(IEnumerable<Attachment> attachments)
                 {
                     var res = new List<Attachment>();
@@ -51,7 +52,7 @@ namespace AkaratakBot.Shared
 
                             var photoLocalPath = $"{userPhotoPath}\\p{count}.jpg";
                             client.DownloadFile($"{item.ContentUrl}", photoLocalPath);
-                            userPhotosNames += photoLocalPath + "|"; count++;
+                            userPhotosNames += $"{photoLocalPath}{_photoSpliter}"; count++;
                         }
 
 
@@ -74,7 +75,7 @@ namespace AkaratakBot.Shared
 
 
 
-                    foreach (var item in photoPath.Split('|'))
+                    foreach (var item in photoPath.Split(_photoSpliter))
                     {
                         FileInfo file = new FileInfo(item);
                         string _photopath = GeneratePhotoName() + file.Extension;
@@ -86,6 +87,32 @@ namespace AkaratakBot.Shared
                         _photoNames += _photopath + "|";
                     }
                     return _photoNames;
+                }
+                public static string UploadPhotoToHost(string photoPath,string oldPhotoPath)
+                {
+                    var ftpUsername = WebConfigurationManager.AppSettings["AkaratakFtpUsername"];
+                    var ftpPassword = WebConfigurationManager.AppSettings["AkaratakFtpPassword"];
+                    var ftpUrl = WebConfigurationManager.AppSettings["AkaratakFtpUrl"];
+
+                    using (WebClient client = new WebClient())
+                    {
+                        client.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
+
+                        var def = oldPhotoPath.Split(_photoSpliter).Count() - photoPath.Split(_photoSpliter).Count();
+                        var photoNames = new List<string>();
+                        photoNames.AddList(oldPhotoPath.Split(_photoSpliter));
+
+                        if (def < 0)
+                            for (int i = 0; i < Convert.ToUInt32(def); i++)
+                                photoNames.Add(GeneratePhotoName() + ".jpg");
+
+                        foreach (var oldPhoto in photoNames)
+                            foreach (var newPhoto in photoPath.Split(_photoSpliter))
+                                client.UploadFile($"{ftpUrl}/{oldPhoto}", WebRequestMethods.Ftp.UploadFile, new FileInfo(newPhoto).FullName);
+                        
+                    }
+
+                    return oldPhotoPath;
                 }
             }
             public class UserManager
@@ -141,6 +168,16 @@ namespace AkaratakBot.Shared
 
                 }
             }
+        }
+      
+    }
+    public static class Extenstions
+    {
+        public static void AddList(this List<string> list, string[] itemsToAdd)
+        {
+            foreach (var item in itemsToAdd)
+                if(!string.IsNullOrEmpty(item))
+                list.Add(item);
         }
     }
 }

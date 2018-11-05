@@ -269,6 +269,12 @@
     <Compile Include="Dialogs\UpdateDialog\UpdateBaseDialog.cs" />
     <Compile Include="Dialogs\UpdateDialog\UpdateParameters.cs" />
     <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\CategoryDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\CountryDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\GardenGarageDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\LocationDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\MiscDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\PhotoDialog.cs" />
+    <Compile Include="Dialogs\UpdateDialog\UpdateSubDialogs\SaleRentDialog.cs" />
     <Compile Include="EntityModel\City.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -421,10 +427,12 @@
       <LastGenOutput>Property_Type.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Shared\Property_Type.tr-TR.resx" />
+    <EmbeddedResource Include="Resources\Update\UpdateDialog.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Update\UpdateDialog.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UpdateDialog.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Update\UpdateDialog.tr-TR.resx" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

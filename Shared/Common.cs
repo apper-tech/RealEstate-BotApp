@@ -402,7 +402,7 @@ namespace AkaratakBot.Shared
             {
                 List<SearchEntry> entries = new List<SearchEntry>();
                 ResourceManager resourceManager = new ResourceManager(typeof(Resources.Update.UpdateDialog));
-                ResourceSet resourceSet = resourceManager.GetResourceSet(new CultureInfo(context.PrivateConversationData.GetValueOrDefault<string>("ULTN") != null ? 
+                ResourceSet resourceSet = resourceManager.GetResourceSet(new CultureInfo(context.PrivateConversationData.GetValueOrDefault<string>("ULTN") != null ?
                     context.PrivateConversationData.GetValueOrDefault<string>("ULTN") : "en-US"), true, true);
                 foreach (DictionaryEntry item in resourceSet)
                     if (item.Key.ToString().Contains("UpdateField"))
@@ -421,7 +421,7 @@ namespace AkaratakBot.Shared
             }
             public static bool CheckUserHasProperty(UserProfile userProfile)
             {
-                var id = API.IOCommon.UserManager.GetUserID(userProfile,false);
+                var id = API.IOCommon.UserManager.GetUserID(userProfile, false);
                 using (AkaratakModel model = new AkaratakModel())
                 {
                     var properties = model.Properties.Where(x => x.User_ID == id).ToList();
@@ -434,7 +434,7 @@ namespace AkaratakBot.Shared
                 using (var context = new AkaratakModel())
                 {
                     var L2EQuery = from item in context.Properties
-                                   where item.User_ID == UserID 
+                                   where item.User_ID == UserID
                                    select item;
                     try
                     {
@@ -446,10 +446,10 @@ namespace AkaratakBot.Shared
                                  item.Other_Details,
                                  new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
                                  new CardAction(
-                                     type:ActionTypes.MessageBack,
-                                     title:"Update This",
+                                     type: ActionTypes.MessageBack,
+                                     title: "Update This",
                                      displayText: "Update this",
-                                     value:item.PropertyID.ToString())
+                                     value: item.PropertyID.ToString())
                                  ));
                     }
                     catch (Exception ex)
@@ -474,8 +474,83 @@ namespace AkaratakBot.Shared
                     return result;
                 }
             }
+
+            public static bool UpdateForm(UserProfile userProfile, List<SearchEntry> options)
+            {
+                using (AkaratakModel model = new AkaratakModel())
+                {
+                    Property propertyToUpdate = model.Properties.Where(x => x.PropertyID == userProfile.updateParameters.updatePropertyID).FirstOrDefault();
+
+                    var updateParameters = userProfile.updateParameters;
+
+                    foreach (var item in options)
+                    {
+                        switch (item.searchKey)
+                        {
+                            case "UpdateFieldBathroomCount":
+                                propertyToUpdate.Num_Bathrooms = updateParameters.updateBathRoomCount;
+                                break;
+                            case "UpdateFieldBedroomCount":
+                                propertyToUpdate.Num_Bedrooms = updateParameters.updateBedRoomCount;
+                                break;
+                            case "UpdateFieldCategoryType":
+                                propertyToUpdate.Property_Category_ID = int.Parse(updateParameters.updateCategory);
+                                propertyToUpdate.Property_Type_ID = int.Parse(updateParameters.updateType);
+                                break;
+                            case "UpdateFieldCountryCity":
+                                propertyToUpdate.Country_ID = int.Parse(updateParameters.updateCountry);
+                                propertyToUpdate.City_ID = int.Parse(updateParameters.updateCity);
+                                break;
+                            case "UpdateFieldFloorCount":
+                                propertyToUpdate.Num_Floors = updateParameters.updateFloorCount;
+                                break;
+                            case "UpdateFieldFloorLevelCount":
+                                propertyToUpdate.Floor = updateParameters.updateFloorLevel;
+                                break;
+                            case "UpdateFieldGardenGarageChoice":
+                                propertyToUpdate.Has_Garage = updateParameters.updateHasGarage;
+                                propertyToUpdate.Has_Garden = updateParameters.updateHasGarden;
+
+                                break;
+                            case "UpdateFieldLocationLatLng":
+                                propertyToUpdate.Location = updateParameters.updateLocation;
+                                break;
+                            case "UpdateFieldOtherDetailsText":
+                                propertyToUpdate.Other_Details = updateParameters.updateOtherDetails;
+                                break;
+                            case "UpdateFieldPropertySize":
+                                propertyToUpdate.Property_Size = updateParameters.updateSize;
+                                break;
+                            case "UpdateFieldSaleRentPriceCount":
+                                propertyToUpdate.Sale_Price = updateParameters.updateSalePrice;
+                                propertyToUpdate.Rent_Price = updateParameters.updateRentPrice;
+                                break;
+                            case "UpdateFieldZipCodeText":
+                                propertyToUpdate.Zip_Code = updateParameters.updateZipCode;
+                                break;
+                            case "UpdateFieldAddressText":
+                                propertyToUpdate.Address = updateParameters.updateAddress;
+                                break;
+                            case "UpdateFieldPhotoSelection":
+                                propertyToUpdate.Property_Photo = API.IOCommon.PhotoManager.UploadPhotoToHost(updateParameters.updatePhotoPath, propertyToUpdate.Property_Photo);
+                                break;
+                        }
+                    }
+                    try
+                    {
+                        model.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+
+                }
+
+            }
         }
-      
+
 
     }
 }

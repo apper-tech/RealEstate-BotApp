@@ -55,20 +55,43 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task OnOptionSelected(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
             var message = await argument;
-           // var entry = new MiscEntry { insertResource = message };
+            var entry = new MiscEntry {  userResource = message };
 
             if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateCancel))
                 context.Done(context.MakeMessage());
 
             else if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateFieldCategoryType))
-                context.Call(new CategoryDialog(message), InsertOptionCallback);
+                context.Call(new CategoryDialog(message), UpdateOptionCallback);
+
+            else if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateFieldCountryCity))
+                context.Call(new CountryDialog(message), UpdateOptionCallback);
+
+            else if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateFieldGardenGarageChoice))
+                context.Call(new GardenGarageDialog(message), UpdateOptionCallback);
+
+            else if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateFieldLocationLatLng))
+                context.Call(new LocationDialog(message), UpdateOptionCallback);
+
+            else if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateFieldSaleRentPriceCount))
+                context.Call(new SaleRentDialog(message), UpdateOptionCallback);
+
+            else if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateFieldPhotoSelection))
+                context.Call(new PhotoDialog(message), UpdateOptionCallback);
+
+            else if (MiscEntry.Contains(entry, Resources.Update.UpdateDialog.ResourceManager))
+                context.Call(new MiscDialog(entry), UpdateOptionCallback);
+
+            else if (message.searchKey == "UpdateKey")
+            {
+                await UpdateProperty(context, _userProfile); ;
+            }
         }
         public bool CheckUpdateFieldResource(SearchEntry message, string resource)
         {
             return message.searchKey == Shared.API.IOCommon.CultureResourceManager.GetKey(Resources.Update.UpdateDialog.ResourceManager,
                 resource, true);
         }
-        public async Task InsertOptionCallback(IDialogContext context, IAwaitable<SearchEntry> argument)
+        public async Task UpdateOptionCallback(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
             var message = await argument;
 
@@ -87,10 +110,29 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         {
             if (await argument)
             {
-                //update with current settings
+               await UpdateProperty(context,_userProfile);
             }
             else
                 await this.ShowProgress(context);
+        }
+        private async Task UpdateProperty(IDialogContext context,UserProfile userProfile)
+        {
+            List<SearchEntry> optionsToUpdate = new List<SearchEntry>();
+            foreach (var item in _optionList)
+                if (item.searchValid)
+                    optionsToUpdate.Add(item);
+
+            if(Shared.Common.Update.UpdateForm(userProfile,optionsToUpdate))
+            {
+                await context.PostAsync("Done");
+                context.Done(userProfile);
+            }
+            else
+            {
+                await context.PostAsync("Error");
+                context.Done(userProfile);
+            }
+
         }
     }
 }
