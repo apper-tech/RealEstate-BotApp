@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddressSeparator" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="AddToFavoritesAsk" xml:space="preserve">
+    <value>Favs ekle</value>
+  </data>
+  <data name="AskForEmptyAddressTemplate" xml:space="preserve">
+    <value>Lütfen {0} değerini belirtin.</value>
+  </data>
+  <data name="AskForPrefix" xml:space="preserve">
+    <value>Tamam {0}.</value>
+  </data>
+  <data name="AskForTemplate" xml:space="preserve">
+    <value>Lütfen ayrıca {0} değerini sağlayın.</value>
+  </data>
+  <data name="CancelCommand" xml:space="preserve">
+    <value>iptal etmek</value>
+  </data>
+  <data name="CancelPrompt" xml:space="preserve">
+    <value>Tamam, iptal edildi.</value>
+  </data>
+  <data name="ConfirmationAsk" xml:space="preserve">
+    <value>Tamam, {0} adresine göndereceğim. Bu doğru mu? 'Evet' veya 'hayır' girin.</value>
+  </data>
+  <data name="ConfirmationInvalidResponse" xml:space="preserve">
+    <value>Anlamadım 'Evet' veya 'hayır' girin.</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>ülke</value>
+  </data>
+  <data name="DialogStartBranchAsk" xml:space="preserve">
+    <value>Bir konumu nasıl seçmek istersiniz?</value>
+  </data>
+  <data name="FavoriteLocations" xml:space="preserve">
+    <value>Favori Mekanlar</value>
+  </data>
+  <data name="HelpCommand" xml:space="preserve">
+    <value>yardım et</value>
+  </data>
+  <data name="HelpMessage" xml:space="preserve">
+    <value>Sorulduğunda geçerli bir adres yazın veya yazın ve Bing kullanarak bulmaya çalışacağım. Tam adres bilgisini (sokak no / isim, şehir, bölge, posta / posta kodu, ülke) veya bir kısmını sağlayabilirsiniz. Adresi değiştirmek isterseniz, 'sıfırla' yazarak veya yazın. Son olarak, bir adres vermeden çıkmak için 'iptal' deyin veya yazın.</value>
+  </data>
+  <data name="InvalidLocationResponse" xml:space="preserve">
+    <value>Adresi seçmek için bir numara yazın veya söyleyin ya da çıkmak için 'iptal' yazın.</value>
+  </data>
+  <data name="InvalidLocationResponseFacebook" xml:space="preserve">
+    <value>Devam etmek için Gönderme Konumuna dokunun; çıkmak veya çıkmak için iptal et.</value>
+  </data>
+  <data name="InvalidStartBranchResponse" xml:space="preserve">
+    <value>Devam etmek için seçeneklerden birine dokunun; çıkmak veya çıkmak için iptal et.</value>
+  </data>
+  <data name="Locality" xml:space="preserve">
+    <value>şehir veya bölge</value>
+  </data>
+  <data name="LocationNotFound" xml:space="preserve">
+    <value>Bu adresi bulamadım. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="MultipleResultsFound" xml:space="preserve">
+    <value>Bu sonuçları buldum. Adresi seçmek için bir numara yazın veya başka bir adres seçmek için 'başka' yazın.</value>
+  </data>
+  <data name="OtherComand" xml:space="preserve">
+    <value>diğer</value>
+  </data>
+  <data name="OtherLocation" xml:space="preserve">
+    <value>Diğer mekan</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Posta kodu</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>eyalet veya bölge</value>
+  </data>
+  <data name="ResetCommand" xml:space="preserve">
+    <value>sıfırlamak</value>
+  </data>
+  <data name="ResetPrompt" xml:space="preserve">
+    <value>Tamam, baştan başlayalım.</value>
+  </data>
+  <data name="SelectLocation" xml:space="preserve">
+    <value>Bir konum seçin</value>
+  </data>
+  <data name="SingleResultFound" xml:space="preserve">
+    <value>Bu sonucu buldum. Bu doğru adres mi?</value>
+  </data>
+  <data name="StreetAddress" xml:space="preserve">
+    <value>Açık adres</value>
+  </data>
+  <data name="TitleSuffix" xml:space="preserve">
+    <value>Bir adres yazın veya söyleyin.</value>
+  </data>
+  <data name="TitleSuffixFacebook" xml:space="preserve">
+    <value>Bir adres seçmek için 'Konum Gönder' seçeneğine dokunun.</value>
+  </data>
+  <data name="AddToFavoritesRetry" xml:space="preserve">
+    <value>Üzgünüz, adresi favori konumlarınıza eklemek için lütfen “evet” veya “hayır” cevabını verin.</value>
+  </data>
+  <data name="EnterNewFavoriteLocationName" xml:space="preserve">
+    <value>Lütfen bu adres için 'Ev' veya 'İş' gibi bir ad yazın veya söyleyin.</value>
+  </data>
+  <data name="FavoriteAddedConfirmation" xml:space="preserve">
+    <value>Tamam, favori yerlerinize {0} ekledim.</value>
+  </data>
+  <data name="DeleteCommand" xml:space="preserve">
+    <value>silmek</value>
+  </data>
+  <data name="EditCommand" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="EditFavoritePrompt" xml:space="preserve">
+    <value>Tamam, {0} dosyasını düzenleyelim. Yeni bir adres yazın veya söyleyin.</value>
+  </data>
+  <data name="FavoriteDeletedConfirmation" xml:space="preserve">
+    <value>Tamam, favori konumlarınızdan {0} sildim.</value>
+  </data>
+  <data name="InvalidFavoriteLocationSelection" xml:space="preserve">
+    <value>Maalesef "{0}", favori bir konumla eşleşmiyor.Yeni bir konum kullanmak için bir numara / ad yazın veya yeni bir konum oluşturmak için "diğer" yazın. "Düzenle" veya "sil" numara / ad yazın veya yazın Bir favoriyi değiştirmek için Çıkmak için “iptal” deyin.</value>
+  </data>
+  <data name="NoFavoriteLocationsFound" xml:space="preserve">
+    <value>Şu an favori konumunuz yok gibi görünüyor. Bir adres girin ve onu en sevdiğiniz yerlere kaydedebileceksiniz.</value>
+  </data>
+  <data name="SelectFavoriteLocationPrompt" xml:space="preserve">
+    <value>Favori konumlarından birini kullanmak için bir sayı / isim yazın veya söyleyin. Farklı bir yer belirtmek için yazın veya “başka” deyin. Bir favoriyi düzenlemek veya silmek için, yazın / yazın, "düzenle" veya "sil" numara / ad yazın.</value>
+  </data>
+  <data name="DeleteFavoriteAbortion" xml:space="preserve">
+    <value>Tamam, {0} favori konum olarak kalacak.</value>
+  </data>
+  <data name="DeleteFavoriteConfirmationAsk" xml:space="preserve">
+    <value>Favori yerlerinizden {0} silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="FavoriteEdittedConfirmation" xml:space="preserve">
+    <value>Tamam, {0} yeni adresini {1} ile güncelledim.</value>
+  </data>
+  <data name="InvalidFavoriteNameResponse" xml:space="preserve">
+    <value>Lütfen bu adres için geçerli bir isim girin.</value>
+  </data>
+  <data name="DuplicateFavoriteNameResponse" xml:space="preserve">
+    <value>{0} zaten favorilerinizde listeleniyor. Lütfen bu adres için farklı bir ad yaz veya söyle.</value>
+  </data>
+</root>

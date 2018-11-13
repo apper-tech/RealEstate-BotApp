@@ -341,10 +341,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SettingsDialog.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Shared\Property_Category.ar-SA.Designer.cs">
+    <Compile Include="Resources\Shared\LocationResourceManager.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Property_Category.ar-SA.resx</DependentUpon>
+      <DependentUpon>LocationResourceManager.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Shared\Property_Category.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -412,6 +412,12 @@
       <LastGenOutput>SettingsDialog.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Settings\SettingsDialog.tr-TR.resx" />
+    <EmbeddedResource Include="Resources\Shared\LocationResourceManager.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Shared\LocationResourceManager.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocationResourceManager.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Shared\LocationResourceManager.tr-TR.resx" />
     <EmbeddedResource Include="Resources\Shared\Property_Category.ar-SA.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Property_Category.ar-SA.Designer.cs</LastGenOutput>

@@ -1,5 +1,6 @@
 ﻿using AkaratakBot.EntityModel;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Location;
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections;
@@ -550,7 +551,5 @@ namespace AkaratakBot.Shared
 
             }
         }
-
-
     }
 }

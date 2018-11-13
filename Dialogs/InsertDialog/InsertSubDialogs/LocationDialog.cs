@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
+using static AkaratakBot.Shared.API.IOCommon.CultureResourceManager;
 
 namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 {
@@ -28,15 +29,15 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         public void AskForLocation(IDialogContext context)
         {
             var prompt = Resources.Insert.InsertDialog.InsertFormLocationLatLngDescription;
-
+            
             context.Call( new Microsoft.Bot.Builder.Location.LocationDialog(
                 _apiKey,
                 context.Activity.ChannelId,
-                prompt, 
-                LocationOptions.ReverseGeocode,
-                LocationRequiredFields.StreetAddress), AfterLocationChoice);
-           
-        }
+                prompt,
+                LocationOptions.ReverseGeocode | LocationOptions.SkipFavorites |LocationOptions.SkipFinalConfirmation | LocationOptions.UseNativeControl,
+                LocationRequiredFields.StreetAddress,
+                resourceManager: new UserLocationResourceManager()), AfterLocationChoice);
+           }
         public async Task AfterLocationChoice(IDialogContext context,IAwaitable<Place> argument)
         {
             Place place = await argument;
