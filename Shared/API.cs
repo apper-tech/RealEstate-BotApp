@@ -22,9 +22,14 @@ namespace AkaratakBot.Shared
     {
         public class IOCommon
         {
+            private static string _photoHomePath = ConfigurationManager.AppSettings["PhotosRootDialog"];
+            private static string _mapKey = ConfigurationManager.AppSettings["GoogleMapsApiKey"];
+            private static string _mapGeoUrl = ConfigurationManager.AppSettings["GoogleMapsGeocodeUrl"];
+            private static string _mapStaticUrl = ConfigurationManager.AppSettings["GoogleMapsStaticImageUrl"];
+
             public class PhotoManager
             {
-                private static string _photoHomePath = ConfigurationManager.AppSettings["PhotosRootDialog"];
+
                 private const char _photoSpliter = '|';
                 public static IEnumerable<Attachment> ValidateUserPhotos(IEnumerable<Attachment> attachments)
                 {
@@ -60,6 +65,7 @@ namespace AkaratakBot.Shared
 
                     return userPhotosNames;
                 }
+
                 private static string GeneratePhotoName()
                 {
                     int length = 15;
@@ -90,7 +96,7 @@ namespace AkaratakBot.Shared
                     }
                     return _photoNames;
                 }
-                public static string UploadPhotoToHost(string photoPath,string oldPhotoPath)
+                public static string UploadPhotoToHost(string photoPath, string oldPhotoPath)
                 {
                     var ftpUsername = WebConfigurationManager.AppSettings["AkaratakFtpUsername"];
                     var ftpPassword = WebConfigurationManager.AppSettings["AkaratakFtpPassword"];
@@ -111,7 +117,7 @@ namespace AkaratakBot.Shared
                         foreach (var oldPhoto in photoNames)
                             foreach (var newPhoto in photoPath.Split(_photoSpliter))
                                 client.UploadFile($"{ftpUrl}/{oldPhoto}", WebRequestMethods.Ftp.UploadFile, new FileInfo(newPhoto).FullName);
-                        
+
                     }
 
                     return oldPhotoPath;
@@ -129,7 +135,7 @@ namespace AkaratakBot.Shared
                         userID = JsonConvert.DeserializeObject<TelegramData>(File.ReadAllText(contextServer.MapPath("~/_root/_test/test.json")));
                     return userID;
                 }
-                public static string GetUserID(UserProfile userProfile,bool emulator)
+                public static string GetUserID(UserProfile userProfile, bool emulator)
                 {
 
                     if (!emulator && userProfile.telegramData.callback_query != null)
@@ -416,16 +422,52 @@ namespace AkaratakBot.Shared
 
                 }
             }
+            public class LocationManager
+            {
+                public static Place GeocodeUserLocation(string userAddress)
+                {
+                    var apiUrl = $@"{_mapGeoUrl}?address={Uri.EscapeUriString(userAddress)}&key={_mapKey}";
+                    using (WebClient httpClient = new WebClient())
+                    {
+                        var jsonData = httpClient.DownloadString(apiUrl);
+                        var data = JsonConvert.DeserializeObject<LocationData>(jsonData);
+                        return new Place
+                        {
+                            Geo = new GeoCoordinates
+                            {
+                                Latitude = data.results[0].geometry.location.lat,
+                                Longitude = data.results[0].geometry.location.lng,
+                                Elevation = 5
+                            }
+                        };
+                    }
+                }
+                public static Attachment GenerateImageByLocation(Place place)
+                {
+                    var locationString = $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
+                    var apiUrl = $@"{_mapStaticUrl}?center={locationString}&markers=color:red|label:C|{locationString}&zoom=12&size=600x400&key={_mapKey}";
+                    return new Attachment()
+                    {
+                        ContentUrl = apiUrl,
+                        ContentType = "image/png",
+                        Name = "staticmap.png"
+                    };
+                }
+                public static string GenerateLoactionString(Place place)
+                {
+                    return  $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
+                }
+            }
         }
-      
+
     }
     public static class Extenstions
     {
         public static void AddList(this List<string> list, string[] itemsToAdd)
         {
             foreach (var item in itemsToAdd)
-                if(!string.IsNullOrEmpty(item))
-                list.Add(item);
+                if (!string.IsNullOrEmpty(item))
+                    list.Add(item);
         }
     }
 }

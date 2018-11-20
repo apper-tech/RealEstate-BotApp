@@ -129,9 +129,6 @@
   <data name="InsertDone" xml:space="preserve">
     <value>Bitti! İlan Eklendi</value>
   </data>
-  <data name="InsertFieldAddressText" xml:space="preserve">
-    <value>Mülk adresini girin</value>
-  </data>
   <data name="InsertFieldBathroomCount" xml:space="preserve">
     <value>Banyo Sayısı Girin</value>
   </data>
@@ -153,9 +150,6 @@
   <data name="InsertFieldGardenGarageChoice" xml:space="preserve">
     <value>Mülkiyet Dış Detayları</value>
   </data>
-  <data name="InsertFieldLocationLatLng" xml:space="preserve">
-    <value>Emlak Konumunu Seç</value>
-  </data>
   <data name="InsertFieldOtherDetailsText" xml:space="preserve">
     <value>Mülkiyet için ekstra detaylar</value>
   </data>
@@ -168,6 +162,9 @@
   <data name="InsertFieldZipCodeText" xml:space="preserve">
     <value>Mülkün Alanı Posta Kodu (varsa)</value>
   </data>
+  <data name="InsertFormAddressText" xml:space="preserve">
+    <value>Mülk adresini girin</value>
+  </data>
   <data name="InsertFormAddressTextDescription" xml:space="preserve">
     <value>Mülkün Adresini Girin</value>
   </data>
@@ -176,6 +173,9 @@
   </data>
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>Tesisin yatak odasını girin</value>
+  </data>
+  <data name="InsertFormConfirmLocation" xml:space="preserve">
+    <value>Bu Konum Doğru mu?</value>
   </data>
   <data name="InsertFormCountryNext" xml:space="preserve">
     <value>Sonraki &gt;&gt;</value>
@@ -188,6 +188,9 @@
   </data>
   <data name="InsertFormHeader" xml:space="preserve">
     <value>Özellik eklemek için bir seçenek belirleyin</value>
+  </data>
+  <data name="InsertFormLocationLatLng" xml:space="preserve">
+    <value>Emlak Konumunu Seç</value>
   </data>
   <data name="InsertFormLocationLatLngDescription" xml:space="preserve">
     <value>Kullanılabilir yerleri göstermek için mülkün adresini girin</value>

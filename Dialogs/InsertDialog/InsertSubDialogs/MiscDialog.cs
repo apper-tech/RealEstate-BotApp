@@ -36,9 +36,6 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                 case MiscInsertOptions.BathroomCount:
                     this.AskForBathroomCount(context);
                     break;
-                case MiscInsertOptions.Address:
-                    this.AskForAddress(context);
-                    break;
                 case MiscInsertOptions.OtherDetails:
                     this.AskForOtherDetails(context);
                     break;
@@ -54,10 +51,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             PromptDialog.Number(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormPropertySizeDescription);
         }
-        public void AskForAddress(IDialogContext context)
-        {
-            PromptDialog.Text(context, AfterTextEntry, Resources.Insert.InsertDialog.InsertFormAddressTextDescription);
-        }
+
         public void AskForZipCode(IDialogContext context)
         {
             PromptDialog.Text(context, AfterTextEntry, Resources.Insert.InsertDialog.InsertFormZipCodeTextDescription);
@@ -111,9 +105,6 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
             var message = await argument;
             switch (_option.insertOptions)
             {
-                case MiscInsertOptions.Address:
-                    _userProfile.insertParameters.insertAddress = message;
-                    break;
                 case MiscInsertOptions.OtherDetails:
                     _userProfile.insertParameters.insertOtherDetails = message;
                     break;
@@ -160,11 +151,6 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                 },
                 new MiscEntry
                 {
-                    insertOptions= MiscInsertOptions.Address,
-                    insertResource=new SearchEntry{searchValue=Resources.Insert.InsertDialog.InsertFieldAddressText}
-                },
-                new MiscEntry
-                {
                     insertOptions= MiscInsertOptions.OtherDetails,
                     insertResource=new SearchEntry{searchValue=Resources.Insert.InsertDialog.InsertFieldOtherDetailsText}
                 },
@@ -202,7 +188,6 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         FloorCount,
         BathroomCount,
         BedRoomCount,
-        Address,
         OtherDetails,
         FloorLevel,
         ZipCode,

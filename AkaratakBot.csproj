@@ -364,6 +364,7 @@
     <Compile Include="Shared\API.cs" />
     <Compile Include="Shared\Cards.cs" />
     <Compile Include="Shared\Common.cs" />
+    <Compile Include="Shared\LocationData.cs" />
     <Compile Include="Shared\TelegramData.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />

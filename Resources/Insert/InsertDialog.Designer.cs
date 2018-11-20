@@ -97,15 +97,6 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the property address .
-        /// </summary>
-        internal static string InsertFieldAddressText {
-            get {
-                return ResourceManager.GetString("InsertFieldAddressText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter Number of Bathrooms.
         /// </summary>
         internal static string InsertFieldBathroomCount {
@@ -133,7 +124,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Country details.
+        ///   Looks up a localized string similar to Select Location details.
         /// </summary>
         internal static string InsertFieldCountryCity {
             get {
@@ -165,15 +156,6 @@ namespace AkaratakBot.Resources.Insert {
         internal static string InsertFieldGardenGarageChoice {
             get {
                 return ResourceManager.GetString("InsertFieldGardenGarageChoice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the property Location.
-        /// </summary>
-        internal static string InsertFieldLocationLatLng {
-            get {
-                return ResourceManager.GetString("InsertFieldLocationLatLng", resourceCulture);
             }
         }
         
@@ -223,6 +205,15 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the property address .
+        /// </summary>
+        internal static string InsertFormAddressText {
+            get {
+                return ResourceManager.GetString("InsertFormAddressText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the Property&apos;s Address.
         /// </summary>
         internal static string InsertFormAddressTextDescription {
@@ -246,6 +237,15 @@ namespace AkaratakBot.Resources.Insert {
         internal static string InsertFormBedroomCountDescription {
             get {
                 return ResourceManager.GetString("InsertFormBedroomCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is this Location Correct?.
+        /// </summary>
+        internal static string InsertFormConfirmLocation {
+            get {
+                return ResourceManager.GetString("InsertFormConfirmLocation", resourceCulture);
             }
         }
         
@@ -282,6 +282,15 @@ namespace AkaratakBot.Resources.Insert {
         internal static string InsertFormHeader {
             get {
                 return ResourceManager.GetString("InsertFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the property Location.
+        /// </summary>
+        internal static string InsertFormLocationLatLng {
+            get {
+                return ResourceManager.GetString("InsertFormLocationLatLng", resourceCulture);
             }
         }
         

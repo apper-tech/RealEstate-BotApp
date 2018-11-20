@@ -56,9 +56,6 @@ namespace AkaratakBot.Dialogs.InsertDialog
             else if (CheckInsertFieldResource(message, Resources.Insert.InsertDialog.InsertFieldPhotoSelection))
                 context.Call(new PhotoDialog(message), InsertOptionCallback);
 
-            else if (CheckInsertFieldResource(message, Resources.Insert.InsertDialog.InsertFieldLocationLatLng))
-                context.Call(new LocationDialog(message), InsertOptionCallback);
-
             else if (MiscEntry.Contains(entry, Resources.Insert.InsertDialog.ResourceManager))
                 context.Call(new MiscDialog(entry), InsertOptionCallback);
 
