@@ -45,7 +45,7 @@ namespace AkaratakBot.Shared
             var message = context.Activity;
             string dataString = message.ChannelData.ToString();
             var dataObject = JsonConvert.DeserializeObject<TelegramData>(dataString);
-            context.PostAsync(dataObject.message.from.id.ToString());
+            //context.PostAsync(dataObject.message.from.id.ToString());
             return dataObject;
         }
     }
