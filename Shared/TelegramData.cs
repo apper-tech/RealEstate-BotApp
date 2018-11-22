@@ -30,30 +30,23 @@ namespace AkaratakBot.Shared
     public class Message
     {
         public int message_id { get; set; }
+        public From from { get; set; }
         public Chat chat { get; set; }
         public int date { get; set; }
         public string text { get; set; }
     }
     [Serializable]
-    public class CallbackQuery
-    {
-        public string id { get; set; }
-        public From from { get; set; }
-        public Message message { get; set; }
-        public string chat_instance { get; set; }
-        public string data { get; set; }
-    }
-    [Serializable]
     public class TelegramData
     {
         public int update_id { get; set; }
-        public CallbackQuery callback_query { get; set; }
+        public Message message { get; set; }
         public static TelegramData GetUserTelegramData(IDialogContext context)
         {
             var message = context.Activity;
-            string data = message.ChannelData.ToString();
-            context.PostAsync(data);
-            return JsonConvert.DeserializeObject<TelegramData>(data);
+            string dataString = message.ChannelData.ToString();
+            var dataObject = JsonConvert.DeserializeObject<TelegramData>(dataString);
+            context.PostAsync(dataObject.message.from.id.ToString());
+            return dataObject;
         }
     }
 }

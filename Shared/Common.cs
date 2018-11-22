@@ -228,7 +228,7 @@ namespace AkaratakBot.Shared
                 using (AkaratakModel model = new AkaratakModel())
                 {
                     UserProfile profile = null;
-                    if (userProfile.telegramData.callback_query != null)
+                    if (userProfile.telegramData.message != null)
                         profile = userProfile;
                     else
                         context.PrivateConversationData.TryGetValue("@userProfile", out profile);
@@ -274,7 +274,7 @@ namespace AkaratakBot.Shared
                     Rent_Price = param.insertRentPrice,
                     Sale_Price = param.insertSalePrice,
 
-                    User_ID = userProfile.telegramData.callback_query != null ?
+                    User_ID = userProfile.telegramData.message != null ?
                     CreateOrGetUserID(userProfile) :
                     WebConfigurationManager.AppSettings["AkaratakBotUserID"],
 
@@ -284,7 +284,7 @@ namespace AkaratakBot.Shared
             }
             private static string CreateOrGetUserID(UserProfile userProfile)
             {
-                From from = userProfile.telegramData.callback_query.from;
+                From from = userProfile.telegramData.message.from;
                 using (AkaratakModel model = new AkaratakModel())
                 {
                     model.Users.Add(new User

@@ -46,7 +46,7 @@ namespace AkaratakBot.Shared
                     string userPhotosNames = string.Empty;
                     var userID = UserManager.CheckEmulatorTelegramData((Activity)activity);
                     var contextServer = HttpContext.Current.Server;
-                    var userPhotoPath = contextServer.MapPath($"{_photoHomePath}/_temp/") + userID.callback_query.from.id;
+                    var userPhotoPath = contextServer.MapPath($"{_photoHomePath}/_temp/") + userID.message.from.id;
                     if (!Directory.Exists(userPhotoPath))
                         Directory.CreateDirectory(userPhotoPath);
 
@@ -138,9 +138,9 @@ namespace AkaratakBot.Shared
                 public static string GetUserID(UserProfile userProfile, bool emulator)
                 {
 
-                    if (!emulator && userProfile.telegramData.callback_query != null)
+                    if (!emulator && userProfile.telegramData.message != null)
                         using (AkaratakModel model = new AkaratakModel())
-                            return model.Users.Where(x => x.Telegram_ID == userProfile.telegramData.callback_query.from.id).FirstOrDefault().User_ID;
+                            return model.Users.Where(x => x.Telegram_ID == userProfile.telegramData.message.from.id).FirstOrDefault().User_ID;
                     else
                         return WebConfigurationManager.AppSettings["AkaratakBotUserID"];
                 }
