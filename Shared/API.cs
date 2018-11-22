@@ -138,11 +138,12 @@ namespace AkaratakBot.Shared
                 public static string GetUserID(UserProfile userProfile, bool emulator)
                 {
 
-                    if (!emulator && userProfile.telegramData.message != null)
+                    if (userProfile.telegramData.message != null)
                         using (AkaratakModel model = new AkaratakModel())
                             return model.Users.Where(x => x.Telegram_ID == userProfile.telegramData.message.from.id).FirstOrDefault().User_ID;
-                    else
+                    else if (emulator)
                         return WebConfigurationManager.AppSettings["AkaratakBotUserID"];
+                    else return string.Empty;
                 }
             }
             public class CultureResourceManager
@@ -455,7 +456,7 @@ namespace AkaratakBot.Shared
                 }
                 public static string GenerateLoactionString(Place place)
                 {
-                    return  $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
+                    return $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
                 }
             }
         }
