@@ -25,8 +25,8 @@ namespace AkaratakBot.Dialogs
                 searchParameters = new SearchParameters(),
                 insertParameters = new InsertParameters(),
                 settingsParameters = new SettingsParameters(),
-                updateParameters=new UpdateParameters(),
-                telegramData = GetUserTelegramData(context)
+                updateParameters = new UpdateParameters(),
+                telegramData = TelegramData.GetUserTelegramData(context)
             } : _userProfile;
             context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             context.PrivateConversationData.SetValue(SettingsDialog.BaseDialog.UserLanguageToken, "en-US");
@@ -45,7 +45,7 @@ namespace AkaratakBot.Dialogs
                       Resources.Insert.InsertDialog.Insert,//Insert
                       Shared.Common.Update.CheckUserHasProperty(_userProfile)?//Update
                       Resources.Update.UpdateDialog.Update:string.Empty,
-                      //"Test PList",
+                      "Test PList",
                     //"Test Channel Data",
                     //"Test Date"
             };
@@ -89,7 +89,7 @@ namespace AkaratakBot.Dialogs
             }
             if (optionSelected == "Test PList")
             {
-              await  context.PostAsync(_userProfile.telegramData.callback_query.from.id.ToString());
+                _userProfile.telegramData = TelegramData.GetUserTelegramData(context);
             }
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)
@@ -104,12 +104,7 @@ namespace AkaratakBot.Dialogs
                 await context.PostAsync($"Failed with message: {ex.Message}");
             }
         }
-        public TelegramData GetUserTelegramData(IDialogContext context)
-        {
-            var message = context.Activity;
-            string data = message.ChannelData.ToString();
-            return JsonConvert.DeserializeObject<TelegramData>(data);
-        }
+
 
     }
 }

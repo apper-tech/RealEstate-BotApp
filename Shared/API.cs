@@ -445,7 +445,7 @@ namespace AkaratakBot.Shared
                 public static Attachment GenerateImageByLocation(Place place)
                 {
                     var locationString = $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
-                    var apiUrl = $@"{_mapStaticUrl}?center={locationString}&markers=color:red|label:C|{locationString}&zoom=12&size=600x400&key={_mapKey}";
+                    var apiUrl = $@"{_mapStaticUrl}?center={locationString}&markers=color:red|label:C|{locationString}&zoom={15}&size=600x400&key={_mapKey}";
                     return new Attachment()
                     {
                         ContentUrl = apiUrl,

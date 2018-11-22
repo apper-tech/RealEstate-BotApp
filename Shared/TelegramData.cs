@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder.Dialogs;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -46,5 +48,12 @@ namespace AkaratakBot.Shared
     {
         public int update_id { get; set; }
         public CallbackQuery callback_query { get; set; }
+        public static TelegramData GetUserTelegramData(IDialogContext context)
+        {
+            var message = context.Activity;
+            string data = message.ChannelData.ToString();
+            context.PostAsync(data);
+            return JsonConvert.DeserializeObject<TelegramData>(data);
+        }
     }
 }
