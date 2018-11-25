@@ -24,20 +24,32 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         {
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile, false));
+            var emulator = context.Activity.ChannelId == "emulator";
+            reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile, emulator));
             if (reply.Attachments.Count > 0)
+            {             
                 await context.PostAsync(reply);
+                reply = context.MakeMessage();
+                reply.Attachments.Add(Shared.Cards.GetCancelCard());
+                await context.PostAsync(reply);
+            }
             else
+            {
                 await context.PostAsync(Resources.Search.SearchDialog.SearchEmptyResult);
+                context.Done(context.MakeMessage());
+            }
             context.Wait<Activity>(AfterPropertyList);
         }
         public async Task AfterPropertyList(IDialogContext context, IAwaitable<Activity> argument)
         {
             var message = await argument;
-
-            if (Shared.Common.Update.GetPropertyList(_userProfile)
-                .Where(x => x.PropertyID == int.Parse(message.Text))
-                .ToList().Count > 0)
+            if (message.Text == Resources.Insert.InsertDialog.InsertCancel)
+            {
+                context.Done(context.MakeMessage());
+            }
+            else if (Shared.Common.Update.GetPropertyList(_userProfile)
+                 .Where(x => x.PropertyID == int.Parse(message.Text))
+                 .ToList().Count > 0)
             {
                 _userProfile.updateParameters.updatePropertyID = int.Parse(message.Text);
                 await this.ShowProgress(context);
@@ -55,7 +67,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task OnOptionSelected(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
             var message = await argument;
-            var entry = new MiscEntry {  userResource = message };
+            var entry = new MiscEntry { userResource = message };
 
             if (CheckUpdateFieldResource(message, Resources.Update.UpdateDialog.UpdateCancel))
                 context.Done(context.MakeMessage());
@@ -110,19 +122,19 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         {
             if (await argument)
             {
-               await UpdateProperty(context,_userProfile);
+                await UpdateProperty(context, _userProfile);
             }
             else
                 await this.ShowProgress(context);
         }
-        private async Task UpdateProperty(IDialogContext context,UserProfile userProfile)
+        private async Task UpdateProperty(IDialogContext context, UserProfile userProfile)
         {
             List<SearchEntry> optionsToUpdate = new List<SearchEntry>();
             foreach (var item in _optionList)
                 if (item.searchValid)
                     optionsToUpdate.Add(item);
 
-            if(Shared.Common.Update.UpdateForm(userProfile,optionsToUpdate))
+            if (Shared.Common.Update.UpdateForm(userProfile, optionsToUpdate))
             {
                 await context.PostAsync("Done");
                 context.Done(userProfile);

@@ -33,6 +33,23 @@ namespace AkaratakBot.Shared
 
             return heroCard.ToAttachment();
         }
+        public static Attachment GetCancelCard()
+        {
+            return new HeroCard
+            {
+                Buttons = new List<CardAction>
+                {
+                    new CardAction
+                    {
+                        Text=Resources.Insert.InsertDialog.InsertCancel,
+                        DisplayText=Resources.Insert.InsertDialog.InsertCancel,
+                        Title=Resources.Insert.InsertDialog.InsertCancel,
+                        Type=ActionTypes.MessageBack,
+                        Value="Cancel"
+                    }
+                }
+            }.ToAttachment();
+        }
     }
 
 }

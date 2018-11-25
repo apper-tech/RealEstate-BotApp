@@ -420,9 +420,9 @@ namespace AkaratakBot.Shared
                         return true;
                 return false;
             }
-            public static bool CheckUserHasProperty(UserProfile userProfile)
+            public static bool CheckUserHasProperty(UserProfile userProfile,bool emulator)
             {
-                var id = API.IOCommon.UserManager.GetUserID(userProfile, false);
+                var id = API.IOCommon.UserManager.GetUserID(userProfile, emulator);
                 using (AkaratakModel model = new AkaratakModel())
                 {
                     var properties = model.Properties.Where(x => x.User_ID == id).ToList();

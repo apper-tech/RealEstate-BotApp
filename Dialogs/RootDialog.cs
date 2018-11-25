@@ -42,13 +42,16 @@ namespace AkaratakBot.Dialogs
             _options = new List<string>() {
                       Resources.Search.SearchDialog.Search,//Search
                       Resources.Settings.SettingsDialog.Settings,//Settings
-                      Resources.Insert.InsertDialog.Insert,//Insert
-                      Shared.Common.Update.CheckUserHasProperty(_userProfile)?//Update
-                      Resources.Update.UpdateDialog.Update:string.Empty,
+                      Resources.Insert.InsertDialog.Insert//Insert
                       //"Test PList",
                     //"Test Channel Data",
                     //"Test Date"
             };
+            bool emulator = context.Activity.ChannelId == "emulator";
+            var update = Common.Update.CheckUserHasProperty(_userProfile, emulator) ?//Update
+                      Resources.Update.UpdateDialog.Update : string.Empty;
+            if (update != string.Empty)
+                _options.Add(update);
             if (_options.Contains(activity.Text))
                 await RedirectUserInput(context, activity.Text);
             else

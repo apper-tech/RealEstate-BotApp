@@ -8,6 +8,7 @@ namespace AkaratakBot
     [Serializable]
     public class InsertParameters
     {
+        public SearchEntry currentEntry { get; set; }
         public int insertSize { get; set; }
         public int insertFloorCount { get; set; }
         public int insertFloorLevel { get; set; }

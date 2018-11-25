@@ -13,7 +13,6 @@ namespace AkaratakBot.Dialogs.InsertDialog
     {
         public async Task StartAsync(IDialogContext context)
         {
-
             context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
             _optionList = Shared.Common.Insert.CreateForm(context);
             await this.ShowProgress(context);
@@ -28,14 +27,14 @@ namespace AkaratakBot.Dialogs.InsertDialog
 
         public async Task ShowProgress(IDialogContext context)
         {
-            PromptDialog.Choice(context,
-                AfterInsertChoice, _optionList,
-                Resources.Insert.InsertDialog.InsertFormHeader, Resources.BaseDialog.NotAValidOption,
-                3, PromptStyle.Auto);
+            var option = _optionList[0];
+            await this.CheckUserOption(context, option);
         }
-        public async Task AfterInsertChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
+
+
+        private async Task CheckUserOption(IDialogContext context, SearchEntry searchEntry)
         {
-            var message = await argument;
+            var message =  searchEntry;
             var entry = new MiscEntry { insertResource = message };
 
             if (CheckInsertFieldResource(message, Resources.Insert.InsertDialog.InsertCancel))
@@ -59,20 +58,16 @@ namespace AkaratakBot.Dialogs.InsertDialog
             else if (MiscEntry.Contains(entry, Resources.Insert.InsertDialog.ResourceManager))
                 context.Call(new MiscDialog(entry), InsertOptionCallback);
 
-            else if (message.searchKey == "InsertKey")
-            {
-                context.Call(new PhoneNumberDialog(), InsertPhoneCallback);
-            }
         }
         public async Task InsertOptionCallback(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
             var message = await argument;
 
-            _optionList[_optionList.FindIndex(x => x.searchKey == message.searchKey)] = message;
-            if (Shared.Common.Insert.CheckForm(context, _optionList))
-                _optionList.Add(new SearchEntry { searchKey = "InsertKey", searchValue = Resources.Insert.InsertDialog.Insert + " ✔" });
-
-            await this.ShowProgress(context);
+            _optionList.Remove(message);
+            if (_optionList.Count == 0)
+                context.Call(new PhoneNumberDialog(), InsertPhoneCallback);
+            else
+                await this.ShowProgress(context);
         }
         public async Task InsertPhoneCallback(IDialogContext context, IAwaitable<object> result)
         {
@@ -84,4 +79,5 @@ namespace AkaratakBot.Dialogs.InsertDialog
             context.Done(context.MakeMessage());
         }
     }
+
 }
