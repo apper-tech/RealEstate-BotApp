@@ -140,7 +140,10 @@ namespace AkaratakBot.Shared
 
                     if (userProfile.telegramData.message != null)
                         using (AkaratakModel model = new AkaratakModel())
-                            return model.Users.Where(x => x.Telegram_ID == userProfile.telegramData.message.from.id).FirstOrDefault().User_ID;
+                        {
+                            var user = model.Users.Where(x => x.Telegram_ID == userProfile.telegramData.message.from.id).FirstOrDefault();
+                            return user != null ? user.User_ID : null;
+                        }
                     else if (emulator)
                         return WebConfigurationManager.AppSettings["AkaratakBotUserID"];
                     else return string.Empty;
