@@ -466,6 +466,8 @@ namespace AkaratakBot.Shared
                     var path = HttpContext.Current.Server.MapPath("~/_root/_logs/log.txt");
 
                     var error = "Exception Title: " + exception.Message + "\nException Inner Message: " + (exception.InnerException != null ? exception.InnerException.Message : "none");
+                    error += "Exception Stack trace: " + exception.StackTrace;
+                    error += " Inner Exception Stack trace: " + exception.InnerException != null ? exception.InnerException.StackTrace : "none";
                     File.AppendAllText(path, error);
                 }
             }
