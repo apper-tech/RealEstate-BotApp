@@ -9,6 +9,7 @@ using AkaratakBot.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Internals;
 using System.Threading;
 using Autofac;
+using AkaratakBot.Shared;
 
 namespace AkaratakBot.Controllers
 {
@@ -43,8 +44,7 @@ namespace AkaratakBot.Controllers
                 }
                 catch (System.Exception ex)
                 {
-
-                   
+                    API.IOCommon.Logger.Log(ex);
                 }
                 
             }

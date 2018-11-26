@@ -247,6 +247,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Web.config" />
+    <Content Include="_root\_logs\log.txt" />
     <Content Include="_root\_test\test.json" />
   </ItemGroup>
   <ItemGroup>
@@ -417,6 +418,7 @@
     <EmbeddedResource Include="Resources\Shared\LocationResourceManager.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocationResourceManager.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Shared\LocationResourceManager.tr-TR.resx" />
     <EmbeddedResource Include="Resources\Shared\Property_Category.ar-SA.resx">

@@ -149,8 +149,7 @@ namespace AkaratakBot.Shared
                     }
                     catch (Exception ex)
                     {
-
-
+                        API.IOCommon.Logger.Log(ex);
                     }
 
                 }
@@ -243,7 +242,7 @@ namespace AkaratakBot.Shared
                     }
                     catch (Exception ex)
                     {
-
+                        API.IOCommon.Logger.Log(ex);
                         return false;
                     }
 
@@ -301,6 +300,7 @@ namespace AkaratakBot.Shared
                     }
                     catch (Exception ex)
                     {
+                        API.IOCommon.Logger.Log(ex);
                         return string.Empty;
                     }
                 }
@@ -456,7 +456,7 @@ namespace AkaratakBot.Shared
                     catch (Exception ex)
                     {
 
-
+                        API.IOCommon.Logger.Log(ex);
                     }
 
                 }
@@ -544,6 +544,7 @@ namespace AkaratakBot.Shared
                     }
                     catch (Exception ex)
                     {
+                        API.IOCommon.Logger.Log(ex);
                         return false;
                     }
 

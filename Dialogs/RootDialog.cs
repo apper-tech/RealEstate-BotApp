@@ -104,7 +104,7 @@ namespace AkaratakBot.Dialogs
             }
             catch (Exception ex)
             {
-                await context.PostAsync($"Failed with message: {ex.Message}");
+                API.IOCommon.Logger.Log(ex);
             }
         }
 

@@ -459,6 +459,16 @@ namespace AkaratakBot.Shared
                     return $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
                 }
             }
+            public class Logger
+            {
+                public static void Log(Exception exception)
+                {
+                    var path = HttpContext.Current.Server.MapPath("~/_root/_logs/log.txt");
+
+                    var error = "Exception Title: " + exception.Message + "\nException Inner Message: " + (exception.InnerException != null ? exception.InnerException.Message : "none");
+                    File.AppendAllText(path, error);
+                }
+            }
         }
 
     }
