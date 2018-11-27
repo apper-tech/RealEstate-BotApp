@@ -251,7 +251,7 @@ namespace AkaratakBot.Shared
             private static Property GenerateProperty(UserProfile userProfile)
             {
                 var param = userProfile.insertParameters;
-                return new Property
+                var insertProperty = new Property
                 {
                     Property_Size = param.insertSize,
                     Address = param.insertAddress,
@@ -269,34 +269,41 @@ namespace AkaratakBot.Shared
                     Num_Bedrooms = param.insertBedRoomCount,
                     Num_Bathrooms = param.insertBathRoomCount,
                     Other_Details = param.insertOtherDetails,
-                    Property_Photo = API.IOCommon.PhotoManager.UploadPhotoToHost(param.insertPhotoPath),
                     Rent_Price = param.insertRentPrice,
                     Sale_Price = param.insertSalePrice,
-
                     User_ID = userProfile.telegramData.message != null ?
                     CreateOrGetUserID(userProfile) :
                     WebConfigurationManager.AppSettings["AkaratakBotUserID"],
-
                     Zip_Code = param.insertZipCode
 
                 };
+                API.IOCommon.PhotoManager.UploadPhotoToHost(param.insertPhotoPath, insertProperty);
+                return insertProperty;
             }
             private static string CreateOrGetUserID(UserProfile userProfile)
             {
                 From from = userProfile.telegramData.message.from;
                 using (AkaratakModel model = new AkaratakModel())
                 {
-                    model.Users.Add(new User
-                    {
-                        Telegram_ID = from.id,
-                        User_ID = Guid.NewGuid().ToString(),
-                        First_Name = from.first_name,
-                        Last_Name = from.last_name
-                    });
+                 
                     try
                     {
-                        model.SaveChanges();
-                        return model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
+                        var userID = model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
+                        if (userID != null)
+                            return userID;
+                        else
+                        {
+                            model.Users.Add(new User
+                            {
+                                Telegram_ID = from.id,
+                                User_ID = Guid.NewGuid().ToString(),
+                                First_Name = from.first_name,
+                                Last_Name = from.last_name,
+                                Phone_Num = userProfile.insertParameters.insertPhoneNumber
+                            });
+                            model.SaveChanges();
+                            return model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -476,6 +483,39 @@ namespace AkaratakBot.Shared
                     var result = L2EQuery.ToList();
                     return result;
                 }
+            }
+            public static IList<Attachment> GetPhotoList(int propertyID)
+            {
+                IList<Attachment> attachments = new List<Attachment>();
+                using (var context = new AkaratakModel())
+                {
+                    var L2EQuery = from item in context.Property_Photos
+                                   where item.Property_ID == propertyID
+                                   select item;
+                    try
+                    {
+                        var result = L2EQuery.ToList();
+                        foreach (var item in result)
+                            attachments.Add(Cards.GetHeroCard(
+                                 string.Empty,
+                                 string.Empty,
+                                 string.Empty,
+                                 new CardImage(url: item.Photo_Url),
+                                 new CardAction(
+                                     type: ActionTypes.MessageBack,
+                                     title: "Update This",
+                                     displayText: "Update this",
+                                     value: item.Public_Id)
+                                 ));
+                    }
+                    catch (Exception ex)
+                    {
+
+                        API.IOCommon.Logger.Log(ex);
+                    }
+
+                }
+                return attachments;
             }
 
             public static bool UpdateForm(UserProfile userProfile, List<SearchEntry> options)

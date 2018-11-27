@@ -53,7 +53,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         }
         public void AskForPropertySize(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormPropertySizeDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormPropertySizeDescription);
         }
         public void AskForAddress(IDialogContext context)
         {

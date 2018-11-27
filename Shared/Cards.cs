@@ -49,6 +49,22 @@ namespace AkaratakBot.Shared
                     }
                 }
             }.ToAttachment();
+        }       public static Attachment GetButtonCard(string text, string value)
+        {
+            return new HeroCard
+            {
+                Buttons = new List<CardAction>
+                {
+                    new CardAction
+                    {
+                        Text=text,
+                        DisplayText=text,
+                        Title=text,
+                        Type=ActionTypes.MessageBack,
+                        Value=value
+                    }
+                }
+            }.ToAttachment();
         }
     }
 

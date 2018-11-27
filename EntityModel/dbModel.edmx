@@ -75,15 +75,15 @@
 warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Property_Photos">
           <Key>
-            <PropertyRef Name="Property_Photo_ID" />
-            <PropertyRef Name="Photo_Num" />
+            <PropertyRef Name="Property_ID" />
             <PropertyRef Name="Photo_Description" />
-            <PropertyRef Name="Photo_Path" />
+            <PropertyRef Name="Public_Id" />
+            <PropertyRef Name="Photo_Url" />
           </Key>
-          <Property Name="Property_Photo_ID" Type="int" Nullable="false" />
-          <Property Name="Photo_Num" Type="int" Nullable="false" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="Photo_Description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Photo_Path" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Public_Id" Type="text" Nullable="false" />
+          <Property Name="Photo_Url" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="Property_Type">
           <Key>
@@ -199,6 +199,18 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Property_Photos_Properties">
+          <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+          <End Role="Property_Photos" Type="Self.Property_Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="PropertyID" />
+            </Principal>
+            <Dependent Role="Property_Photos">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Property_Type_Property_Category">
           <End Role="Property_Category" Type="Self.Property_Category" Multiplicity="1" />
           <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="*" />
@@ -223,10 +235,10 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Property_Photos].[Property_Photo_ID] AS [Property_Photo_ID], 
-    [Property_Photos].[Photo_Num] AS [Photo_Num], 
+    [Property_Photos].[Property_ID] AS [Property_ID], 
     [Property_Photos].[Photo_Description] AS [Photo_Description], 
-    [Property_Photos].[Photo_Path] AS [Photo_Path]
+    [Property_Photos].[Public_Id] AS [Public_Id], 
+    [Property_Photos].[Photo_Url] AS [Photo_Url]
     FROM [dbo].[Property_Photos] AS [Property_Photos]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
@@ -252,6 +264,10 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <AssociationSet Name="FK_Properties_User_ID" Association="Self.FK_Properties_User_ID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Photos_Properties" Association="Self.FK_Property_Photos_Properties">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="Property_Photos" EntitySet="Property_Photos" />
           </AssociationSet>
           <AssociationSet Name="FK_Property_Type_Property_Category" Association="Self.FK_Property_Type_Property_Category">
             <End Role="Property_Category" EntitySet="Property_Category" />
@@ -328,6 +344,7 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <NavigationProperty Name="Property_Category" Relationship="AkaratakDbModel.FK_Properties_Property_Category_ID" FromRole="Property" ToRole="Property_Category" />
           <NavigationProperty Name="Property_Type" Relationship="AkaratakDbModel.FK_Properties_Property_Type_ID" FromRole="Property" ToRole="Property_Type" />
           <NavigationProperty Name="User" Relationship="AkaratakDbModel.FK_Properties_User_ID" FromRole="Property" ToRole="User" />
+          <NavigationProperty Name="Property_Photos" Relationship="AkaratakDbModel.FK_Property_Photos_Properties" FromRole="Property" ToRole="Property_Photos" />
         </EntityType>
         <EntityType Name="Property_Category">
           <Key>
@@ -376,18 +393,6 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <Property Name="Telegram_ID" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="AkaratakDbModel.FK_Properties_User_ID" FromRole="User" ToRole="Property" />
         </EntityType>
-        <EntityType Name="Property_Photos">
-          <Key>
-            <PropertyRef Name="Property_Photo_ID" />
-            <PropertyRef Name="Photo_Num" />
-            <PropertyRef Name="Photo_Description" />
-            <PropertyRef Name="Photo_Path" />
-          </Key>
-          <Property Name="Property_Photo_ID" Type="Int32" Nullable="false" />
-          <Property Name="Photo_Num" Type="Int32" Nullable="false" />
-          <Property Name="Photo_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Photo_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Cities_Countries">
           <End Role="Countries" Type="Self.Country" Multiplicity="1" />
           <End Role="Cities" Type="Self.City" Multiplicity="*" />
@@ -421,7 +426,6 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <EntitySet Name="Property_Type" EntityType="Self.Property_Type" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" />
           <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Cities" EntitySet="Cities" />
@@ -451,6 +455,11 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
             <End Role="Property" EntitySet="Properties" />
           </AssociationSet>
           <EntitySet Name="TestTables" EntityType="AkaratakDbModel.TestTable" />
+          <EntitySet Name="Property_Photos" EntityType="AkaratakDbModel.Property_Photos" />
+          <AssociationSet Name="FK_Property_Photos_Properties" Association="AkaratakDbModel.FK_Property_Photos_Properties">
+            <End Role="Property" EntitySet="Properties" />
+            <End Role="Property_Photos" EntitySet="Property_Photos" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Properties_City_ID">
           <End Type="AkaratakDbModel.City" Role="City" Multiplicity="0..1" />
@@ -520,6 +529,31 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <Property Name="TestDate" Type="DateTime" Precision="3" />
           <Property Name="TestDate2" Type="DateTime" Precision="7" />
         </EntityType>
+        <EntityType Name="Property_Photos">
+          <Key>
+            <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Photo_Description" />
+            <PropertyRef Name="Public_Id" />
+            <PropertyRef Name="Photo_Url" />
+          </Key>
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <Property Name="Photo_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Public_Id" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo_Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Property" Relationship="AkaratakDbModel.FK_Property_Photos_Properties" FromRole="Property_Photos" ToRole="Property" />
+        </EntityType>
+        <Association Name="FK_Property_Photos_Properties">
+          <End Type="AkaratakDbModel.Property" Role="Property" Multiplicity="1" />
+          <End Type="AkaratakDbModel.Property_Photos" Role="Property_Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="PropertyID" />
+            </Principal>
+            <Dependent Role="Property_Photos">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -634,22 +668,22 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Property_Photos">
-            <EntityTypeMapping TypeName="AkaratakDbModel.Property_Photos">
-              <MappingFragment StoreEntitySet="Property_Photos">
-                <ScalarProperty Name="Property_Photo_ID" ColumnName="Property_Photo_ID" />
-                <ScalarProperty Name="Photo_Num" ColumnName="Photo_Num" />
-                <ScalarProperty Name="Photo_Description" ColumnName="Photo_Description" />
-                <ScalarProperty Name="Photo_Path" ColumnName="Photo_Path" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TestTables">
             <EntityTypeMapping TypeName="AkaratakDbModel.TestTable">
               <MappingFragment StoreEntitySet="TestTable">
                 <ScalarProperty Name="TestDate2" ColumnName="TestDate2" />
                 <ScalarProperty Name="TestDate" ColumnName="TestDate" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Photos">
+            <EntityTypeMapping TypeName="AkaratakDbModel.Property_Photos">
+              <MappingFragment StoreEntitySet="Property_Photos">
+                <ScalarProperty Name="Photo_Url" ColumnName="Photo_Url" />
+                <ScalarProperty Name="Public_Id" ColumnName="Public_Id" />
+                <ScalarProperty Name="Photo_Description" ColumnName="Photo_Description" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

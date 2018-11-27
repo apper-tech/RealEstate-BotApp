@@ -15,6 +15,8 @@ using System.Reflection;
 using System.Resources;
 using System.Web;
 using System.Web.Configuration;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 
 namespace AkaratakBot.Shared
 {
@@ -26,6 +28,10 @@ namespace AkaratakBot.Shared
             private static string _mapKey = ConfigurationManager.AppSettings["GoogleMapsApiKey"];
             private static string _mapGeoUrl = ConfigurationManager.AppSettings["GoogleMapsGeocodeUrl"];
             private static string _mapStaticUrl = ConfigurationManager.AppSettings["GoogleMapsStaticImageUrl"];
+            private static string cloudName = WebConfigurationManager.AppSettings["CloudinaryCloudName"];
+            private static string cloudKey = WebConfigurationManager.AppSettings["CloudinaryApiKey"];
+            private static string cloudSecret = WebConfigurationManager.AppSettings["CloudinaryApiSecret"];
+
 
             public class PhotoManager
             {
@@ -74,27 +80,32 @@ namespace AkaratakBot.Shared
                                               select s[random.Next(s.Length)]).ToArray());
                     return name;
                 }
-                public static string UploadPhotoToHost(string photoPath)
+                public static void UploadPhotoToHost(string photoPath, Property property)
                 {
-                    string _photoNames = string.Empty;
-                    var ftpUsername = WebConfigurationManager.AppSettings["AkaratakFtpUsername"];
-                    var ftpPassword = WebConfigurationManager.AppSettings["AkaratakFtpPassword"];
-                    var ftpUrl = WebConfigurationManager.AppSettings["AkaratakFtpUrl"];
-
-
-
+                   
                     foreach (var item in photoPath.Split(_photoSpliter))
                     {
                         FileInfo file = new FileInfo(item);
                         string _photopath = GeneratePhotoName() + file.Extension;
-                        using (WebClient client = new WebClient())
+                        var account = new Account
                         {
-                            client.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
-                            client.UploadFile($"{ftpUrl}/{_photopath}", WebRequestMethods.Ftp.UploadFile, file.FullName);
-                        }
-                        _photoNames += _photopath + "|";
+                            Cloud = cloudName,
+                            ApiKey = cloudKey,
+                            ApiSecret = cloudSecret
+                        };
+                        Cloudinary cloudinary = new Cloudinary(account);
+                        var uploadParams = new VideoUploadParams()
+                        {
+                          File = new FileDescription(file.FullName)
+                        };
+                        var uploadResult = cloudinary.Upload(uploadParams);
+                        property.Property_Photos.Add(new Property_Photos
+                        {
+                            Photo_Description = string.Empty,
+                            Photo_Url = uploadResult.Uri.ToString(),
+                            Public_Id = uploadResult.PublicId
+                        });
                     }
-                    return _photoNames;
                 }
                 public static string UploadPhotoToHost(string photoPath, string oldPhotoPath)
                 {
