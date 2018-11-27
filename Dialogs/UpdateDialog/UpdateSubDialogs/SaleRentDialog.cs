@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using static AkaratakBot.Shared.API.IOCommon;
 
 namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
 {
@@ -23,21 +24,23 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         }
         public void AskForSalePrice(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterSalePriceChoice, Resources.Insert.InsertDialog.InsertFormSalePriceCountDescription);
+            PromptDialog.Text(context, AfterSalePriceChoice, Resources.Insert.InsertDialog.InsertFormSalePriceCountDescription);
         }
         public void AskFoRentPrice(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterRentPriceChoice, Resources.Insert.InsertDialog.InsertFormRentPriceCountDescription);
+            PromptDialog.Text(context, AfterRentPriceChoice, Resources.Insert.InsertDialog.InsertFormRentPriceCountDescription);
         }
-        public async Task AfterSalePriceChoice(IDialogContext context, IAwaitable<double> argument)
+        public async Task AfterSalePriceChoice(IDialogContext context, IAwaitable<string> argument)
         {
-            _userProfile.updateParameters.updateSalePrice =(int) await argument;
+            var message = await argument;
+            _userProfile.updateParameters.updateSalePrice = CultureResourceManager.toEnglishNumber(message);
             context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             this.AskFoRentPrice(context);
         }
-        public async Task AfterRentPriceChoice(IDialogContext context, IAwaitable<double> argument)
+        public async Task AfterRentPriceChoice(IDialogContext context, IAwaitable<string> argument)
         {
-            _userProfile.updateParameters.updateRentPrice =(int) await argument;
+            var message = await argument;
+            _userProfile.updateParameters.updateRentPrice = CultureResourceManager.toEnglishNumber(message);
             context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             context.Done(Shared.Common.Insert.CheckField(context, _userOption));
         }

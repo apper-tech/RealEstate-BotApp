@@ -1,1 +1,139 @@
-﻿
+﻿Exception Title: Input string was not in a correct format.
+Exception Inner Message: noneException Stack trace:    at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at Microsoft.Bot.Builder.Dialogs.PromptRecognizer.<>c.<RecognizeNumbers>b__11_3(RecognizeEntity`1 x) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptRecognizer.cs:line 232
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   at System.Collections.Generic.List`1.InsertRange(Int32 index, IEnumerable`1 collection)
+   at Microsoft.Bot.Builder.Dialogs.PromptRecognizer.RecognizeNumbers(IMessageActivity message, IPromptRecognizeNumbersOptions options) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptRecognizer.cs:line 235
+   at Microsoft.Bot.Builder.Dialogs.Extensions.RecognizeDoubleInRange(IPromptRecognizer recognizer, IMessageActivity message, Nullable`1 min, Nullable`1 max) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptRecognizer.cs:line 527
+   at Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.TryParse(IMessageActivity message, Double& result) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptDialog.cs:line 893
+   at Microsoft.Bot.Builder.Dialogs.Internals.Prompt`2.<MessageReceivedAsync>d__3.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptDialog.cs:line 1163
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Dialogs.Internals.DialogTask.ThunkResume`1.<Rest>d__5.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\DialogTask.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.<Microsoft-Bot-Builder-Internals-Fibers-IWait<C>-PollAsync>d__19.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Frame`1.<Microsoft-Bot-Builder-Internals-Fibers-IFrameLoop<C>-PollAsync>d__9.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Fiber`1.<Microsoft-Bot-Builder-Internals-Fibers-IFiberLoop<C>-PollAsync>d__16.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
+   at AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs.SaleRentDialog.<AfterSalePriceChoice>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Dialogs.Internals.DialogTask.ThunkResume`1.<Rest>d__5.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\DialogTask.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.<Microsoft-Bot-Builder-Internals-Fibers-IWait<C>-PollAsync>d__19.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Frame`1.<Microsoft-Bot-Builder-Internals-Fibers-IFrameLoop<C>-PollAsync>d__9.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Fiber`1.<Microsoft-Bot-Builder-Internals-Fibers-IFiberLoop<C>-PollAsync>d__16.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
+   at AkaratakBot.Dialogs.InsertDialog.BaseDialog.<InsertOptionCallback>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Dialogs.Internals.DialogTask.ThunkResume`1.<Rest>d__5.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\DialogTask.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.<Microsoft-Bot-Builder-Internals-Fibers-IWait<C>-PollAsync>d__19.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Frame`1.<Microsoft-Bot-Builder-Internals-Fibers-IFrameLoop<C>-PollAsync>d__9.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Fiber`1.<Microsoft-Bot-Builder-Internals-Fibers-IFiberLoop<C>-PollAsync>d__16.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
+   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext()Exception Title: Input string was not in a correct format.
+Exception Inner Message: noneException Stack trace:    at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at Microsoft.Bot.Builder.Dialogs.PromptRecognizer.<>c.<RecognizeNumbers>b__11_3(RecognizeEntity`1 x) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptRecognizer.cs:line 232
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   at System.Collections.Generic.List`1.InsertRange(Int32 index, IEnumerable`1 collection)
+   at Microsoft.Bot.Builder.Dialogs.PromptRecognizer.RecognizeNumbers(IMessageActivity message, IPromptRecognizeNumbersOptions options) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptRecognizer.cs:line 235
+   at Microsoft.Bot.Builder.Dialogs.Extensions.RecognizeDoubleInRange(IPromptRecognizer recognizer, IMessageActivity message, Nullable`1 min, Nullable`1 max) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptRecognizer.cs:line 527
+   at Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.TryParse(IMessageActivity message, Double& result) in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptDialog.cs:line 893
+   at Microsoft.Bot.Builder.Dialogs.Internals.Prompt`2.<MessageReceivedAsync>d__3.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\PromptDialog.cs:line 1163
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Dialogs.Internals.DialogTask.ThunkResume`1.<Rest>d__5.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\DialogTask.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.<Microsoft-Bot-Builder-Internals-Fibers-IWait<C>-PollAsync>d__19.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Frame`1.<Microsoft-Bot-Builder-Internals-Fibers-IFrameLoop<C>-PollAsync>d__9.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Fiber`1.<Microsoft-Bot-Builder-Internals-Fibers-IFiberLoop<C>-PollAsync>d__16.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
+   at AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs.SaleRentDialog.<AfterSalePriceChoice>d__6.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\InsertDialog\InsertSubDialogs\SaleRentDialog.cs:line 35
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Dialogs.Internals.DialogTask.ThunkResume`1.<Rest>d__5.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\DialogTask.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.<Microsoft-Bot-Builder-Internals-Fibers-IWait<C>-PollAsync>d__19.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Frame`1.<Microsoft-Bot-Builder-Internals-Fibers-IFrameLoop<C>-PollAsync>d__9.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Fiber`1.<Microsoft-Bot-Builder-Internals-Fibers-IFiberLoop<C>-PollAsync>d__16.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
+   at AkaratakBot.Dialogs.InsertDialog.BaseDialog.<InsertOptionCallback>d__6.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\InsertDialog\InsertBaseDialog.cs:line 64
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Dialogs.Internals.DialogTask.ThunkResume`1.<Rest>d__5.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Dialogs\DialogTask.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.<Microsoft-Bot-Builder-Internals-Fibers-IWait<C>-PollAsync>d__19.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Frame`1.<Microsoft-Bot-Builder-Internals-Fibers-IFrameLoop<C>-PollAsync>d__9.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Bot.Builder.Internals.Fibers.Fiber`1.<Microsoft-Bot-Builder-Internals-Fibers-IFiberLoop<C>-PollAsync>d__16.MoveNext() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Fiber.cs:line 0
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
+   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Resources;
 using System.Threading.Tasks;
 using System.Web;
+using static AkaratakBot.Shared.API.IOCommon;
 
 namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
 {
@@ -68,39 +69,39 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         }
         public void AskForFloorCount(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormFloorCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormFloorCountDescription);
         }
         public void AskForFloorLevel(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormFloorLevelCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormFloorLevelCountDescription);
         }
         public void AskForBedroomCount(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormBedroomCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormBedroomCountDescription);
         }
         public void AskForBathroomCount(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormBathroomCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Update.UpdateDialog.UpdateFormBathroomCountDescription);
         }
-        public async Task AfterNumberEntry(IDialogContext context, IAwaitable<double> argument)
+        public async Task AfterNumberEntry(IDialogContext context, IAwaitable<string> argument)
         {
             var message = await argument;
             switch (_option.userOptions)
             {
                 case MiscOptions.PropertySize:
-                    _userProfile.updateParameters.updateSize = (int)message;
+                    _userProfile.updateParameters.updateSize = CultureResourceManager.toEnglishNumber(message);
                     break;
                 case MiscOptions.FloorCount:
-                    _userProfile.updateParameters.updateFloorCount = (int)message;
+                    _userProfile.updateParameters.updateFloorCount = CultureResourceManager.toEnglishNumber(message);
                     break;
                 case MiscOptions.BathroomCount:
-                    _userProfile.updateParameters.updateBathRoomCount = (int)message;
+                    _userProfile.updateParameters.updateBathRoomCount = CultureResourceManager.toEnglishNumber(message);
                     break;
                 case MiscOptions.BedRoomCount:
-                    _userProfile.updateParameters.updateBedRoomCount = (int)message;
+                    _userProfile.updateParameters.updateBedRoomCount = CultureResourceManager.toEnglishNumber(message);
                     break;
                 case MiscOptions.FloorLevel:
-                    _userProfile.updateParameters.updateFloorLevel = (int)message;
+                    _userProfile.updateParameters.updateFloorLevel = CultureResourceManager.toEnglishNumber(message);
                     break;
             }
 
@@ -134,7 +135,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
     {
         public MiscOptions userOptions { get; set; }
         public SearchEntry userResource { get; set; }
-        
+
         public static List<MiscEntry> GetMiscEntries()
         {
             return new List<MiscEntry>
@@ -209,5 +210,5 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         ZipCode,
         Default
     }
-    
+
 }

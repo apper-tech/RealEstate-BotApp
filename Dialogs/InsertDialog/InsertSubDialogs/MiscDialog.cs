@@ -5,6 +5,7 @@ using System.Linq;
 using System.Resources;
 using System.Threading.Tasks;
 using System.Web;
+using static AkaratakBot.Shared.API.IOCommon;
 
 namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 {
@@ -49,7 +50,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         }
         public void AskForPropertySize(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormPropertySizeDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormPropertySizeDescription);
         }
 
         public void AskForZipCode(IDialogContext context)
@@ -62,39 +63,40 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         }
         public void AskForFloorCount(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormFloorCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormFloorCountDescription);
         }
         public void AskForFloorLevel(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormFloorLevelCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormFloorLevelCountDescription);
         }
         public void AskForBedroomCount(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormBedroomCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormBedroomCountDescription);
         }
         public void AskForBathroomCount(IDialogContext context)
         {
-            PromptDialog.Number(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormBathroomCountDescription);
+            PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormBathroomCountDescription);
         }
-        public async Task AfterNumberEntry(IDialogContext context, IAwaitable<double> argument)
+        public async Task AfterNumberEntry(IDialogContext context, IAwaitable<string> argument)
         {
-            var message = await argument;
+            var result = await argument;
+            var message = CultureResourceManager.toEnglishNumber(result);
             switch (_option.insertOptions)
             {
                 case MiscInsertOptions.PropertySize:
-                    _userProfile.insertParameters.insertSize = (int)message;
+                    _userProfile.insertParameters.insertSize = message;
                     break;
                 case MiscInsertOptions.FloorCount:
-                    _userProfile.insertParameters.insertFloorCount = (int)message;
+                    _userProfile.insertParameters.insertFloorCount = message;
                     break;
                 case MiscInsertOptions.BathroomCount:
-                    _userProfile.insertParameters.insertBathRoomCount = (int)message;
+                    _userProfile.insertParameters.insertBathRoomCount = message;
                     break;
                 case MiscInsertOptions.BedRoomCount:
-                    _userProfile.insertParameters.insertBedRoomCount = (int)message;
+                    _userProfile.insertParameters.insertBedRoomCount = message;
                     break;
                 case MiscInsertOptions.FloorLevel:
-                    _userProfile.insertParameters.insertFloorLevel = (int)message;
+                    _userProfile.insertParameters.insertFloorLevel = message;
                     break;
             }
 

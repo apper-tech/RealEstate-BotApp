@@ -151,6 +151,23 @@ namespace AkaratakBot.Shared
             }
             public class CultureResourceManager
             {
+                public static int toEnglishNumber(string input)
+                {
+                    string EnglishNumbers = "";
+
+                    for (int i = 0; i < input.Length; i++)
+                    {
+                        if (Char.IsDigit(input[i]))
+                        {
+                            EnglishNumbers += char.GetNumericValue(input, i);
+                        }
+                        else
+                        {
+                            EnglishNumbers += input[i].ToString();
+                        }
+                    }
+                    return int.Parse(EnglishNumbers);
+                }
                 public class UserLocationResourceManager : LocationResourceManager
                 {
                     private readonly ResourceManager resourceManager;
@@ -470,7 +487,8 @@ namespace AkaratakBot.Shared
 
                     var error = "Exception Title: " + exception.Message + "\nException Inner Message: " + (exception.InnerException != null ? exception.InnerException.Message : "none");
                     error += "Exception Stack trace: " + exception.StackTrace;
-                    error += " Inner Exception Stack trace: " + exception.InnerException != null ? exception.InnerException.StackTrace : "none";
+                    if (exception.InnerException != null)
+                        error += " Inner Exception Stack trace: " + exception.InnerException.StackTrace;
                     File.AppendAllText(path, error);
                 }
             }
