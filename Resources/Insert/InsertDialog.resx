@@ -131,39 +131,51 @@
   </data>
   <data name="InsertFieldBathroomCount" xml:space="preserve">
     <value>Enter Number of Bathrooms</value>
+    <comment>6</comment>
   </data>
   <data name="InsertFieldBedroomCount" xml:space="preserve">
     <value>Enter Number of Bedrooms</value>
+    <comment>7</comment>
   </data>
   <data name="InsertFieldCategoryType" xml:space="preserve">
     <value>Select category details</value>
+    <comment>1</comment>
   </data>
   <data name="InsertFieldCountryCity" xml:space="preserve">
     <value>Select Location details</value>
+    <comment>11</comment>
   </data>
   <data name="InsertFieldFloorCount" xml:space="preserve">
     <value> Floor Count</value>
+    <comment>2</comment>
   </data>
   <data name="InsertFieldFloorLevelCount" xml:space="preserve">
     <value>Property's Floor</value>
+    <comment>3</comment>
   </data>
   <data name="InsertFieldGardenGarageChoice" xml:space="preserve">
     <value>Property Exterior Details</value>
+    <comment>9</comment>
   </data>
   <data name="InsertFieldOtherDetailsText" xml:space="preserve">
     <value>Extra details for the property</value>
+    <comment>10</comment>
   </data>
   <data name="InsertFieldPhotoSelection" xml:space="preserve">
     <value>Upload Property Photo</value>
+    <comment>12</comment>
   </data>
   <data name="InsertFieldPropertySize" xml:space="preserve">
     <value>Property size</value>
+    <comment>4</comment>
   </data>
   <data name="InsertFieldSaleRentPriceCount" xml:space="preserve">
     <value>Sale /Rent Price</value>
+    <comment>5</comment>
   </data>
   <data name="InsertFieldZipCodeText" xml:space="preserve">
     <value>Property's Area Zip Code( if exists )</value>
+    <comment>8</comment>
   </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Enter the property address </value>

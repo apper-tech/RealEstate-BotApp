@@ -21,6 +21,7 @@ namespace AkaratakBot
         public string searchKey { get; set; }
         public string searchValue { get; set; }
         public bool searchValid { get; set; }
+        public int searchOrder { get; set; }
         public SearchChoice searchChoice { get; set; }
         public int CompareTo(string other)
         {

@@ -10,6 +10,8 @@ using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Web.Configuration;
+using System.ComponentModel.Design;
+using System.Web;
 
 namespace AkaratakBot.Shared
 {
@@ -190,15 +192,25 @@ namespace AkaratakBot.Shared
         {
             public static List<SearchEntry> CreateForm(IDialogContext context)
             {
+                var activity = (Activity)context.Activity;
+                var locale = !string.IsNullOrEmpty(activity.Locale) && !activity.Locale.Contains("en-US") ? "." + activity.Locale : string.Empty;
+                string resxFilename = HttpContext.Current.Server.MapPath($"~/Resources/Insert/InsertDialog{locale}.resx");
                 List<SearchEntry> entries = new List<SearchEntry>();
-                ResourceManager resourceManager = new ResourceManager(typeof(Resources.Insert.InsertDialog));
-                ResourceSet resourceSet = resourceManager.GetResourceSet(new CultureInfo(context.PrivateConversationData.GetValueOrDefault<string>("ULTN") != null ? context.PrivateConversationData.GetValueOrDefault<string>("ULTN") : "en-US"), true, true);
-                foreach (DictionaryEntry item in resourceSet)
-                    if (item.Key.ToString().Contains("InsertField"))
-                        entries.Add(new SearchEntry { searchKey = item.Key.ToString(), searchValue = item.Value.ToString() });
-
-                entries.Add(new SearchEntry { searchKey = "InsertCancel", searchValue = Resources.Insert.InsertDialog.InsertCancel });
-
+                ResXResourceReader rr = new ResXResourceReader(resxFilename);
+                rr.UseResXDataNodes = true;
+                IDictionaryEnumerator dict = rr.GetEnumerator();
+                while (dict.MoveNext())
+                {
+                    ResXDataNode node = (ResXDataNode)dict.Value;
+                    if (node.Name.Contains("InsertField"))
+                        entries.Add(new SearchEntry
+                        {
+                            searchKey = node.Name,
+                            searchValue = node.GetValue((ITypeResolutionService)null).ToString(),
+                            searchOrder = !string.IsNullOrEmpty(node.Comment) ? int.Parse(node.Comment) : 0
+                        });
+                }
+                entries = entries.OrderBy(x => x.searchOrder).ToList();
                 return entries;
             }
             public static SearchEntry CheckField(IDialogContext context, SearchEntry entry)
@@ -285,7 +297,7 @@ namespace AkaratakBot.Shared
                 From from = userProfile.telegramData.message.from;
                 using (AkaratakModel model = new AkaratakModel())
                 {
-                 
+
                     try
                     {
                         var userID = model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
@@ -427,7 +439,7 @@ namespace AkaratakBot.Shared
                         return true;
                 return false;
             }
-            public static bool CheckUserHasProperty(UserProfile userProfile,bool emulator)
+            public static bool CheckUserHasProperty(UserProfile userProfile, bool emulator)
             {
                 var id = API.IOCommon.UserManager.GetUserID(userProfile, emulator);
                 if (id == null)

@@ -94,9 +94,10 @@ namespace AkaratakBot.Shared
                             ApiSecret = cloudSecret
                         };
                         Cloudinary cloudinary = new Cloudinary(account);
-                        var uploadParams = new VideoUploadParams()
+                        var uploadParams = new ImageUploadParams()
                         {
-                          File = new FileDescription(file.FullName)
+                          File = new FileDescription(file.FullName),
+                          Format=file.Extension.Replace(".",string.Empty)
                         };
                         var uploadResult = cloudinary.Upload(uploadParams);
                         property.Property_Photos.Add(new Property_Photos
@@ -497,9 +498,9 @@ namespace AkaratakBot.Shared
                     var path = HttpContext.Current.Server.MapPath("~/_root/_logs/log.txt");
 
                     var error = "Exception Title: " + exception.Message + "\nException Inner Message: " + (exception.InnerException != null ? exception.InnerException.Message : "none");
-                    error += "Exception Stack trace: " + exception.StackTrace;
-                    if (exception.InnerException != null)
-                        error += " Inner Exception Stack trace: " + exception.InnerException.StackTrace;
+                   // error += "Exception Stack trace: " + exception.StackTrace;
+                   // if (exception.InnerException != null)
+                     //   error += " Inner Exception Stack trace: " + exception.InnerException.StackTrace;
                     File.AppendAllText(path, error);
                 }
             }
