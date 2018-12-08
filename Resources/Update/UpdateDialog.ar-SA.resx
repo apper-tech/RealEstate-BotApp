@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UpdateFieldCategoryType" xml:space="preserve">
-    <value>حدد تفاصيل الفئة</value>
+    <value>حدد الفئة</value>
   </data>
   <data name="UpdateFieldCountryCity" xml:space="preserve">
-    <value>اختر تفاصيل الدولة</value>
+    <value>ادخل موقع العقار (البلد و المدينة)</value>
   </data>
   <data name="UpdateFieldFloorCount" xml:space="preserve">
-    <value>عدد الدور</value>
+    <value>عدد الطوابق</value>
   </data>
   <data name="UpdateFieldFloorLevelCount" xml:space="preserve">
-    <value>طابق الملكية</value>
+    <value>رقم طابق العقار</value>
   </data>
   <data name="UpdateFieldGardenGarageChoice" xml:space="preserve">
-    <value>تفاصيل العقار الخارجية</value>
+    <value>معلومات عن ملحقات العقار</value>
   </data>
   <data name="UpdateFieldLocationLatLng" xml:space="preserve">
-    <value>حدد الموقع الممتلكات</value>
+    <value>حدد موقع العقار </value>
   </data>
   <data name="UpdateFieldOtherDetailsText" xml:space="preserve">
-    <value>تفاصيل اضافية عن العقار</value>
+    <value>ميزات إضافية للعقار</value>
   </data>
   <data name="UpdateFieldPhotoSelection" xml:space="preserve">
-    <value>تحميل صور الممتلكات</value>
+    <value>اضافة صور للعقار </value>
   </data>
   <data name="UpdateFieldPropertySize" xml:space="preserve">
-    <value>حجم العقار</value>
+    <value>مساحة العقار بالمتر المربع</value>
   </data>
   <data name="UpdateFieldSaleRentPriceCount" xml:space="preserve">
-    <value>بيع / سعر الإيجار</value>
+    <value>سعر البيع / الإيجار</value>
   </data>
   <data name="UpdateFieldZipCodeText" xml:space="preserve">
     <value>الرمز البريدي لمنطقة العقار (إن وجد)</value>
@@ -166,22 +166,22 @@
     <value>أدخل عدد الطوابق للموقع</value>
   </data>
   <data name="UpdateFormFloorLevelCountDescription" xml:space="preserve">
-    <value>في أي طابق توجد الملكية (-1 هي القاعدة ، 2 هي الأرضية السرية)</value>
+    <value>ادخل طابق العقار (-1 للقبو ,2 للطابق الثاني)</value>
   </data>
   <data name="UpdateFormHeader" xml:space="preserve">
-    <value>حدد خيارًا لإضافة خاصية</value>
+    <value>؟</value>
   </data>
   <data name="UpdateFormLocationLatLngDescription" xml:space="preserve">
-    <value>أدخل عنوان الخاصية لإظهار المواقع avalable</value>
+    <value>ادخل عنوان للعقار لاظهار النتائج المحتملة</value>
   </data>
   <data name="UpdateFormOtherDetailsTextDescription" xml:space="preserve">
-    <value>أدخل التفاصيل حول الخاصية (ميزات)</value>
+    <value>ادخل ميزات اضافية للعقار</value>
   </data>
   <data name="UpdateFormPropertyPhotoDescription" xml:space="preserve">
-    <value>تحميل صور العقار (4 ماكس)</value>
+    <value>تحميل صور العقار (4  حد اقصى)</value>
   </data>
   <data name="UpdateFormPropertySizeDescription" xml:space="preserve">
-    <value>أدخل حجم العقار بالمتر المربع</value>
+    <value>أدخل مساحة العقار بالمتر المربع</value>
   </data>
   <data name="UpdateFormRentPriceCountDescription" xml:space="preserve">
     <value>ما هو سعر الإيجار؟</value>
@@ -190,7 +190,7 @@
     <value>ما هو سعر البيع؟</value>
   </data>
   <data name="UpdateFormZipCodeTextDescription" xml:space="preserve">
-    <value>ما هو الرمز البريدي؟</value>
+    <value>ما رقم العقار البريدي؟ </value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>تحديث</value>
@@ -205,15 +205,15 @@
     <value>أدخل عدد غرف النوم</value>
   </data>
   <data name="UpdateSelectProperty" xml:space="preserve">
-    <value>تحديث هذه الخاصية</value>
+    <value>تعديل معلومات العقار المحدد</value>
   </data>
   <data name="UpdateCancel" xml:space="preserve">
     <value>إلغاء</value>
   </data>
   <data name="UpdateDoneConfirm" xml:space="preserve">
-    <value>هل انتهيت أم غيرت؟</value>
+    <value>هل تريد تعديل البيانات؟</value>
   </data>
   <data name="UpdatePhotosErrorMessage" xml:space="preserve">
-    <value>خطأ يرجى تحميل الصور فقط</value>
+    <value> يرجى تحميل الصور فقط</value>
   </data>
 </root>

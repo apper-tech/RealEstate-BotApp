@@ -92,8 +92,7 @@ namespace AkaratakBot.Dialogs
             }
             if (optionSelected == "Test PList")
             {
-                context.Call(new InsertDialog.InsertSubDialogs.CountryDialog(new SearchEntry {searchKey="key"}), this.ResumeAfterOptionDialog);
-                ///API.IOCommon.PhotoManager.UploadPhotoToHost(@"C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\_images\_temp\123456789\p1.jpg", new EntityModel.Property());
+                API.IOCommon.PhotoManager.UploadPhotoToHost(@"C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\_images\_temp\123456789\p1.jpg", new EntityModel.Property());
             }
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)

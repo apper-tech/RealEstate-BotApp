@@ -146,7 +146,7 @@
     <comment>11</comment>
   </data>
   <data name="InsertFieldFloorCount" xml:space="preserve">
-    <value> Floor Count</value>
+    <value>Floor Count</value>
     <comment>2</comment>
   </data>
   <data name="InsertFieldFloorLevelCount" xml:space="preserve">
@@ -174,14 +174,14 @@
     <comment>5</comment>
   </data>
   <data name="InsertFieldZipCodeText" xml:space="preserve">
-    <value>Property's Area Zip Code( if exists )</value>
+    <value>Property's area zip code</value>
     <comment>8</comment>
   </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Enter the property address </value>
   </data>
   <data name="InsertFormAddressTextDescription" xml:space="preserve">
-    <value>Enter the Property's Address</value>
+    <value>Enter the property's Address</value>
   </data>
   <data name="InsertFormBathroomCountDescription" xml:space="preserve">
     <value>Enter the property's number of bathrooms</value>
@@ -189,17 +189,11 @@
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>Enter the property's number of bedrooms</value>
   </data>
-  <data name="InsertFormCitySelection" xml:space="preserve">
-    <value>Select City</value>
-  </data>
   <data name="InsertFormConfirmLocation" xml:space="preserve">
     <value>Is this Location Correct?</value>
   </data>
   <data name="InsertFormCountryNext" xml:space="preserve">
     <value>Next &gt;&gt;</value>
-  </data>
-  <data name="InsertFormCountrySelection" xml:space="preserve">
-    <value>Select Country</value>
   </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
     <value>Enter the number of floors for the property</value>

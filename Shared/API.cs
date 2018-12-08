@@ -482,7 +482,8 @@ namespace AkaratakBot.Shared
                     return new Attachment()
                     {
                         ContentUrl = apiUrl,
-                        ContentType = "image/png"
+                        ContentType = "image/png",
+                        Name = "staticmap.png"
                     };
                 }
                 public static string GenerateLoactionString(Place place)
