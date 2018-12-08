@@ -136,4 +136,8 @@ Exception Inner Message: noneException Stack trace:    at System.Number.ParseDou
 --- End of stack trace from previous location where exception was thrown ---
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
-   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102
+   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102Exception Title: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+Exception Inner Message: noneException Title: Type 'AkaratakBot.Shared.API+IOCommon+CultureResourceManager+UserLocationResourceManager' in Assembly 'AkaratakBot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' is not marked as serializable.
+Exception Inner Message: noneException Title: Type 'AkaratakBot.Shared.API+IOCommon+CultureResourceManager+UserLocationResourceManager' in Assembly 'AkaratakBot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' is not marked as serializable.
+Exception Inner Message: none

@@ -35,8 +35,8 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
             PromptDialog.Choice(
                context,
                AfterCountryChoice,
-               Shared.Common.Insert.GetCountryList(context, entry),
-               Resources.Search.SearchDialog.SearchCategorySelection);
+               Common.Insert.GetCountryList(context, entry),
+               Resources.Insert.InsertDialog.InsertFormCountrySelection);
         }
         public async Task AfterCountryChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
@@ -57,7 +57,8 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             PromptDialog.Choice(context,
                AfteCityChoice, Shared.Common.Insert.GetCityList(context, message),
-               Resources.Search.SearchDialog.SearchTypeSelection, Resources.BaseDialog.NotAValidOption,
+               Resources.Insert.InsertDialog.InsertFormCitySelection,
+               Resources.BaseDialog.NotAValidOption,
                3, PromptStyle.Auto);
         }
         public async Task AfteCityChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
@@ -85,6 +86,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
             var place = API.IOCommon.LocationManager.GeocodeUserLocation(_userProfile.insertParameters.insertAddress);
             _userProfile.insertParameters.insertLocation = API.IOCommon.LocationManager.GenerateLoactionString(place);
             context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+
             var replay = context.MakeMessage();
             replay.Attachments.Add(API.IOCommon.LocationManager.GenerateImageByLocation(place));
             await context.PostAsync(replay);
