@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Settings" xml:space="preserve">
-    <value>الاعدادات</value>
+    <value>الإعدادات</value>
   </data>
   <data name="SettingsLanguage" xml:space="preserve">
     <value>تغيير اللغة</value>
@@ -128,5 +128,8 @@
   </data>
   <data name="SettingsReturn" xml:space="preserve">
     <value>عودة</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>ك</value>
   </data>
 </root>

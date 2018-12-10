@@ -136,25 +136,4 @@ Exception Inner Message: noneException Stack trace:    at System.Number.ParseDou
 --- End of stack trace from previous location where exception was thrown ---
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
-   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102Exception Title: Index was out of range. Must be non-negative and less than the size of the collection.
-Parameter name: index
-Exception Inner Message: noneException Title: Type 'AkaratakBot.Shared.API+IOCommon+CultureResourceManager+UserLocationResourceManager' in Assembly 'AkaratakBot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' is not marked as serializable.
-Exception Inner Message: noneException Title: Type 'AkaratakBot.Shared.API+IOCommon+CultureResourceManager+UserLocationResourceManager' in Assembly 'AkaratakBot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' is not marked as serializable.
-Exception Inner Message: noneException Title: The underlying provider failed on Open.
-Exception Inner Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)Exception Title: An error occurred while sending the request.
-Exception Inner Message: The remote name could not be resolved: 'telegram.botframework.com'Exception Title: Object reference not set to an instance of an object.
-Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
-Exception Inner Message: noneException Title: Input string was not in a correct format.
-Exception Inner Message: noneException Title: Value cannot be null.
-Parameter name: String
-Exception Inner Message: noneException Title: An error occurred while executing the command definition. See the inner exception for details.
-Exception Inner Message: A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)Exception Title: The underlying provider failed on Open.
-Exception Inner Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)Exception Title: Operation returned an invalid status code 'BadRequest'
-Exception Inner Message: noneException Title: Index was out of range. Must be non-negative and less than the size of the collection.
-Parameter name: index
-Exception Inner Message: noneException Title: Input string was not in a correct format.
-Exception Inner Message: noneException Title: invalid type: expected System.String, have SearchEntry
-Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
-Exception Inner Message: noneException Title: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
-Exception Inner Message: noneException Title: The path is not of a legal form.
-Exception Inner Message: none
+   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102

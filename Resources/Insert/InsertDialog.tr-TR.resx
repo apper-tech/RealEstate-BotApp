@@ -160,7 +160,7 @@
     <value>Satış / Kira Fiyatı</value>
   </data>
   <data name="InsertFieldZipCodeText" xml:space="preserve">
-    <value>Mülkün Alanı Posta Kodu (varsa)</value>
+    <value>Mülkün Alanı Posta Kodu</value>
   </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Mülk adresini girin</value>
@@ -196,7 +196,7 @@
     <value>Kullanılabilir yerleri göstermek için mülkün adresini girin</value>
   </data>
   <data name="InsertFormOtherDetailsTextDescription" xml:space="preserve">
-    <value>Özellikle ilgili ayrıntıları girin (özellikler)</value>
+    <value>Mülkiyet ilgili ayrıntıları girin (özellikler)</value>
   </data>
   <data name="InsertFormPropertySizeDescription" xml:space="preserve">
     <value>Mülk Boyutunu metrekare olarak girin</value>

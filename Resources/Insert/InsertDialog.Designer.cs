@@ -241,15 +241,6 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select City.
-        /// </summary>
-        internal static string InsertFormCitySelection {
-            get {
-                return ResourceManager.GetString("InsertFormCitySelection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Is this Location Correct?.
         /// </summary>
         internal static string InsertFormConfirmLocation {
@@ -264,15 +255,6 @@ namespace AkaratakBot.Resources.Insert {
         internal static string InsertFormCountryNext {
             get {
                 return ResourceManager.GetString("InsertFormCountryNext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;&lt; Start.
-        /// </summary>
-        internal static string InsertFormCountryReset {
-            get {
-                return ResourceManager.GetString("InsertFormCountryReset", resourceCulture);
             }
         }
         
