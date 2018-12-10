@@ -242,6 +242,7 @@
     <EntityDeploy Include="EntityModel\dbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EntityDeploy>
     <Content Include="EntityModel\dbModel.edmx.diagram">
       <DependentUpon>dbModel.edmx</DependentUpon>

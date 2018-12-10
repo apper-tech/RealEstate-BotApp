@@ -268,6 +268,15 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;&lt; Start.
+        /// </summary>
+        internal static string InsertFormCountryReset {
+            get {
+                return ResourceManager.GetString("InsertFormCountryReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Country.
         /// </summary>
         internal static string InsertFormCountrySelection {

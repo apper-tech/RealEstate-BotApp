@@ -82,30 +82,34 @@ namespace AkaratakBot.Shared
                 }
                 public static void UploadPhotoToHost(string photoPath, Property property)
                 {
-                   
+
                     foreach (var item in photoPath.Split(_photoSpliter))
                     {
-                        FileInfo file = new FileInfo(item);
-                        string _photopath = GeneratePhotoName() + file.Extension;
-                        var account = new Account
+                        if (!string.IsNullOrEmpty(item))
                         {
-                            Cloud = cloudName,
-                            ApiKey = cloudKey,
-                            ApiSecret = cloudSecret
-                        };
-                        Cloudinary cloudinary = new Cloudinary(account);
-                        var uploadParams = new ImageUploadParams()
-                        {
-                          File = new FileDescription(file.FullName),
-                          Format=file.Extension.Replace(".",string.Empty)
-                        };
-                        var uploadResult = cloudinary.Upload(uploadParams);
-                        property.Property_Photos.Add(new Property_Photos
-                        {
-                            Photo_Description = string.Empty,
-                            Photo_Url = uploadResult.Uri.ToString(),
-                            Public_Id = uploadResult.PublicId
-                        });
+                            FileInfo file = new FileInfo(item);
+                            string _photopath = GeneratePhotoName() + file.Extension;
+                            var account = new Account
+                            {
+                                Cloud = cloudName,
+                                ApiKey = cloudKey,
+                                ApiSecret = cloudSecret
+                            };
+                            Cloudinary cloudinary = new Cloudinary(account);
+                            var uploadParams = new ImageUploadParams()
+                            {
+                                File = new FileDescription(file.FullName),
+                                Format = file.Extension.Replace(".", string.Empty)
+                            };
+                            var uploadResult = cloudinary.Upload(uploadParams);
+                            property.Property_Photos.Add(new Property_Photos
+                            {
+                                Photo_Description = string.Empty,
+                                Photo_Url = uploadResult.Uri.ToString(),
+                                Public_Id = uploadResult.PublicId
+                            });
+
+                        }
                     }
                 }
                 public static string UploadPhotoToHost(string photoPath, string oldPhotoPath)
@@ -163,7 +167,7 @@ namespace AkaratakBot.Shared
             }
             public class CultureResourceManager
             {
-                public static int toEnglishNumber(string input)
+                public static int? toEnglishNumber(string input)
                 {
                     string EnglishNumbers = "";
 
@@ -173,12 +177,15 @@ namespace AkaratakBot.Shared
                         {
                             EnglishNumbers += char.GetNumericValue(input, i);
                         }
-                        else
-                        {
-                            EnglishNumbers += input[i].ToString();
-                        }
+                        //else
+                        //{
+                        //    EnglishNumbers += input[i].ToString();
+                        //}
                     }
-                    return int.Parse(EnglishNumbers);
+                    if (!string.IsNullOrEmpty(EnglishNumbers))
+                        return int.Parse(EnglishNumbers);
+                    else
+                        return null;
                 }
                 public class UserLocationResourceManager : LocationResourceManager
                 {
@@ -482,7 +489,8 @@ namespace AkaratakBot.Shared
                     return new Attachment()
                     {
                         ContentUrl = apiUrl,
-                        ContentType = "image/png"
+                        ContentType = "image/png",
+                        Name = Resources.Insert.InsertDialog.InsertFormConfirmLocation
                     };
                 }
                 public static string GenerateLoactionString(Place place)
@@ -497,9 +505,9 @@ namespace AkaratakBot.Shared
                     var path = HttpContext.Current.Server.MapPath("~/_root/_logs/log.txt");
 
                     var error = "Exception Title: " + exception.Message + "\nException Inner Message: " + (exception.InnerException != null ? exception.InnerException.Message : "none");
-                   // error += "Exception Stack trace: " + exception.StackTrace;
-                   // if (exception.InnerException != null)
-                     //   error += " Inner Exception Stack trace: " + exception.InnerException.StackTrace;
+                    // error += "Exception Stack trace: " + exception.StackTrace;
+                    // if (exception.InnerException != null)
+                    //   error += " Inner Exception Stack trace: " + exception.InnerException.StackTrace;
                     File.AppendAllText(path, error);
                 }
             }

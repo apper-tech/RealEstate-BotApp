@@ -84,23 +84,38 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
             switch (_option.insertOptions)
             {
                 case MiscInsertOptions.PropertySize:
-                    _userProfile.insertParameters.insertSize = message;
+                    if (message == null)
+                        this.AskForPropertySize(context);
+                    else
+                        _userProfile.insertParameters.insertSize = (int)message;
                     break;
                 case MiscInsertOptions.FloorCount:
-                    _userProfile.insertParameters.insertFloorCount = message;
+                    if (message == null)
+                        this.AskForFloorCount(context);
+                    else
+                        _userProfile.insertParameters.insertFloorCount = (int)message;
                     break;
                 case MiscInsertOptions.BathroomCount:
-                    _userProfile.insertParameters.insertBathRoomCount = message;
+                    if (message == null)
+                        this.AskForBathroomCount(context);
+                    else
+                        _userProfile.insertParameters.insertBathRoomCount = (int)message;
                     break;
                 case MiscInsertOptions.BedRoomCount:
-                    _userProfile.insertParameters.insertBedRoomCount = message;
+                    if (message == null)
+                        this.AskForBedroomCount(context);
+                    else
+                        _userProfile.insertParameters.insertBedRoomCount = (int)message;
                     break;
                 case MiscInsertOptions.FloorLevel:
-                    _userProfile.insertParameters.insertFloorLevel = message;
+                    if (message == null)
+                        this.AskForFloorLevel(context);
+                    else
+                        _userProfile.insertParameters.insertFloorLevel = (int)message;
                     break;
             }
-
-            CallBack(context, _userProfile);
+            if (message != null)
+                CallBack(context, _userProfile);
         }
         public async Task AfterTextEntry(IDialogContext context, IAwaitable<string> argument)
         {

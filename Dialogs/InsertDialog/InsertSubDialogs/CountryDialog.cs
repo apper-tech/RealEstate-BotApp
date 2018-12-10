@@ -46,6 +46,11 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                 _userProfile.insertParameters.insertCountryCurrentCount += country_city_pager_count;
                 this.AskForCountry(context);
             }
+            else if (message.searchValue == Resources.Insert.InsertDialog.InsertFormCountryReset)
+            {
+                _userProfile.insertParameters.insertCountryCurrentCount = 0;
+                this.AskForCountry(context);
+            }
             else
             {
                 _userProfile.insertParameters.insertCountry = message.searchKey;
@@ -94,7 +99,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         }
         private async Task AfterLocationEntry(IDialogContext context, IAwaitable<bool> result)
         {
-            if(await result)
+            if (await result)
                 context.Done(Common.Insert.CheckField(context, _userOption));
             else
             {

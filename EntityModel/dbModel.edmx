@@ -71,15 +71,11 @@
           <Property Name="Cat_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Cat_Description" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Property_Photos">
           <Key>
-            <PropertyRef Name="Property_ID" />
-            <PropertyRef Name="Photo_Description" />
-            <PropertyRef Name="Public_Id" />
-            <PropertyRef Name="Photo_Url" />
+            <PropertyRef Name="Property_Photo_ID" />
           </Key>
+          <Property Name="Property_Photo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="Photo_Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Public_Id" Type="text" Nullable="false" />
@@ -229,18 +225,11 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Property_Category" EntityType="Self.Property_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TestTable" EntityType="Self.TestTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Property_Photos" EntityType="Self.Property_Photos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Property_Photos].[Property_ID] AS [Property_ID], 
-    [Property_Photos].[Photo_Description] AS [Photo_Description], 
-    [Property_Photos].[Public_Id] AS [Public_Id], 
-    [Property_Photos].[Photo_Url] AS [Photo_Url]
-    FROM [dbo].[Property_Photos] AS [Property_Photos]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Cities" EntitySet="Cities" />
@@ -531,11 +520,9 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
         </EntityType>
         <EntityType Name="Property_Photos">
           <Key>
-            <PropertyRef Name="Property_ID" />
-            <PropertyRef Name="Photo_Description" />
-            <PropertyRef Name="Public_Id" />
-            <PropertyRef Name="Photo_Url" />
+            <PropertyRef Name="Property_Photo_ID" />
           </Key>
+          <Property Name="Property_Photo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Property_ID" Type="Int32" Nullable="false" />
           <Property Name="Photo_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Public_Id" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -684,6 +671,7 @@ warning 6002: The table/view 'DB_9FEE73_RealEstateDB.dbo.Property_Photos' does n
                 <ScalarProperty Name="Public_Id" ColumnName="Public_Id" />
                 <ScalarProperty Name="Photo_Description" ColumnName="Photo_Description" />
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Property_Photo_ID" ColumnName="Property_Photo_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

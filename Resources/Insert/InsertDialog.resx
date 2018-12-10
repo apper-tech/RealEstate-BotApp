@@ -198,6 +198,9 @@
   <data name="InsertFormCountryNext" xml:space="preserve">
     <value>Next &gt;&gt;</value>
   </data>
+  <data name="InsertFormCountryReset" xml:space="preserve">
+    <value>&lt;&lt; Start</value>
+  </data>
   <data name="InsertFormCountrySelection" xml:space="preserve">
     <value>Select Country</value>
   </data>

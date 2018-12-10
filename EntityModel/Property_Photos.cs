@@ -14,6 +14,7 @@ namespace AkaratakBot.EntityModel
     
     public partial class Property_Photos
     {
+        public int Property_Photo_ID { get; set; }
         public int Property_ID { get; set; }
         public string Photo_Description { get; set; }
         public string Public_Id { get; set; }
