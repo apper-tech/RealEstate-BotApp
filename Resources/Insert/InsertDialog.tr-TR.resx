@@ -180,6 +180,9 @@
   <data name="InsertFormCountryNext" xml:space="preserve">
     <value>Sonraki &gt;&gt;</value>
   </data>
+  <data name="InsertFormCountryReset" xml:space="preserve">
+    <value>&lt;&lt; Başlangıç</value>
+  </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
     <value>Mülk için kat sayısını girin</value>
   </data>
