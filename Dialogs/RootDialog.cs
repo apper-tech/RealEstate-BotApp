@@ -42,8 +42,8 @@ namespace AkaratakBot.Dialogs
             _options = new List<string>() {
                       Resources.Search.SearchDialog.Search,//Search
                       Resources.Settings.SettingsDialog.Settings,//Settings
-                      Resources.Insert.InsertDialog.Insert,//Insert
-                      "Test PList"
+                      Resources.Insert.InsertDialog.Insert//Insert
+                      //"Test PList"
                     //"Test Channel Data",
                     //"Test Date"
             };
