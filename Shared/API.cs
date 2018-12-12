@@ -71,7 +71,37 @@ namespace AkaratakBot.Shared
 
                     return userPhotosNames;
                 }
+                public static ICollection<UploadPhoto> DownloadUserUpdatePhotos(IActivity activity, IEnumerable<Attachment> attachments, UserProfile userProfile)
+                {
 
+                    string userPhotosNames = string.Empty;
+                    var userID = UserManager.CheckEmulatorTelegramData((Activity)activity);
+                    var contextServer = HttpContext.Current.Server;
+                    var userPhotoPath = contextServer.MapPath($"{_photoHomePath}/_temp/") + userID.message.from.id;
+                    if (!Directory.Exists(userPhotoPath))
+                        Directory.CreateDirectory(userPhotoPath);
+
+                    foreach (var item in Directory.GetFiles(userPhotoPath))
+                        File.Delete(item);
+                    int count = 1;
+                    List<UploadPhoto> uploadPhotos = userProfile.updateParameters.PhotoParameters.Photos.ToList();
+                    List<string> photoNames = new List<string>();
+                    foreach (var item in attachments)
+                        using (var client = new WebClient())
+                        {
+                            var photoLocalPath = $"{userPhotoPath}\\p{count}.jpg";
+                            client.DownloadFile($"{item.ContentUrl}", photoLocalPath);
+                            photoNames.Add($"{photoLocalPath}");
+                            count++;
+                        }
+                    if (userProfile.updateParameters.PhotoParameters.Add)
+                        foreach (var item in photoNames)
+                            uploadPhotos.Add(new UploadPhoto { PhotoPath = item });
+
+                    else
+                        uploadPhotos[0].PhotoPath = photoNames[0];
+                    return uploadPhotos;
+                }
                 private static string GeneratePhotoName()
                 {
                     int length = 15;
@@ -112,31 +142,49 @@ namespace AkaratakBot.Shared
                         }
                     }
                 }
-                public static string UploadPhotoToHost(string photoPath, string oldPhotoPath)
+                public static void UploadPhotoToHost(UploadPhoto photo, Property property, bool overwrite)
                 {
-                    var ftpUsername = WebConfigurationManager.AppSettings["AkaratakFtpUsername"];
-                    var ftpPassword = WebConfigurationManager.AppSettings["AkaratakFtpPassword"];
-                    var ftpUrl = WebConfigurationManager.AppSettings["AkaratakFtpUrl"];
 
-                    using (WebClient client = new WebClient())
+                    if (!string.IsNullOrEmpty(photo.PhotoPath))
                     {
-                        client.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
-
-                        var def = oldPhotoPath.Split(_photoSpliter).Count() - photoPath.Split(_photoSpliter).Count();
-                        var photoNames = new List<string>();
-                        photoNames.AddList(oldPhotoPath.Split(_photoSpliter));
-
-                        if (def < 0)
-                            for (int i = 0; i < Convert.ToUInt32(def); i++)
-                                photoNames.Add(GeneratePhotoName() + ".jpg");
-
-                        foreach (var oldPhoto in photoNames)
-                            foreach (var newPhoto in photoPath.Split(_photoSpliter))
-                                client.UploadFile($"{ftpUrl}/{oldPhoto}", WebRequestMethods.Ftp.UploadFile, new FileInfo(newPhoto).FullName);
-
+                        FileInfo file = new FileInfo(photo.PhotoPath);
+                        string _photopath = GeneratePhotoName() + file.Extension;
+                        var account = new Account
+                        {
+                            Cloud = cloudName,
+                            ApiKey = cloudKey,
+                            ApiSecret = cloudSecret
+                        };
+                        Cloudinary cloudinary = new Cloudinary(account);
+                        var uploadParams = new ImageUploadParams()
+                        {
+                            File = new FileDescription(file.FullName),
+                            Format = file.Extension.Replace(".", string.Empty),
+                            Overwrite = overwrite,
+                            PublicId = photo.PublicId
+                        };
+                        var uploadResult = cloudinary.Upload(uploadParams);
+                        var photoProp = property.Property_Photos.Where(x => x.Public_Id == photo.PublicId).FirstOrDefault();
+                        if (photoProp != null)
+                        {
+                            photoProp.Photo_Url = uploadResult.Uri.ToString();
+                            photoProp.Public_Id = uploadResult.PublicId;
+                        }
                     }
+                }
+                public static void UploadPhotoToHost(PhotoParameters photoParameters, Property property)
+                {
+                    if (photoParameters.Add)
+                    {
+                        var photoPath = string.Empty;
+                        foreach (var item in photoParameters.Photos)
+                            photoPath += $"{item}{_photoSpliter}";
+                        UploadPhotoToHost(photoPath, property);
+                    }
+                    else
+                        UploadPhotoToHost((photoParameters.Photos as List<UploadPhoto>)[0], property, true);
 
-                    return oldPhotoPath;
+
                 }
             }
             public class UserManager

@@ -43,15 +43,17 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         public async Task AfterPropertyList(IDialogContext context, IAwaitable<Activity> argument)
         {
             var message = await argument;
+            var emulator = context.Activity.ChannelId == "emulator";
             if (message.Text == Resources.Insert.InsertDialog.InsertCancel)
             {
                 context.Done(context.MakeMessage());
             }
-            else if (Shared.Common.Update.GetPropertyList(_userProfile)
+            else if (Shared.Common.Update.GetPropertyList(_userProfile,emulator)
                  .Where(x => x.PropertyID == int.Parse(message.Text))
                  .ToList().Count > 0)
             {
                 _userProfile.updateParameters.updatePropertyID = int.Parse(message.Text);
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
                 await this.ShowProgress(context);
             }
             else

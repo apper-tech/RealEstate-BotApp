@@ -186,7 +186,12 @@ namespace AkaratakBot.Shared
             }
             public static string _ConstructPropertyImageUrl(Property property)
             {
-                return "https://www.akaratak.com/RealEstate/PropertyImage/" + property.Property_Photo.Split('|')[0];
+                if (!string.IsNullOrEmpty(property.Property_Photo))
+                    return "https://www.akaratak.com/RealEstate/PropertyImage/" + property.Property_Photo.Split('|')[0];
+                else if (property.Property_Photos.Count > 0)
+                    return property.Property_Photos.ToList()[0].Photo_Url;
+                else
+                    return HttpContext.Current.Server.MapPath("~/_root/_images/_default/defslider.jpg");
             }
         }
         public class Insert
@@ -548,11 +553,11 @@ namespace AkaratakBot.Shared
                 }
                 return attachments;
             }
-            public static IList<Property> GetPropertyList(UserProfile profile)
+            public static IList<Property> GetPropertyList(UserProfile profile,bool emulator)
             {
                 using (var context = new AkaratakModel())
                 {
-                    var userID = API.IOCommon.UserManager.GetUserID(profile, false);
+                    var userID = API.IOCommon.UserManager.GetUserID(profile, emulator);
                     var L2EQuery = from item in context.Properties
                                    where item.User_ID == userID
                                    select item;
@@ -652,7 +657,7 @@ namespace AkaratakBot.Shared
                                 propertyToUpdate.Address = updateParameters.updateAddress;
                                 break;
                             case "UpdateFieldPhotoSelection":
-                                propertyToUpdate.Property_Photo = API.IOCommon.PhotoManager.UploadPhotoToHost(updateParameters.updatePhotoPath, propertyToUpdate.Property_Photo);
+                                API.IOCommon.PhotoManager.UploadPhotoToHost(userProfile.updateParameters.PhotoParameters, propertyToUpdate);
                                 break;
                         }
                     }

@@ -252,6 +252,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Web.config" />
+    <Content Include="_root\_images\_default\defslider.jpg" />
     <Content Include="_root\_logs\log.txt" />
     <Content Include="_root\_test\test.json" />
   </ItemGroup>

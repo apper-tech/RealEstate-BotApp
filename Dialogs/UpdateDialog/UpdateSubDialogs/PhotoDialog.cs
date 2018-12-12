@@ -15,7 +15,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         public async Task StartAsync(IDialogContext context)
         {
             context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
-            this.AskFoPhoto(context,false);
+            await this.ShowPhotoList(context, false);
         }
         private SearchEntry _userOption;
         private UserProfile _userProfile;
@@ -23,47 +23,64 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         {
             _userOption = entry;
         }
-        public async Task AskFoPhoto(IDialogContext context,bool error)
+        public async Task ShowPhotoList(IDialogContext context, bool error)
         {
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             var emulator = context.Activity.ChannelId == "emulator";
             reply.Attachments = Shared.Common.Update.GetPhotoList(_userProfile.updateParameters.updatePropertyID);
-            uint minCount = (uint)reply.Attachments.Count - 4; 
-            if (reply.Attachments.Count == 0)
+
+            var minCount = int.Parse((reply.Attachments.Count - 4).ToString().Remove(0, 1));
+            _userProfile.updateParameters.PhotoParameters = new PhotoParameters { MinCount = minCount };
+            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+
+            if (minCount == 0)
             {
                 await context.PostAsync(reply);
                 reply = context.MakeMessage();
             }
             else
             {
-                reply.Attachments.Add(Shared.Cards.GetButtonCard($"Add ({minCount}) More","add"));
+                reply.Attachments.Add(Shared.Cards.GetButtonCard($"Add ({minCount}) More", "add"));
                 await context.PostAsync(reply);
             }
-            context.Wait<Activity>(AfterPhotoChoice);
+            context.Wait<Activity>(AfterPhotoListChoice);
         }
-        public async Task AfterPhotoChoice(IDialogContext context, IAwaitable<Activity> argument)
+        public async Task AfterPhotoListChoice(IDialogContext context, IAwaitable<Activity> argument)
         {
-            //var photos = PhotoManager.ValidateUserPhotos((await argument).Take(4));
-            //if (photos.Count() > 0)
-            //    _userProfile.updateParameters.updatePhotoPath = PhotoManager.DownloadUserInsertPhotos(context.Activity, photos);
-            //else
-            //    this.AskFoPhoto(context,true);
-            //context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             var message = await argument;
-            if(message.Text =="add")
+            if (message.Text == "add")
             {
-                //ask for images 
-                //save localy
-                //get ids and add to userprofile
+                _userProfile.updateParameters.PhotoParameters.Add = true;
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             }
             else
             {
-                //check if image id excist
-                //true :replace image by id
-                //false: we ask again
+                _userProfile.updateParameters.PhotoParameters.Add = false;
+                _userProfile.updateParameters.PhotoParameters.Photos = new List<UploadPhoto>()
+                {
+                    new UploadPhoto{PublicId = message.Text}
+                };
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             }
+            this.AskFoPhoto(context, false);
+        }
+        public void AskFoPhoto(IDialogContext context, bool error)
+        {
+            if (error)
+                context.PostAsync(Resources.Insert.InsertDialog.InsertPhotosErrorMessage);
 
+            PromptDialog.Attachment(context, AfterPhotoChoice, Resources.Update.UpdateDialog.UpdateFormPropertyNewPhotoDescription);
+        }
+        public async Task AfterPhotoChoice(IDialogContext context, IAwaitable<IEnumerable<Attachment>> argument)
+        {
+
+            var photos = PhotoManager.ValidateUserPhotos((await argument).Take(_userProfile.updateParameters.PhotoParameters.MinCount));
+            if (photos.Count() > 0)
+                _userProfile.updateParameters.PhotoParameters.Photos = PhotoManager.DownloadUserUpdatePhotos(context.Activity, photos,_userProfile);
+            else
+                this.AskFoPhoto(context, true);
+            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
             context.Done(Shared.Common.Insert.CheckField(context, _userOption));
         }
     }

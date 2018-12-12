@@ -216,4 +216,7 @@
   <data name="UpdatePhotosErrorMessage" xml:space="preserve">
     <value> يرجى تحميل الصور فقط</value>
   </data>
+  <data name="UpdateFormPropertyNewPhotoDescription" xml:space="preserve">
+    <value>حمل الصورة الجديدة</value>
+  </data>
 </root>

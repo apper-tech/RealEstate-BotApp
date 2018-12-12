@@ -295,6 +295,15 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload New Photo.
+        /// </summary>
+        internal static string UpdateFormPropertyNewPhotoDescription {
+            get {
+                return ResourceManager.GetString("UpdateFormPropertyNewPhotoDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload the Photos of the Property (4 Max).
         /// </summary>
         internal static string UpdateFormPropertyPhotoDescription {

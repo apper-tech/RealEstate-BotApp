@@ -216,4 +216,7 @@
   <data name="UpdatePhotosErrorMessage" xml:space="preserve">
     <value>Error Please Upload Images Only</value>
   </data>
+  <data name="UpdateFormPropertyNewPhotoDescription" xml:space="preserve">
+    <value>Upload New Photo</value>
+  </data>
 </root>
