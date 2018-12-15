@@ -31,6 +31,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog
                 await context.PostAsync(reply);
                 reply = context.MakeMessage();
                 reply.Attachments.Add(Shared.Cards.GetCancelCard());
+                reply.Text = "Main Menu ⮌";
                 await context.PostAsync(reply);
             }
             else
@@ -132,6 +133,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog
         private async Task UpdateProperty(IDialogContext context, UserProfile userProfile)
         {
             List<SearchEntry> optionsToUpdate = new List<SearchEntry>();
+            //context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
             foreach (var item in _optionList)
                 if (item.searchValid)
                     optionsToUpdate.Add(item);

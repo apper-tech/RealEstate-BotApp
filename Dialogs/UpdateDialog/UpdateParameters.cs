@@ -32,6 +32,7 @@ namespace AkaratakBot
         public PhotoParameters PhotoParameters { get; set; }
 
     }
+    [Serializable]
     public class PhotoParameters
     {
         /// <summary>
@@ -44,6 +45,7 @@ namespace AkaratakBot
         public int MinCount { get; set; }
         public ICollection<UploadPhoto> Photos { get; set; }
     }
+    [Serializable]
     public class UploadPhoto
     {
         public string PublicId { get; set; }

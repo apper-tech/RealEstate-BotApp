@@ -134,7 +134,9 @@ namespace AkaratakBot.Shared
                     var typ_id = (from typ in context.Property_Type where typ.Cat_ID == cat_id && typ.Property_Type_Name == searchParameters.searchType select typ.Property_Type_ID).FirstOrDefault();
                     var L2EQuery = from item in context.Properties
                                    where item.Property_Category_ID == cat_id &&
-                                   item.Property_Type_ID == typ_id
+                                   item.Property_Type_ID == typ_id &&
+                                   item.Has_Garage == searchParameters.searchHasGarage &&
+                                   item.Has_Garden == searchParameters.searchHasGarden
                                    select item;
                     try
                     {
@@ -189,7 +191,7 @@ namespace AkaratakBot.Shared
                 if (!string.IsNullOrEmpty(property.Property_Photo))
                     return "https://www.akaratak.com/RealEstate/PropertyImage/" + property.Property_Photo.Split('|')[0];
                 else if (property.Property_Photos.Count > 0)
-                    return property.Property_Photos.ToList()[0].Photo_Url;
+                    return Uri.EscapeUriString(property.Property_Photos.ToList()[0].Photo_Url);
                 else
                     return HttpContext.Current.Server.MapPath("~/_root/_images/_default/defslider.jpg");
             }
@@ -538,7 +540,7 @@ namespace AkaratakBot.Shared
                                  item.Other_Details,
                                  new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
                                  new CardAction(
-                                     type: ActionTypes.MessageBack,
+                                     type: ActionTypes.ImBack,
                                      title: "Update This",
                                      displayText: "Update this",
                                      value: item.PropertyID.ToString())
@@ -584,7 +586,7 @@ namespace AkaratakBot.Shared
                                  string.Empty,
                                  new CardImage(url: item.Photo_Url),
                                  new CardAction(
-                                     type: ActionTypes.MessageBack,
+                                     type: ActionTypes.ImBack,
                                      title: "Update This",
                                      displayText: "Update this",
                                      value: item.Public_Id)

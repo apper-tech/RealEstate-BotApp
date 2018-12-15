@@ -31,23 +31,24 @@ namespace AkaratakBot
         {
             return this.searchValue;
         }
-        public static bool operator ==(SearchEntry first,SearchEntry scnd)
+        public static bool operator ==(SearchEntry first, SearchEntry scnd)
         {
-            return first.searchKey!=null? first.searchKey == scnd.searchKey:first.searchValue==scnd.searchValue;
-        } public static bool operator !=(SearchEntry first,SearchEntry scnd)
+            return first.searchKey != null ? first.searchKey == scnd.searchKey : first.searchValue == scnd.searchValue;
+        }
+        public static bool operator !=(SearchEntry first, SearchEntry scnd)
         {
             return first.searchKey != scnd.searchKey;
         }
         public static List<SearchEntry> CreateChoiceList()
         {
-          return  new List<SearchEntry>() {
-                       new SearchEntry { searchKey=SearchChoice.Yes.ToString(),searchValue=Resources.Search.SearchDialog.SearchYes},
-                       new SearchEntry { searchKey=SearchChoice.No.ToString(),searchValue=Resources.Search.SearchDialog.SearchNo},
-                       new SearchEntry { searchKey=SearchChoice.Both.ToString(),searchValue=Resources.Search.SearchDialog.SearchBoth} };
+            return new List<SearchEntry>() {
+                       new SearchEntry { searchKey=SearchChoice.Yes.ToString(),searchValue=Resources.Search.SearchDialog.SearchYes,searchChoice=SearchChoice.Yes},
+                       new SearchEntry { searchKey=SearchChoice.No.ToString(),searchValue=Resources.Search.SearchDialog.SearchNo,searchChoice=SearchChoice.No},
+                       new SearchEntry { searchKey=SearchChoice.Both.ToString(),searchValue=Resources.Search.SearchDialog.SearchBoth,searchChoice=SearchChoice.Both} };
         }
     }
     [Serializable]
-    public class RangeEntry:IComparable<int>
+    public class RangeEntry : IComparable<int>
     {
         public int RangeStart { set; get; }
         public int RangeCount { set; get; }
@@ -60,8 +61,8 @@ namespace AkaratakBot
     [Serializable]
     public enum SearchChoice
     {
-        Yes=0,
-        No=1,
-        Both=2
+        Yes = 0,
+        No = 1,
+        Both = 2
     }
 }

@@ -42,8 +42,8 @@ namespace AkaratakBot.Dialogs
             _options = new List<string>() {
                       Resources.Search.SearchDialog.Search,//Search
                       Resources.Settings.SettingsDialog.Settings,//Settings
-                      Resources.Insert.InsertDialog.Insert//Insert
-                      //"Test PList"
+                      Resources.Insert.InsertDialog.Insert,//Insert
+                      "Test PList"
                     //"Test Channel Data",
                     //"Test Date"
             };
@@ -92,7 +92,12 @@ namespace AkaratakBot.Dialogs
             }
             if (optionSelected == "Test PList")
             {
-                API.IOCommon.PhotoManager.UploadPhotoToHost(@"C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\_images\_temp\123456789\p1.jpg", new EntityModel.Property());
+                var reply = context.MakeMessage();
+                reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+                var emulator = context.Activity.ChannelId == "emulator";
+                reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile, emulator));
+                 await context.PostAsync(reply);
+                //API.IOCommon.PhotoManager.UploadPhotoToHost(@"C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\_images\_temp\123456789\p1.jpg", new EntityModel.Property());
             }
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)
