@@ -43,7 +43,7 @@ namespace AkaratakBot.Dialogs
                       Resources.Search.SearchDialog.Search,//Search
                       Resources.Settings.SettingsDialog.Settings,//Settings
                       Resources.Insert.InsertDialog.Insert,//Insert
-                      "Test PList"
+                      //"Test PList"
                     //"Test Channel Data",
                     //"Test Date"
             };
