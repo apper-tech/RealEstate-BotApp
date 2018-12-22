@@ -201,7 +201,10 @@ namespace AkaratakBot.Shared
             public static List<SearchEntry> CreateForm(IDialogContext context, UserProfile userProfile, out bool skipEntry)
             {
                 var activity = (Activity)context.Activity;
-                var locale = !string.IsNullOrEmpty(activity.Locale) && !activity.Locale.Contains("en-US") ? "." + activity.Locale : string.Empty;
+                var locale = !string.IsNullOrEmpty(activity.Locale)
+                    && !(activity.Locale.Contains("en-US") 
+                    || activity.Locale.Contains("en")) 
+                    ? "." + activity.Locale : string.Empty;
                 var resxPath = WebConfigurationManager.AppSettings["InsertResourceLocation"];
                 string resxFilename = HttpContext.Current.Server.MapPath($"{resxPath}{locale}.resx");
 
