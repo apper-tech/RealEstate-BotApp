@@ -247,6 +247,8 @@
     <Content Include="EntityModel\dbModel.edmx.diagram">
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\akaratakbot-Web-Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -337,6 +339,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InsertDialog.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Resources\Search\SearchDialog.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -402,12 +405,17 @@
       <LastGenOutput>BaseDialog.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\BaseDialog.tr-TR.resx" />
-    <EmbeddedResource Include="Resources\Insert\InsertDialog.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Insert\InsertDialog.ar-SA.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Insert\InsertDialog.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>InsertDialog.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Insert\InsertDialog.tr-TR.resx" />
+    <EmbeddedResource Include="Resources\Insert\InsertDialog.tr-TR.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Search\SearchDialog.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Search\SearchDialog.resx">
       <Generator>ResXFileCodeGenerator</Generator>
