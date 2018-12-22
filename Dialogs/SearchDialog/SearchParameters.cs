@@ -46,6 +46,16 @@ namespace AkaratakBot
                        new SearchEntry { searchKey=SearchChoice.No.ToString(),searchValue=Resources.Search.SearchDialog.SearchNo,searchChoice=SearchChoice.No},
                        new SearchEntry { searchKey=SearchChoice.Both.ToString(),searchValue=Resources.Search.SearchDialog.SearchBoth,searchChoice=SearchChoice.Both} };
         }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
     [Serializable]
     public class RangeEntry : IComparable<int>
