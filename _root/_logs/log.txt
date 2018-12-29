@@ -158,4 +158,10 @@ Exception Inner Message: noneException Title: Input string was not in a correct 
 Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
 Exception Inner Message: noneException Title: Object reference not set to an instance of an object.
 Exception Inner Message: noneException Title: Operation returned an invalid status code 'Unauthorized'
+Exception Inner Message: noneException Title: too many attempts
+Exception Inner Message: noneException Title: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
 Exception Inner Message: none
