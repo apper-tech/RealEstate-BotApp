@@ -162,6 +162,9 @@
   <data name="InsertFieldZipCodeText" xml:space="preserve">
     <value>Mülkün Alanı Posta Kodu</value>
   </data>
+  <data name="InsertFormAddressError" xml:space="preserve">
+    <value>adres biçimi yanlış</value>
+  </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Mülk adresini girin</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="InsertFormSalePriceCountDescription" xml:space="preserve">
     <value>Satış fiyatı nedir?</value>
+  </data>
+  <data name="InsertFormZipCodeError" xml:space="preserve">
+    <value>posta kodu biçimi yanlış</value>
   </data>
   <data name="InsertFormZipCodeTextDescription" xml:space="preserve">
     <value>Posta Kodu nedir?</value>

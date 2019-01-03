@@ -177,6 +177,9 @@
     <value>Property's area zip code</value>
     <comment>8</comment>
   </data>
+  <data name="InsertFormAddressError" xml:space="preserve">
+    <value>the address format is incorrect</value>
+  </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Enter the property address </value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="InsertFormSalePriceCountDescription" xml:space="preserve">
     <value>What is the sale Price?</value>
+  </data>
+  <data name="InsertFormZipCodeError" xml:space="preserve">
+    <value>the zipcode format is incorrect</value>
   </data>
   <data name="InsertFormZipCodeTextDescription" xml:space="preserve">
     <value>What is the Zip Code?</value>

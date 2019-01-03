@@ -17,6 +17,8 @@ using System.Web;
 using System.Web.Configuration;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using System.Collections.Specialized;
+using System.Text.RegularExpressions;
 
 namespace AkaratakBot.Shared
 {
@@ -546,6 +548,23 @@ namespace AkaratakBot.Shared
                     return $"{((GeoCoordinates)place.Geo).Latitude },{ ((GeoCoordinates)place.Geo).Longitude}";
                 }
             }
+            public class RegexManager
+            {
+                private static NameValueCollection _manager = WebConfigurationManager.AppSettings;
+                public static string AddressRegex { get { return _manager["RegexAddress"]; } }
+                public static string PhoneRegex { get { return _manager["RegexPhone"]; } }
+                public static string ZipCodeRegex { get { return _manager["RegexZipCode"]; } }
+                public static bool Compare(string value,string regex,out string regexValue)
+                {
+                    if(Regex.Match(value, regex).Success)
+                    {
+                        regexValue = Regex.Match(value, regex).Value;
+                        return true;
+                    }
+                    regexValue = string.Empty;
+                    return false;
+                }
+            }
             public class Logger
             {
                 public static void Log(Exception exception)
@@ -559,6 +578,8 @@ namespace AkaratakBot.Shared
                     File.AppendAllText(path, error);
                 }
             }
+
+
         }
 
     }

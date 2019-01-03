@@ -34,7 +34,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             var message = await argument;
             var num = CultureResourceManager.toEnglishNumber(message);
-            if (num != null)
+            if (num != null && (int)num > 0)
             {
                 _userProfile.insertParameters.insertSalePrice = (int)num;
                 context.PrivateConversationData.SetValue("@userProfile", _userProfile);
@@ -47,7 +47,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             var message = await argument;
             var num = CultureResourceManager.toEnglishNumber(message);
-            if (num != null)
+            if (num != null && (int)num > 0)
             {
                 _userProfile.insertParameters.insertRentPrice = (int)num;
                 context.PrivateConversationData.SetValue("@userProfile", _userProfile);

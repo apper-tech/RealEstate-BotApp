@@ -44,7 +44,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                     this.AskForFloorLevel(context);
                     break;
                 case MiscInsertOptions.ZipCode:
-                    this.AskForZipCode(context);
+                    this. AskForZipCode(context,false);
                     break;
             }
         }
@@ -53,8 +53,10 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
             PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormPropertySizeDescription);
         }
 
-        public void AskForZipCode(IDialogContext context)
+        public void AskForZipCode(IDialogContext context, bool error)
         {
+            if (error)
+                context.PostAsync(Resources.Insert.InsertDialog.InsertFormZipCodeError);
             PromptDialog.Text(context, AfterTextEntry, Resources.Insert.InsertDialog.InsertFormZipCodeTextDescription);
         }
         public void AskForOtherDetails(IDialogContext context)
@@ -126,7 +128,11 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                     _userProfile.insertParameters.insertOtherDetails = message;
                     break;
                 case MiscInsertOptions.ZipCode:
-                    _userProfile.insertParameters.insertZipCode = message;
+                    var value = string.Empty;
+                    if (message != null && RegexManager.Compare(message, RegexManager.ZipCodeRegex, out value))
+                        _userProfile.insertParameters.insertZipCode = value;
+                    else
+                        this.AskForZipCode(context,true);
                     break;
             }
             CallBack(context, _userProfile);

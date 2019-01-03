@@ -3,8 +3,10 @@ using Microsoft.Bot.Builder.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using static AkaratakBot.Shared.API.IOCommon;
 
 namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 {
@@ -81,9 +83,19 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 
         private async Task AfterAddressEntry(IDialogContext context, IAwaitable<string> result)
         {
-            _userProfile.insertParameters.insertAddress = await result;
-            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
-            await this.AskForLocation(context);
+            var message = await result;
+            string value = string.Empty;
+            if (RegexManager.Compare(message,RegexManager.AddressRegex,out value))
+            {
+                _userProfile.insertParameters.insertAddress = value;
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+                await this.AskForLocation(context);
+            }
+            else
+            {
+                await context.PostAsync(Resources.Insert.InsertDialog.InsertFormAddressError);
+                this.AskForAddress(context);
+            }
         }
         public async Task AskForLocation(IDialogContext context)
         {

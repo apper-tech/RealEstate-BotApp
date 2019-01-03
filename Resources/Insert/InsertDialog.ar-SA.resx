@@ -162,6 +162,9 @@
   <data name="InsertFieldZipCodeText" xml:space="preserve">
     <value>رقم العقار البريدي </value>
   </data>
+  <data name="InsertFormAddressError" xml:space="preserve">
+    <value>صيغة العنوان غير صحيحة</value>
+  </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>ادخل عنوان العقار</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="InsertFormSalePriceCountDescription" xml:space="preserve">
     <value>كم هو سعر البيع ؟</value>
+  </data>
+  <data name="InsertFormZipCodeError" xml:space="preserve">
+    <value>صيغة الرقم البريدي خاطئة</value>
   </data>
   <data name="InsertFormZipCodeTextDescription" xml:space="preserve">
     <value>ما رقم العقار البريدي؟</value>

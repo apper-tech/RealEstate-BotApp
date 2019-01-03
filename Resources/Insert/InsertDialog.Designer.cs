@@ -205,6 +205,15 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to the address format is incorrect.
+        /// </summary>
+        internal static string InsertFormAddressError {
+            get {
+                return ResourceManager.GetString("InsertFormAddressError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the property address .
         /// </summary>
         internal static string InsertFormAddressText {
@@ -363,6 +372,15 @@ namespace AkaratakBot.Resources.Insert {
         internal static string InsertFormSalePriceCountDescription {
             get {
                 return ResourceManager.GetString("InsertFormSalePriceCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the zipcode format is incorrect.
+        /// </summary>
+        internal static string InsertFormZipCodeError {
+            get {
+                return ResourceManager.GetString("InsertFormZipCodeError", resourceCulture);
             }
         }
         
