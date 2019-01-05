@@ -257,6 +257,7 @@
     <Content Include="_root\_images\_default\defslider.jpg" />
     <Content Include="_root\_logs\log.txt" />
     <Content Include="_root\_test\test.json" />
+    <Content Include="_root\UserProfile.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dialogs\InsertDialog\InsertBaseDialog.cs" />

@@ -517,7 +517,7 @@ namespace AkaratakBot.Shared
             public static bool CheckUserHasProperty(UserProfile userProfile, bool emulator)
             {
                 var id = API.IOCommon.UserManager.GetUserID(userProfile, emulator);
-                if (id == null)
+                if (id==null || id==string.Empty)
                     return false;
                 using (AkaratakModel model = new AkaratakModel())
                 {

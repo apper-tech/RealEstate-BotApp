@@ -48,6 +48,11 @@ namespace AkaratakBot.Dialogs
                     //"Test Date"
             };
             bool emulator = context.Activity.ChannelId == "emulator";
+            if (_userProfile.telegramData.message == null)
+            {
+                _userProfile.telegramData = TelegramData.GetUserTelegramData(context);
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+            }
             var update = Common.Update.CheckUserHasProperty(_userProfile, emulator) ?//Update
                       Resources.Update.UpdateDialog.Update : string.Empty;
             if (update != string.Empty)
@@ -96,7 +101,7 @@ namespace AkaratakBot.Dialogs
                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                 var emulator = context.Activity.ChannelId == "emulator";
                 reply.Attachments = Shared.Common.Update.GetPropertyList(Shared.API.IOCommon.UserManager.GetUserID(_userProfile, emulator));
-                 await context.PostAsync(reply);
+                await context.PostAsync(reply);
                 //API.IOCommon.PhotoManager.UploadPhotoToHost(@"C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\_images\_temp\123456789\p1.jpg", new EntityModel.Property());
             }
         }
