@@ -195,7 +195,7 @@
   <data name="Update" xml:space="preserve">
     <value>تحديث</value>
   </data>
-  <data name="UpdateFieldAddressText" xml:space="preserve">
+  <data name="UpdateFormAddressText" xml:space="preserve">
     <value>أدخل عنوان العقار</value>
   </data>
   <data name="UpdateFieldBathroomCount" xml:space="preserve">

@@ -179,7 +179,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
                 new MiscEntry
                 {
                     userOptions= MiscOptions.Address,
-                    userResource=new SearchEntry{searchValue=Resources.Update.UpdateDialog.UpdateFieldAddressText}
+                    userResource=new SearchEntry{searchValue=Resources.Update.UpdateDialog.UpdateFormAddressText}
                 },
                 new MiscEntry
                 {

@@ -88,15 +88,6 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the property address .
-        /// </summary>
-        internal static string UpdateFieldAddressText {
-            get {
-                return ResourceManager.GetString("UpdateFieldAddressText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter Number of Bathrooms.
         /// </summary>
         internal static string UpdateFieldBathroomCount {
@@ -210,6 +201,15 @@ namespace AkaratakBot.Resources.Update {
         internal static string UpdateFieldZipCodeText {
             get {
                 return ResourceManager.GetString("UpdateFieldZipCodeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the property address .
+        /// </summary>
+        internal static string UpdateFormAddressText {
+            get {
+                return ResourceManager.GetString("UpdateFormAddressText", resourceCulture);
             }
         }
         
