@@ -192,6 +192,9 @@
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>Enter the property's number of bedrooms</value>
   </data>
+  <data name="InsertFormCitySelection" xml:space="preserve">
+    <value>Select City</value>
+  </data>
   <data name="InsertFormConfirmLocation" xml:space="preserve">
     <value>Is this Location Correct?</value>
   </data>
@@ -245,6 +248,9 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>Does the Property come with a Garden?</value>
+  </data>
+  <data name="InsertOtherDetailsSelection" xml:space="preserve">
+    <value>Do you want to add any other details</value>
   </data>
   <data name="InsertPhoneNumber" xml:space="preserve">
     <value>Please Enter your Phone Number</value>

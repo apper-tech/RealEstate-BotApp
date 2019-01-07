@@ -38,7 +38,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                context,
                AfterCountryChoice,
                Shared.Common.Insert.GetCountryList(context, entry),
-               Resources.Search.SearchDialog.SearchCategorySelection);
+               Resources.Insert.InsertDialog.InsertFormCountrySelection);
         }
         public async Task AfterCountryChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
@@ -64,7 +64,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             PromptDialog.Choice(context,
                AfteCityChoice, Shared.Common.Insert.GetCityList(context, message),
-               Resources.Search.SearchDialog.SearchTypeSelection, Resources.BaseDialog.NotAValidOption,
+               Resources.Insert.InsertDialog.InsertFormCitySelection, Resources.BaseDialog.NotAValidOption,
                3, PromptStyle.Auto);
         }
         public async Task AfteCityChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
@@ -85,7 +85,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             var message = await result;
             string value = string.Empty;
-            if (RegexManager.Compare(message,RegexManager.AddressRegex,out value))
+            if (RegexManager.Compare(message, RegexManager.AddressRegex, out value))
             {
                 _userProfile.insertParameters.insertAddress = value;
                 context.PrivateConversationData.SetValue("@userProfile", _userProfile);

@@ -174,4 +174,16 @@ Exception Inner Message: noneException Title: The best overloaded method match f
 Exception Inner Message: noneException Title: The best overloaded method match for 'System.IO.File.WriteAllText(string, string)' has some invalid arguments
 Exception Inner Message: noneException Title: The process cannot access the file 'C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\UserProfile.json' because it is being used by another process.
 Exception Inner Message: noneException Title: Unexpected end when deserializing object. Path 'callback_query', line 1, position 546.
+Exception Inner Message: noneException Title: invalid type: expected System.String, have SearchEntry
+Exception Inner Message: noneException Title: invalid need: expected Call, have Poll
+Exception Inner Message: noneException Title: invalid need: expected Call, have Poll
+Exception Inner Message: noneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: Operation returned an invalid status code 'Unauthorized'
+Exception Inner Message: noneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: noneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: noneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: noneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
 Exception Inner Message: none

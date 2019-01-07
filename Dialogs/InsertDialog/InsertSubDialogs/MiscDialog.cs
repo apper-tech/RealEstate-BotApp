@@ -1,4 +1,5 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                     this.AskForFloorLevel(context);
                     break;
                 case MiscInsertOptions.ZipCode:
-                    this. AskForZipCode(context,false);
+                    this.AskForZipCode(context, false);
                     break;
             }
         }
@@ -59,10 +60,35 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                 context.PostAsync(Resources.Insert.InsertDialog.InsertFormZipCodeError);
             PromptDialog.Text(context, AfterTextEntry, Resources.Insert.InsertDialog.InsertFormZipCodeTextDescription);
         }
-        public void AskForOtherDetails(IDialogContext context)
+        public async void AskForOtherDetails(IDialogContext context)
         {
-            PromptDialog.Text(context, AfterTextEntry, Resources.Insert.InsertDialog.InsertFormOtherDetailsTextDescription);
+            PromptDialog.Confirm(context, AfterOtherDetailsSelection, Resources.Insert.InsertDialog.InsertOtherDetailsSelection);
         }
+
+        private async Task AfterOtherDetailsSelection(IDialogContext context, IAwaitable<bool> result)
+        {
+            if (await result)
+            {
+                this.AskForOtherDetailsEntry(context);
+            }
+            else
+            {
+                _userProfile.insertParameters.insertOtherDetails = string.Empty;
+                CallBack(context, _userProfile);
+            }
+        }
+        public async void AskForOtherDetailsEntry(IDialogContext context)
+        {
+            PromptDialog.Text(context, AfterOtherDetailsEntry, Resources.Insert.InsertDialog.InsertFormOtherDetailsTextDescription);
+        }
+
+        private async Task AfterOtherDetailsEntry(IDialogContext context, IAwaitable<string> result)
+        {
+            var message = await result;
+            _userProfile.insertParameters.insertOtherDetails = message;
+            CallBack(context, _userProfile);
+        }
+
         public void AskForFloorCount(IDialogContext context)
         {
             PromptDialog.Text(context, AfterNumberEntry, Resources.Insert.InsertDialog.InsertFormFloorCountDescription);
@@ -122,20 +148,22 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         public async Task AfterTextEntry(IDialogContext context, IAwaitable<string> argument)
         {
             var message = await argument;
+            bool error = false;
             switch (_option.insertOptions)
             {
-                case MiscInsertOptions.OtherDetails:
-                    _userProfile.insertParameters.insertOtherDetails = message;
-                    break;
                 case MiscInsertOptions.ZipCode:
                     var value = string.Empty;
                     if (message != null && RegexManager.Compare(message, RegexManager.ZipCodeRegex, out value))
                         _userProfile.insertParameters.insertZipCode = value;
                     else
-                        this.AskForZipCode(context,true);
+                    {
+                        this.AskForZipCode(context, true);
+                        error = true;
+                    }
                     break;
             }
-            CallBack(context, _userProfile);
+            if (!error)
+                CallBack(context, _userProfile);
         }
         public void CallBack(IDialogContext context, UserProfile userProfile)
         {

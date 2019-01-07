@@ -177,6 +177,9 @@
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>ادخل عدد غرف النوم</value>
   </data>
+  <data name="InsertFormCitySelection" xml:space="preserve">
+    <value>اختر المدينة</value>
+  </data>
   <data name="InsertFormConfirmLocation" xml:space="preserve">
     <value>هل هذا هو الموقع المطلوب؟</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="InsertFormCountryReset" xml:space="preserve">
     <value>&lt;&lt; البداية</value>
+  </data>
+  <data name="InsertFormCountrySelection" xml:space="preserve">
+    <value>اختر الدولة</value>
   </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
     <value>ادخل عدد طوابق العقار</value>
@@ -224,6 +230,9 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>هل العقار ملحق حديقة ؟</value>
+  </data>
+  <data name="InsertOtherDetailsSelection" xml:space="preserve">
+    <value>هل تريد اضافة بيانات اضافية للعقار؟</value>
   </data>
   <data name="InsertPhoneNumber" xml:space="preserve">
     <value>ادخل رقم الهاتف</value>

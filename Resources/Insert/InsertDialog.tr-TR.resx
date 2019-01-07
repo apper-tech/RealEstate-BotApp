@@ -177,6 +177,9 @@
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>Tesisin yatak odasını girin</value>
   </data>
+  <data name="InsertFormCitySelection" xml:space="preserve">
+    <value>Şehir Seç</value>
+  </data>
   <data name="InsertFormConfirmLocation" xml:space="preserve">
     <value>Bu Konum Doğru mu?</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="InsertFormCountryReset" xml:space="preserve">
     <value>&lt;&lt; Başlangıç</value>
+  </data>
+  <data name="InsertFormCountrySelection" xml:space="preserve">
+    <value>Ülke Seç</value>
   </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
     <value>Mülk için kat sayısını girin</value>
@@ -224,6 +230,9 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>Mülkiyet bir bahçe ile geliyor mu?</value>
+  </data>
+  <data name="InsertOtherDetailsSelection" xml:space="preserve">
+    <value>Başka bir detay eklemek istermisiniz</value>
   </data>
   <data name="InsertPhoneNumber" xml:space="preserve">
     <value>Lütfen telefon numaranızı girin</value>
