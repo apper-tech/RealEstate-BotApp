@@ -162,6 +162,9 @@
   <data name="InsertFieldZipCodeText" xml:space="preserve">
     <value>Mülkün Alanı Posta Kodu</value>
   </data>
+  <data name="InsertFormAddressError" xml:space="preserve">
+    <value>adres biçimi yanlış</value>
+  </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Mülk adresini girin</value>
   </data>
@@ -174,11 +177,20 @@
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>Tesisin yatak odasını girin</value>
   </data>
+  <data name="InsertFormCitySelection" xml:space="preserve">
+    <value>Şehir Seç</value>
+  </data>
   <data name="InsertFormConfirmLocation" xml:space="preserve">
     <value>Bu Konum Doğru mu?</value>
   </data>
   <data name="InsertFormCountryNext" xml:space="preserve">
     <value>Sonraki &gt;&gt;</value>
+  </data>
+  <data name="InsertFormCountryReset" xml:space="preserve">
+    <value>&lt;&lt; Başlangıç</value>
+  </data>
+  <data name="InsertFormCountrySelection" xml:space="preserve">
+    <value>Ülke Seç</value>
   </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
     <value>Mülk için kat sayısını girin</value>
@@ -207,6 +219,9 @@
   <data name="InsertFormSalePriceCountDescription" xml:space="preserve">
     <value>Satış fiyatı nedir?</value>
   </data>
+  <data name="InsertFormZipCodeError" xml:space="preserve">
+    <value>posta kodu biçimi yanlış</value>
+  </data>
   <data name="InsertFormZipCodeTextDescription" xml:space="preserve">
     <value>Posta Kodu nedir?</value>
   </data>
@@ -215,6 +230,9 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>Mülkiyet bir bahçe ile geliyor mu?</value>
+  </data>
+  <data name="InsertOtherDetailsSelection" xml:space="preserve">
+    <value>Başka bir detay eklemek istermisiniz</value>
   </data>
   <data name="InsertPhoneNumber" xml:space="preserve">
     <value>Lütfen telefon numaranızı girin</value>

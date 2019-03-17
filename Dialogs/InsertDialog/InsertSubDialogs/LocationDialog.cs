@@ -12,6 +12,7 @@ using static AkaratakBot.Shared.API.IOCommon.CultureResourceManager;
 namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 {
     [Serializable]
+    ////////////Not in use [Depricated]
     public class LocationDialog : IDialog<SearchEntry>
     {
         string _apiKey = WebConfigurationManager.AppSettings["BingMapsApiKey"];

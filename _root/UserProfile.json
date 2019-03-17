@@ -1,0 +1,34 @@
+{
+  "update_id": 61790845,
+  "callback_query": {
+    "id": "2005106171920275749",
+    "from": {
+      "id": 466850160,
+      "is_bot": false,
+      "first_name": "Mh",
+      "last_name": "Mazen",
+      "username": "mhmazen",
+      "language_code": "en"
+    },
+    "message": {
+      "message_id": 2427,
+      "from": {
+        "id": 568796402,
+        "is_bot": true,
+        "first_name": "عقاراتك",
+        "username": "AkaratakBot"
+      },
+      "chat": {
+        "id": 466850160,
+        "first_name": "Mh",
+        "last_name": "Mazen",
+        "username": "mhmazen",
+        "type": "private"
+      },
+      "date": 1546701080,
+      "text": "Do you want to continue search?"
+    },
+    "chat_instance": "-584214827757943086",
+    "data": "No"
+  }
+}

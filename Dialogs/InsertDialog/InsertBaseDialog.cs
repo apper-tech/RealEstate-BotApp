@@ -14,7 +14,8 @@ namespace AkaratakBot.Dialogs.InsertDialog
         public async Task StartAsync(IDialogContext context)
         {
             context.PrivateConversationData.TryGetValue("@userProfile", out _userProfile);
-            _optionList = Shared.Common.Insert.CreateForm(context);
+            bool checkUserSkipExisting;
+            _optionList = Shared.Common.Insert.CreateForm(context,_userProfile,out checkUserSkipExisting);
             await this.ShowProgress(context);
         }
         UserProfile _userProfile;

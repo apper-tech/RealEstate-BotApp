@@ -85,23 +85,39 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         }
         public async Task AfterNumberEntry(IDialogContext context, IAwaitable<string> argument)
         {
-            var message = await argument;
+            var result = await argument;
+            var message = CultureResourceManager.toEnglishNumber(result);
             switch (_option.userOptions)
             {
                 case MiscOptions.PropertySize:
-                    _userProfile.updateParameters.updateSize = CultureResourceManager.toEnglishNumber(message);
+                    if (message == null)
+                        this.AskForPropertySize(context);
+                    else
+                        _userProfile.insertParameters.insertSize = (int)message;
                     break;
                 case MiscOptions.FloorCount:
-                    _userProfile.updateParameters.updateFloorCount = CultureResourceManager.toEnglishNumber(message);
+                    if (message == null)
+                        this.AskForFloorCount(context);
+                    else
+                        _userProfile.insertParameters.insertFloorCount = (int)message;
                     break;
                 case MiscOptions.BathroomCount:
-                    _userProfile.updateParameters.updateBathRoomCount = CultureResourceManager.toEnglishNumber(message);
+                    if (message == null)
+                        this.AskForBathroomCount(context);
+                    else
+                        _userProfile.insertParameters.insertBathRoomCount = (int)message;
                     break;
                 case MiscOptions.BedRoomCount:
-                    _userProfile.updateParameters.updateBedRoomCount = CultureResourceManager.toEnglishNumber(message);
+                    if (message == null)
+                        this.AskForBedroomCount(context);
+                    else
+                        _userProfile.insertParameters.insertBedRoomCount = (int)message;
                     break;
                 case MiscOptions.FloorLevel:
-                    _userProfile.updateParameters.updateFloorLevel = CultureResourceManager.toEnglishNumber(message);
+                    if (message == null)
+                        this.AskForFloorLevel(context);
+                    else
+                        _userProfile.insertParameters.insertFloorLevel = (int)message;
                     break;
             }
 
@@ -163,7 +179,7 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
                 new MiscEntry
                 {
                     userOptions= MiscOptions.Address,
-                    userResource=new SearchEntry{searchValue=Resources.Update.UpdateDialog.UpdateFieldAddressText}
+                    userResource=new SearchEntry{searchValue=Resources.Update.UpdateDialog.UpdateFormAddressText}
                 },
                 new MiscEntry
                 {

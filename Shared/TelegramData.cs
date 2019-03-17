@@ -2,8 +2,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace AkaratakBot.Shared
 {
@@ -27,6 +29,14 @@ namespace AkaratakBot.Shared
         public string type { get; set; }
     }
     [Serializable]
+    public class From2
+    {
+        public int id { get; set; }
+        public bool is_bot { get; set; }
+        public string first_name { get; set; }
+        public string username { get; set; }
+    }
+    [Serializable]
     public class Message
     {
         public int message_id { get; set; }
@@ -36,17 +46,45 @@ namespace AkaratakBot.Shared
         public string text { get; set; }
     }
     [Serializable]
+    public class CallbackQuery
+    {
+        public string id { get; set; }
+        public From from { get; set; }
+        public Message message { get; set; }
+        public string chat_instance { get; set; }
+        public string data { get; set; }
+    }
+    [Serializable]
+    public class TelegramData2
+    {
+        public int update_id { get; set; }
+        public CallbackQuery callback_query { get; set; }
+    }
+    [Serializable]
     public class TelegramData
     {
         public int update_id { get; set; }
         public Message message { get; set; }
+        private static TelegramData ConvertTelegramFormat(string json)
+        {
+            var data = JsonConvert.DeserializeObject<TelegramData2>(json.ToString());
+            var telegramData = new TelegramData();
+            telegramData.update_id = data.update_id;
+            telegramData.message = data.callback_query.message;
+            return telegramData;
+        }
         public static TelegramData GetUserTelegramData(IDialogContext context)
         {
             var message = context.Activity;
-            string dataString = message.ChannelData.ToString();
-            var dataObject = JsonConvert.DeserializeObject<TelegramData>(dataString);
-            //context.PostAsync(dataObject.message.from.id.ToString());
-            return dataObject;
+            StringWriter wr = new StringWriter();
+            var jsonWriter = new JsonTextWriter(wr);
+            jsonWriter.StringEscapeHandling = StringEscapeHandling.EscapeNonAscii;
+            new JsonSerializer().Serialize(jsonWriter, message.ChannelData);
+            var data = JsonConvert.DeserializeObject<TelegramData>(wr.ToString());
+            if (data.message != null)
+                return data;
+            else
+                return ConvertTelegramFormat(wr.ToString());
         }
     }
 }

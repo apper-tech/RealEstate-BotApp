@@ -16,7 +16,7 @@ namespace AkaratakBot.Controllers
     [BotAuthentication]
     public class MessagesController : ApiController
     {
-        
+
         /// <summary>
         /// POST: api/Messages
         /// receive a message from a user and send replies
@@ -32,7 +32,11 @@ namespace AkaratakBot.Controllers
                 {
                     var botData = scope.Resolve<IBotData>();
                     await botData.LoadAsync(CancellationToken.None);
-
+                    if (activity.Text == "/cancel")
+                    {
+                        var stack = scope.Resolve<IDialogStack>();
+                        stack.Reset();
+                    }
                     var locale = botData.PrivateConversationData.GetValueOrDefault<string>("ULTN");
                     if (!string.IsNullOrEmpty(locale))
                         activity.Locale = locale;
@@ -46,7 +50,7 @@ namespace AkaratakBot.Controllers
                 {
                     API.IOCommon.Logger.Log(ex);
                 }
-                
+
             }
             else
             {

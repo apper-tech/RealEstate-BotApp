@@ -44,12 +44,13 @@ namespace AkaratakBot.Shared
                         Text=Resources.Insert.InsertDialog.InsertCancel,
                         DisplayText=Resources.Insert.InsertDialog.InsertCancel,
                         Title=Resources.Insert.InsertDialog.InsertCancel,
-                        Type=ActionTypes.MessageBack,
+                        Type=ActionTypes.ImBack,
                         Value="Cancel"
                     }
                 }
             }.ToAttachment();
-        }       public static Attachment GetButtonCard(string text, string value)
+        }
+        public static Attachment GetButtonCard(string text, string value)
         {
             return new HeroCard
             {

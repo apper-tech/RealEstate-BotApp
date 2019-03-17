@@ -33,16 +33,29 @@ namespace AkaratakBot.Dialogs.UpdateDialog.UpdateSubDialogs
         public async Task AfterSalePriceChoice(IDialogContext context, IAwaitable<string> argument)
         {
             var message = await argument;
-            _userProfile.updateParameters.updateSalePrice = CultureResourceManager.toEnglishNumber(message);
-            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
-            this.AskFoRentPrice(context);
+            var num = CultureResourceManager.toEnglishNumber(message);
+            if (num != null)
+            {
+                _userProfile.updateParameters.updateSalePrice = (int)num;
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+                this.AskFoRentPrice(context);
+            }
+            else
+                this.AskForSalePrice(context);
+
         }
         public async Task AfterRentPriceChoice(IDialogContext context, IAwaitable<string> argument)
         {
             var message = await argument;
-            _userProfile.updateParameters.updateRentPrice = CultureResourceManager.toEnglishNumber(message);
-            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
-            context.Done(Shared.Common.Insert.CheckField(context, _userOption));
+            var num = CultureResourceManager.toEnglishNumber(message);
+            if (num != null)
+            {
+                _userProfile.updateParameters.updateRentPrice = (int)num;
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+                context.Done(Shared.Common.Insert.CheckField(context, _userOption));
+            }
+            else
+                this.AskFoRentPrice(context);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using static AkaratakBot.Shared.API.IOCommon;
 
 namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 {
@@ -26,12 +27,11 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         }
         public async Task AfterPhoneNumberChoice(IDialogContext context,IAwaitable<string> result)
         {
-            
-            Regex regex = new Regex(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$");
-            Match match = regex.Match(await result);
-            if (match.Success)
+            var message = await result;
+            string value = string.Empty;
+            if (RegexManager.Compare(message,RegexManager.PhoneRegex,out value))
             {
-                _userProfile.insertParameters.insertPhoneNumber = match.Value;
+                _userProfile.insertParameters.insertPhoneNumber = value;
                 context.PrivateConversationData.SetValue("@userProfile", _userProfile);
                 context.Done(context.MakeMessage());
             }

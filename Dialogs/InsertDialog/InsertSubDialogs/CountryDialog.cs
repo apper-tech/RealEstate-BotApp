@@ -3,8 +3,10 @@ using Microsoft.Bot.Builder.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using static AkaratakBot.Shared.API.IOCommon;
 
 namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 {
@@ -36,7 +38,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
                context,
                AfterCountryChoice,
                Shared.Common.Insert.GetCountryList(context, entry),
-               Resources.Search.SearchDialog.SearchCategorySelection);
+               Resources.Insert.InsertDialog.InsertFormCountrySelection);
         }
         public async Task AfterCountryChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
         {
@@ -44,6 +46,11 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
             if (message.searchValue == Resources.Insert.InsertDialog.InsertFormCountryNext)
             {
                 _userProfile.insertParameters.insertCountryCurrentCount += country_city_pager_count;
+                this.AskForCountry(context);
+            }
+            else if (message.searchValue == Resources.Insert.InsertDialog.InsertFormCountryReset)
+            {
+                _userProfile.insertParameters.insertCountryCurrentCount = 0;
                 this.AskForCountry(context);
             }
             else
@@ -57,7 +64,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         {
             PromptDialog.Choice(context,
                AfteCityChoice, Shared.Common.Insert.GetCityList(context, message),
-               Resources.Search.SearchDialog.SearchTypeSelection, Resources.BaseDialog.NotAValidOption,
+               Resources.Insert.InsertDialog.InsertFormCitySelection, Resources.BaseDialog.NotAValidOption,
                3, PromptStyle.Auto);
         }
         public async Task AfteCityChoice(IDialogContext context, IAwaitable<SearchEntry> argument)
@@ -76,9 +83,19 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
 
         private async Task AfterAddressEntry(IDialogContext context, IAwaitable<string> result)
         {
-            _userProfile.insertParameters.insertAddress = await result;
-            context.PrivateConversationData.SetValue("@userProfile", _userProfile);
-            await this.AskForLocation(context);
+            var message = await result;
+            string value = string.Empty;
+            if (RegexManager.Compare(message, RegexManager.AddressRegex, out value))
+            {
+                _userProfile.insertParameters.insertAddress = value;
+                context.PrivateConversationData.SetValue("@userProfile", _userProfile);
+                await this.AskForLocation(context);
+            }
+            else
+            {
+                await context.PostAsync(Resources.Insert.InsertDialog.InsertFormAddressError);
+                this.AskForAddress(context);
+            }
         }
         public async Task AskForLocation(IDialogContext context)
         {
@@ -92,7 +109,7 @@ namespace AkaratakBot.Dialogs.InsertDialog.InsertSubDialogs
         }
         private async Task AfterLocationEntry(IDialogContext context, IAwaitable<bool> result)
         {
-            if(await result)
+            if (await result)
                 context.Done(Common.Insert.CheckField(context, _userOption));
             else
             {

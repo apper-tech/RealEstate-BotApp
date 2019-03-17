@@ -12,6 +12,7 @@ using System.Resources;
 using System.Web.Configuration;
 using System.ComponentModel.Design;
 using System.Web;
+using System.Reflection;
 
 namespace AkaratakBot.Shared
 {
@@ -133,7 +134,9 @@ namespace AkaratakBot.Shared
                     var typ_id = (from typ in context.Property_Type where typ.Cat_ID == cat_id && typ.Property_Type_Name == searchParameters.searchType select typ.Property_Type_ID).FirstOrDefault();
                     var L2EQuery = from item in context.Properties
                                    where item.Property_Category_ID == cat_id &&
-                                   item.Property_Type_ID == typ_id
+                                   item.Property_Type_ID == typ_id &&
+                                   item.Has_Garage == searchParameters.searchHasGarage &&
+                                   item.Has_Garden == searchParameters.searchHasGarden
                                    select item;
                     try
                     {
@@ -185,16 +188,79 @@ namespace AkaratakBot.Shared
             }
             public static string _ConstructPropertyImageUrl(Property property)
             {
-                return "https://www.akaratak.com/RealEstate/PropertyImage/" + property.Property_Photo.Split('|')[0];
+                if (!string.IsNullOrEmpty(property.Property_Photo))
+                    return "https://www.akaratak.com/RealEstate/PropertyImage/" + property.Property_Photo.Split('|')[0];
+                else if (property.Property_Photos.Count > 0)
+                    return Uri.EscapeUriString(property.Property_Photos.ToList()[0].Photo_Url);
+                else
+                    return HttpContext.Current.Server.MapPath("~/_root/_images/_default/defslider.jpg");
             }
         }
         public class Insert
         {
-            public static List<SearchEntry> CreateForm(IDialogContext context)
+            public static List<SearchEntry> CreateForm(IDialogContext context, UserProfile userProfile, out bool skipEntry)
             {
                 var activity = (Activity)context.Activity;
-                var locale = !string.IsNullOrEmpty(activity.Locale) && !activity.Locale.Contains("en-US") ? "." + activity.Locale : string.Empty;
-                string resxFilename = HttpContext.Current.Server.MapPath($"~/Resources/Insert/InsertDialog{locale}.resx");
+                var locale = !string.IsNullOrEmpty(activity.Locale)
+                    && !(activity.Locale.Contains("en-US") 
+                    || activity.Locale.Contains("en")) 
+                    ? "." + activity.Locale : string.Empty;
+                var resxPath = WebConfigurationManager.AppSettings["InsertResourceLocation"];
+                string resxFilename = HttpContext.Current.Server.MapPath($"{resxPath}{locale}.resx");
+
+                List<SearchEntry> entries = GetFormEntriesFromResource(resxFilename);
+                bool entry = false;
+
+                if (userProfile.insertParameters != null)
+                    entries = CheckCreateFormContinue(entries, userProfile, out entry);
+                skipEntry = entry;
+                return entries;
+            }
+            private static List<SearchEntry> CheckCreateFormContinue(List<SearchEntry> entries, UserProfile userProfile, out bool entry)
+            {
+                entry = true;
+                var insertParams = userProfile.insertParameters;
+
+                //category
+                if (!string.IsNullOrEmpty(insertParams.insertCategory) && !string.IsNullOrEmpty(insertParams.insertType))
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldCategoryType))).FirstOrDefault());
+                //country
+                if (!string.IsNullOrEmpty(insertParams.insertCountry) && !string.IsNullOrEmpty(insertParams.insertCity))
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldCountryCity))).FirstOrDefault());
+                //bathroom
+                if (insertParams.insertBedRoomCount > 0)
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldBedroomCount))).FirstOrDefault());
+                //bedroom
+                if (insertParams.insertBathRoomCount > 0)
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldBathroomCount))).FirstOrDefault());
+                //floor count
+                if (insertParams.insertFloorCount > 0)
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldFloorCount))).FirstOrDefault());
+                //floor
+                if (insertParams.insertFloorLevel > 0)
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldFloorLevelCount))).FirstOrDefault());
+                //size
+                if (insertParams.insertSize > 0)
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldPropertySize))).FirstOrDefault());
+                //sale/rent
+                if (insertParams.insertSalePrice > 0 || insertParams.insertRentPrice > 0)
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldSaleRentPriceCount))).FirstOrDefault());
+                //zipcode
+                if (!string.IsNullOrEmpty(insertParams.insertZipCode))
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldZipCodeText))).FirstOrDefault());
+                //other
+                if (!string.IsNullOrEmpty(insertParams.insertOtherDetails))
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldOtherDetailsText))).FirstOrDefault());
+                //location
+                if (!string.IsNullOrEmpty(insertParams.insertLocation))
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFormLocationLatLng))).FirstOrDefault());
+                //photo
+                if (!string.IsNullOrEmpty(insertParams.insertPhotoPath))
+                    entries.Remove(entries.Where(x => x.searchKey.Contains(nameof(Resources.Insert.InsertDialog.InsertFieldPhotoSelection))).FirstOrDefault());
+                return entries;
+            }
+            private static List<SearchEntry> GetFormEntriesFromResource(string resxFilename)
+            {
                 List<SearchEntry> entries = new List<SearchEntry>();
                 ResXResourceReader rr = new ResXResourceReader(resxFilename);
                 rr.UseResXDataNodes = true;
@@ -250,6 +316,7 @@ namespace AkaratakBot.Shared
                     try
                     {
                         model.SaveChanges();
+                        userProfile.insertParameters = new InsertParameters();
                         return true;
                     }
                     catch (Exception ex)
@@ -300,9 +367,9 @@ namespace AkaratakBot.Shared
 
                     try
                     {
-                        var userID = model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
+                        var userID = model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault();
                         if (userID != null)
-                            return userID;
+                            return userID.User_ID;
                         else
                         {
                             model.Users.Add(new User
@@ -311,7 +378,8 @@ namespace AkaratakBot.Shared
                                 User_ID = Guid.NewGuid().ToString(),
                                 First_Name = from.first_name,
                                 Last_Name = from.last_name,
-                                Phone_Num = userProfile.insertParameters.insertPhoneNumber
+                                Phone_Num = userProfile.insertParameters.insertPhoneNumber,
+                                Email = from.first_name + "@" + from.last_name
                             });
                             model.SaveChanges();
                             return model.Users.Where(x => x.Telegram_ID == from.id).FirstOrDefault().User_ID;
@@ -394,7 +462,14 @@ namespace AkaratakBot.Shared
                     });
                 }
                 else
+                {
                     countries = countries.GetRange(range.RangeStart, countries.Count - range.RangeStart);
+                    countries.Add(new SearchEntry()
+                    {
+                        searchKey = string.Empty,
+                        searchValue = Resources.Insert.InsertDialog.InsertFormCountryReset
+                    });
+                }
                 return countries;
             }
             public static List<SearchEntry> GetCityList(IDialogContext context, SearchEntry country)
@@ -442,7 +517,7 @@ namespace AkaratakBot.Shared
             public static bool CheckUserHasProperty(UserProfile userProfile, bool emulator)
             {
                 var id = API.IOCommon.UserManager.GetUserID(userProfile, emulator);
-                if (id == null)
+                if (id==null || id==string.Empty)
                     return false;
                 using (AkaratakModel model = new AkaratakModel())
                 {
@@ -468,7 +543,7 @@ namespace AkaratakBot.Shared
                                  item.Other_Details,
                                  new CardImage(url: (Search._ConstructPropertyImageUrl(item))),
                                  new CardAction(
-                                     type: ActionTypes.MessageBack,
+                                     type: ActionTypes.ImBack,
                                      title: "Update This",
                                      displayText: "Update this",
                                      value: item.PropertyID.ToString())
@@ -483,11 +558,11 @@ namespace AkaratakBot.Shared
                 }
                 return attachments;
             }
-            public static IList<Property> GetPropertyList(UserProfile profile)
+            public static IList<Property> GetPropertyList(UserProfile profile,bool emulator)
             {
                 using (var context = new AkaratakModel())
                 {
-                    var userID = API.IOCommon.UserManager.GetUserID(profile, false);
+                    var userID = API.IOCommon.UserManager.GetUserID(profile, emulator);
                     var L2EQuery = from item in context.Properties
                                    where item.User_ID == userID
                                    select item;
@@ -514,7 +589,7 @@ namespace AkaratakBot.Shared
                                  string.Empty,
                                  new CardImage(url: item.Photo_Url),
                                  new CardAction(
-                                     type: ActionTypes.MessageBack,
+                                     type: ActionTypes.ImBack,
                                      title: "Update This",
                                      displayText: "Update this",
                                      value: item.Public_Id)
@@ -587,7 +662,7 @@ namespace AkaratakBot.Shared
                                 propertyToUpdate.Address = updateParameters.updateAddress;
                                 break;
                             case "UpdateFieldPhotoSelection":
-                                propertyToUpdate.Property_Photo = API.IOCommon.PhotoManager.UploadPhotoToHost(updateParameters.updatePhotoPath, propertyToUpdate.Property_Photo);
+                                API.IOCommon.PhotoManager.UploadPhotoToHost(userProfile.updateParameters.PhotoParameters, propertyToUpdate);
                                 break;
                         }
                     }

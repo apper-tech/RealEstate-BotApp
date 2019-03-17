@@ -29,6 +29,26 @@ namespace AkaratakBot
         public string updateLocation { get; set; }
         public bool updateHasGarden { get; set; }
         public bool updateHasGarage { get; set; }
+        public PhotoParameters PhotoParameters { get; set; }
 
+    }
+    [Serializable]
+    public class PhotoParameters
+    {
+        /// <summary>
+        /// If We Are Adding More Photos Or Updating Current
+        /// </summary>
+        public bool Add { get; set; }
+        /// <summary>
+        /// Number of exsisting photos
+        /// </summary>
+        public int MinCount { get; set; }
+        public ICollection<UploadPhoto> Photos { get; set; }
+    }
+    [Serializable]
+    public class UploadPhoto
+    {
+        public string PublicId { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

@@ -177,6 +177,9 @@
     <value>Property's area zip code</value>
     <comment>8</comment>
   </data>
+  <data name="InsertFormAddressError" xml:space="preserve">
+    <value>the address format is incorrect</value>
+  </data>
   <data name="InsertFormAddressText" xml:space="preserve">
     <value>Enter the property address </value>
   </data>
@@ -189,11 +192,20 @@
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
     <value>Enter the property's number of bedrooms</value>
   </data>
+  <data name="InsertFormCitySelection" xml:space="preserve">
+    <value>Select City</value>
+  </data>
   <data name="InsertFormConfirmLocation" xml:space="preserve">
     <value>Is this Location Correct?</value>
   </data>
   <data name="InsertFormCountryNext" xml:space="preserve">
     <value>Next &gt;&gt;</value>
+  </data>
+  <data name="InsertFormCountryReset" xml:space="preserve">
+    <value>&lt;&lt; Start</value>
+  </data>
+  <data name="InsertFormCountrySelection" xml:space="preserve">
+    <value>Select Country</value>
   </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
     <value>Enter the number of floors for the property</value>
@@ -225,6 +237,9 @@
   <data name="InsertFormSalePriceCountDescription" xml:space="preserve">
     <value>What is the sale Price?</value>
   </data>
+  <data name="InsertFormZipCodeError" xml:space="preserve">
+    <value>the zipcode format is incorrect</value>
+  </data>
   <data name="InsertFormZipCodeTextDescription" xml:space="preserve">
     <value>What is the Zip Code?</value>
   </data>
@@ -233,6 +248,9 @@
   </data>
   <data name="InsertGardenSelection" xml:space="preserve">
     <value>Does the Property come with a Garden?</value>
+  </data>
+  <data name="InsertOtherDetailsSelection" xml:space="preserve">
+    <value>Do you want to add any other details</value>
   </data>
   <data name="InsertPhoneNumber" xml:space="preserve">
     <value>what is your Phone Number?</value>

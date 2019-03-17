@@ -136,4 +136,54 @@ Exception Inner Message: noneException Stack trace:    at System.Number.ParseDou
 --- End of stack trace from previous location where exception was thrown ---
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at Microsoft.Bot.Builder.Internals.Fibers.Wait`2.Microsoft.Bot.Builder.Internals.Fibers.IAwaiter<T>.GetResult() in D:\a\1\s\CSharp\Library\Microsoft.Bot.Builder\Fibers\Wait.cs:line 378
-   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102
+   at AkaratakBot.Dialogs.RootDialog.<ResumeAfterOptionDialog>d__7.MoveNext() in C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\Dialogs\RootDialog.cs:line 102Exception Title: Object reference not set to an instance of an object.
+Exception Inner Message: noneException Title: Value was either too large or too small for a UInt32.
+Exception Inner Message: noneException Title: The underlying provider failed on Open.
+Exception Inner Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)Exception Title: The underlying provider failed on Open.
+Exception Inner Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)Exception Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: An error occurred while sending the request.
+Exception Inner Message: The remote name could not be resolved: 'telegram.botframework.com'Exception Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'InternalServerError'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'InternalServerError'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: The underlying provider failed on Open.
+Exception Inner Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)Exception Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Input string was not in a correct format.
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Object reference not set to an instance of an object.
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'Unauthorized'
+Exception Inner Message: noneException Title: too many attempts
+Exception Inner Message: noneException Title: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+Exception Inner Message: noneException Title: Operation returned an invalid status code 'BadRequest'
+Exception Inner Message: noneException Title: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+Exception Inner Message: noneException Title: Object reference not set to an instance of an object.
+Exception Inner Message: noneException Title: Unsupported type: Newtonsoft.Json.Linq.JObject. Use the JsonSerializer class to get the object's JSON representation.
+Exception Inner Message: noneException Title: Could not find a part of the path 'C:\_root\UserProfile.json'.
+Exception Inner Message: noneException Title: Cannot implicitly convert type 'void' to 'object'
+Exception Inner Message: noneException Title: The process cannot access the file 'C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\UserProfile.json' because it is being used by another process.
+Exception Inner Message: noneException Title: The best overloaded method match for 'System.IO.File.WriteAllText(string, string)' has some invalid arguments
+Exception Inner Message: noneException Title: The best overloaded method match for 'System.IO.File.WriteAllText(string, string)' has some invalid arguments
+Exception Inner Message: noneException Title: The best overloaded method match for 'System.IO.File.WriteAllText(string, string)' has some invalid arguments
+Exception Inner Message: noneException Title: The process cannot access the file 'C:\Users\mcs3d\Source\Repos\RealEstate-BotApp\_root\UserProfile.json' because it is being used by another process.
+Exception Inner Message: noneException Title: Unexpected end when deserializing object. Path 'callback_query', line 1, position 546.
+Exception Inner Message: noneException Title: invalid type: expected System.String, have SearchEntry
+Exception Inner Message: noneException Title: invalid need: expected Call, have Poll
+Exception Inner Message: noneException Title: invalid need: expected Call, have Poll
+Exception Inner Message: noneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: Operation returned an invalid status code 'Unauthorized'
+Exception Inner Message: noneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: IDialog method execution finished with no resume handler specified through IDialogStack.
+Exception Inner Message: invalid need: expected Wait, have NoneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: noneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: noneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: noneException Title: invalid type: expected Microsoft.Bot.Connector.IMessageActivity, have SearchEntry
+Exception Inner Message: none

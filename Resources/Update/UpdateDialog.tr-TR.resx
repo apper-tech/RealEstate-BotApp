@@ -195,7 +195,7 @@
   <data name="Update" xml:space="preserve">
     <value>Güncelleştirme</value>
   </data>
-  <data name="UpdateFieldAddressText" xml:space="preserve">
+  <data name="UpdateFormAddressText" xml:space="preserve">
     <value>Mülk adresini girin</value>
   </data>
   <data name="UpdateFieldBathroomCount" xml:space="preserve">
@@ -215,5 +215,8 @@
   </data>
   <data name="UpdatePhotosErrorMessage" xml:space="preserve">
     <value>Hata Lütfen Sadece Resim Yükle</value>
+  </data>
+  <data name="UpdateFormPropertyNewPhotoDescription" xml:space="preserve">
+    <value>Yeni Fotoğraf Yükle</value>
   </data>
 </root>
