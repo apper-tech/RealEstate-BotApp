@@ -142,7 +142,7 @@
     <value>No </value>
   </data>
   <data name="SearchTypeSelection" xml:space="preserve">
-    <value>Please select a property type to continue</value>
+    <value>what is the property type?</value>
   </data>
   <data name="SearchViewDetails" xml:space="preserve">
     <value>View Details</value>

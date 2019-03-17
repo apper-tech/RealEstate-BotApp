@@ -133,7 +133,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Floor Count.
+        ///   Looks up a localized string similar to Floor Count.
         /// </summary>
         internal static string InsertFieldFloorCount {
             get {
@@ -196,7 +196,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Property&apos;s Area Zip Code( if exists ).
+        ///   Looks up a localized string similar to Property&apos;s area zip code.
         /// </summary>
         internal static string InsertFieldZipCodeText {
             get {
@@ -214,7 +214,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the Property&apos;s Address.
+        ///   Looks up a localized string similar to Enter the property&apos;s Address.
         /// </summary>
         internal static string InsertFormAddressTextDescription {
             get {
@@ -268,7 +268,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In which floor is the property( -1 is basment , 2 is secnd floor).
+        ///   Looks up a localized string similar to In which floor is the property?( -1 is basment , 2 is secnd floor).
         /// </summary>
         internal static string InsertFormFloorLevelCountDescription {
             get {
@@ -286,7 +286,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the property Location.
+        ///   Looks up a localized string similar to What is the property Location?.
         /// </summary>
         internal static string InsertFormLocationLatLng {
             get {
@@ -295,7 +295,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the address of the property to show avalable locations.
+        ///   Looks up a localized string similar to Enter the address of the property to show available locations.
         /// </summary>
         internal static string InsertFormLocationLatLngDescription {
             get {
@@ -322,7 +322,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the Property Size in square meters.
+        ///   Looks up a localized string similar to what is the Property Size in square meters.
         /// </summary>
         internal static string InsertFormPropertySizeDescription {
             get {
@@ -376,7 +376,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Enter your Phone Number.
+        ///   Looks up a localized string similar to what is your Phone Number?.
         /// </summary>
         internal static string InsertPhoneNumber {
             get {
@@ -385,7 +385,7 @@ namespace AkaratakBot.Resources.Insert {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not A valid Phone Enter Again.
+        ///   Looks up a localized string similar to Phone number is not valid try again.
         /// </summary>
         internal static string InsertPhoneNumberError {
             get {

@@ -133,7 +133,7 @@
     <value>معلومات عن ملحقات العقار</value>
   </data>
   <data name="UpdateFieldLocationLatLng" xml:space="preserve">
-    <value>حدد موقع العقار </value>
+    <value>أين يقع العقار؟ </value>
   </data>
   <data name="UpdateFieldOtherDetailsText" xml:space="preserve">
     <value>ميزات إضافية للعقار</value>
@@ -151,28 +151,28 @@
     <value>الرمز البريدي لمنطقة العقار (إن وجد)</value>
   </data>
   <data name="UpdateFormAddressTextDescription" xml:space="preserve">
-    <value>أدخل عنوان العقار</value>
+    <value>ما هو عنوان العقار؟</value>
   </data>
   <data name="UpdateFormBathroomCountDescription" xml:space="preserve">
-    <value>أدخل عدد حمامات الملكية</value>
+    <value>كم عدد الحمامات؟ </value>
   </data>
   <data name="UpdateFormBedroomCountDescription" xml:space="preserve">
-    <value>أدخل عدد غرف النوم في مكان الإقامة</value>
+    <value>كم عدد غرف النوم ؟</value>
   </data>
   <data name="UpdateFormCountryNext" xml:space="preserve">
     <value>التالي &gt;&gt;</value>
   </data>
   <data name="UpdateFormFloorCountDescription" xml:space="preserve">
-    <value>أدخل عدد الطوابق للموقع</value>
+    <value>كم عدد طوابق العقار</value>
   </data>
   <data name="UpdateFormFloorLevelCountDescription" xml:space="preserve">
-    <value>ادخل طابق العقار (-1 للقبو ,2 للطابق الثاني)</value>
+    <value>في أيّ طابق يقع العقار (-1 للقبو ,2 للطابق الثاني)</value>
   </data>
   <data name="UpdateFormHeader" xml:space="preserve">
     <value>؟</value>
   </data>
   <data name="UpdateFormLocationLatLngDescription" xml:space="preserve">
-    <value>ادخل عنوان للعقار لاظهار النتائج المحتملة</value>
+    <value>ما عو عنوان القعار؟</value>
   </data>
   <data name="UpdateFormOtherDetailsTextDescription" xml:space="preserve">
     <value>ادخل ميزات اضافية للعقار</value>
@@ -181,7 +181,7 @@
     <value>تحميل صور العقار (4  حد اقصى)</value>
   </data>
   <data name="UpdateFormPropertySizeDescription" xml:space="preserve">
-    <value>أدخل مساحة العقار بالمتر المربع</value>
+    <value>ما مساحة العقار بالمتر المربع؟</value>
   </data>
   <data name="UpdateFormRentPriceCountDescription" xml:space="preserve">
     <value>ما هو سعر الإيجار؟</value>

@@ -88,7 +88,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the property address .
+        ///   Looks up a localized string similar to what is the property address ?.
         /// </summary>
         internal static string UpdateFieldAddressText {
             get {
@@ -97,7 +97,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter Number of Bathrooms.
+        ///   Looks up a localized string similar to what is number of Bathrooms?.
         /// </summary>
         internal static string UpdateFieldBathroomCount {
             get {
@@ -106,7 +106,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter Number of Bedrooms.
+        ///   Looks up a localized string similar to what is number of Bedrooms?.
         /// </summary>
         internal static string UpdateFieldBedroomCount {
             get {
@@ -142,7 +142,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Property&apos;s Floor.
+        ///   Looks up a localized string similar to what is the property&apos;s Floor?.
         /// </summary>
         internal static string UpdateFieldFloorLevelCount {
             get {
@@ -205,7 +205,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Property&apos;s Area Zip Code( if exists ).
+        ///   Looks up a localized string similar to what is Property&apos;s Area Zip Code?.
         /// </summary>
         internal static string UpdateFieldZipCodeText {
             get {
@@ -214,7 +214,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the Property&apos;s Address.
+        ///   Looks up a localized string similar to what is the Property&apos;s Address?.
         /// </summary>
         internal static string UpdateFormAddressTextDescription {
             get {
@@ -223,7 +223,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the property&apos;s number of bathrooms.
+        ///   Looks up a localized string similar to what is the number of its  bathrooms.
         /// </summary>
         internal static string UpdateFormBathroomCountDescription {
             get {
@@ -232,7 +232,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the property&apos;s number of bedrooms.
+        ///   Looks up a localized string similar to what is the number of its bedrooms?.
         /// </summary>
         internal static string UpdateFormBedroomCountDescription {
             get {
@@ -250,7 +250,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the number of floors for the property.
+        ///   Looks up a localized string similar to How many floors has the property?.
         /// </summary>
         internal static string UpdateFormFloorCountDescription {
             get {
@@ -259,7 +259,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In which floor is the property( -1 is basment , 2 is secnd floor).
+        ///   Looks up a localized string similar to In which floor is the property?( -1 is basment , 2 is secnd floor).
         /// </summary>
         internal static string UpdateFormFloorLevelCountDescription {
             get {
@@ -277,7 +277,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the address of the property to show avalable locations.
+        ///   Looks up a localized string similar to Enter the address of the property to show available locations.
         /// </summary>
         internal static string UpdateFormLocationLatLngDescription {
             get {
@@ -304,7 +304,7 @@ namespace AkaratakBot.Resources.Update {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the Property Size in square meters.
+        ///   Looks up a localized string similar to What is the property Size in square meters.
         /// </summary>
         internal static string UpdateFormPropertySizeDescription {
             get {

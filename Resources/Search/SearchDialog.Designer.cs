@@ -133,7 +133,7 @@ namespace AkaratakBot.Resources.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select a property type to continue.
+        ///   Looks up a localized string similar to what is the property type?.
         /// </summary>
         internal static string SearchTypeSelection {
             get {

@@ -127,7 +127,7 @@
     <value> Floor Count</value>
   </data>
   <data name="UpdateFieldFloorLevelCount" xml:space="preserve">
-    <value>Property's Floor</value>
+    <value>what is the property's Floor?</value>
   </data>
   <data name="UpdateFieldGardenGarageChoice" xml:space="preserve">
     <value>Property Exterior Details</value>
@@ -148,31 +148,31 @@
     <value>Sale /Rent Price</value>
   </data>
   <data name="UpdateFieldZipCodeText" xml:space="preserve">
-    <value>Property's Area Zip Code( if exists )</value>
+    <value>what is Property's Area Zip Code?</value>
   </data>
   <data name="UpdateFormAddressTextDescription" xml:space="preserve">
-    <value>Enter the Property's Address</value>
+    <value>what is the Property's Address?</value>
   </data>
   <data name="UpdateFormBathroomCountDescription" xml:space="preserve">
-    <value>Enter the property's number of bathrooms</value>
+    <value>what is the number of its  bathrooms</value>
   </data>
   <data name="UpdateFormBedroomCountDescription" xml:space="preserve">
-    <value>Enter the property's number of bedrooms</value>
+    <value>what is the number of its bedrooms?</value>
   </data>
   <data name="UpdateFormCountryNext" xml:space="preserve">
     <value>Next &gt;&gt;</value>
   </data>
   <data name="UpdateFormFloorCountDescription" xml:space="preserve">
-    <value>Enter the number of floors for the property</value>
+    <value>How many floors has the property?</value>
   </data>
   <data name="UpdateFormFloorLevelCountDescription" xml:space="preserve">
-    <value>In which floor is the property( -1 is basment , 2 is secnd floor)</value>
+    <value>In which floor is the property?( -1 is basment , 2 is secnd floor)</value>
   </data>
   <data name="UpdateFormHeader" xml:space="preserve">
     <value>Select an option to add a property</value>
   </data>
   <data name="UpdateFormLocationLatLngDescription" xml:space="preserve">
-    <value>Enter the address of the property to show avalable locations</value>
+    <value>Enter the address of the property to show available locations</value>
   </data>
   <data name="UpdateFormOtherDetailsTextDescription" xml:space="preserve">
     <value>Enter the details about the property ( features)</value>
@@ -181,7 +181,7 @@
     <value>Upload the Photos of the Property (4 Max)</value>
   </data>
   <data name="UpdateFormPropertySizeDescription" xml:space="preserve">
-    <value>Enter the Property Size in square meters</value>
+    <value>What is the property Size in square meters</value>
   </data>
   <data name="UpdateFormRentPriceCountDescription" xml:space="preserve">
     <value>What is the rent Price?</value>
@@ -196,13 +196,13 @@
     <value>Update</value>
   </data>
   <data name="UpdateFieldAddressText" xml:space="preserve">
-    <value>Enter the property address </value>
+    <value>what is the property address ?</value>
   </data>
   <data name="UpdateFieldBathroomCount" xml:space="preserve">
-    <value>Enter Number of Bathrooms</value>
+    <value>what is number of Bathrooms?</value>
   </data>
   <data name="UpdateFieldBedroomCount" xml:space="preserve">
-    <value>Enter Number of Bedrooms</value>
+    <value>what is number of Bedrooms?</value>
   </data>
   <data name="UpdateSelectProperty" xml:space="preserve">
     <value>Update This Property</value>

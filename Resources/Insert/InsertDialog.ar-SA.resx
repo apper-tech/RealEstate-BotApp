@@ -130,22 +130,22 @@
     <value> تمت إضافة العقار</value>
   </data>
   <data name="InsertFieldBathroomCount" xml:space="preserve">
-    <value>ادخل عدد الحمامات</value>
+    <value>كم عدد الحمامات؟</value>
   </data>
   <data name="InsertFieldBedroomCount" xml:space="preserve">
-    <value>ادخل عدد غرف النوم</value>
+    <value>كم عدد غرف النوم؟</value>
   </data>
   <data name="InsertFieldCategoryType" xml:space="preserve">
-    <value>اختر فئة العقار</value>
+    <value>ماهي فئة العقار؟</value>
   </data>
   <data name="InsertFieldCountryCity" xml:space="preserve">
-    <value>ادخل موقع العقار (البلد و المدينة)</value>
+    <value>اين يقع العقار؟ (البلد و المدينة)</value>
   </data>
   <data name="InsertFieldFloorCount" xml:space="preserve">
-    <value>ادخل عدد الطوابق</value>
+    <value>كم عدد الطوابق؟</value>
   </data>
   <data name="InsertFieldFloorLevelCount" xml:space="preserve">
-    <value>رقم طابق العقار</value>
+    <value>ما هو رقم طابق العقار؟</value>
   </data>
   <data name="InsertFieldGardenGarageChoice" xml:space="preserve">
     <value>معلومات عن ملحقات العقار</value>
@@ -199,7 +199,7 @@
     <value>ادخل ميزات اضافية للعقار</value>
   </data>
   <data name="InsertFormPropertySizeDescription" xml:space="preserve">
-    <value>ادخل مساحة العقار بالمتر المربع</value>
+    <value>كم هي مساحة العقار بالمتر المربع؟</value>
   </data>
   <data name="InsertFormRentPriceCountDescription" xml:space="preserve">
     <value>كم هي قيمة الايجار؟</value>
@@ -217,7 +217,7 @@
     <value>هل العقار ملحق حديقة ؟</value>
   </data>
   <data name="InsertPhoneNumber" xml:space="preserve">
-    <value>ادخل رقم الهاتف</value>
+    <value>ما رقم الهاتف؟</value>
   </data>
   <data name="InsertPhoneNumberError" xml:space="preserve">
     <value>رقم خاطئ حاول مجددا</value>

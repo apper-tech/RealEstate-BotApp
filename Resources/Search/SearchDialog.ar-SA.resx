@@ -142,7 +142,7 @@
     <value>لا</value>
   </data>
   <data name="SearchTypeSelection" xml:space="preserve">
-    <value>اختر نوع عقار </value>
+    <value>ما نوع العقار؟ </value>
   </data>
   <data name="SearchViewDetails" xml:space="preserve">
     <value>عرض التفاصيل</value>
