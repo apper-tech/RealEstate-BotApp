@@ -130,11 +130,11 @@
     <value>Done! Listing Added</value>
   </data>
   <data name="InsertFieldBathroomCount" xml:space="preserve">
-    <value>Enter Number of Bathrooms</value>
+    <value>What is number of Bathrooms?</value>
     <comment>6</comment>
   </data>
   <data name="InsertFieldBedroomCount" xml:space="preserve">
-    <value>Enter Number of Bedrooms</value>
+    <value>What number of Bedrooms?</value>
     <comment>7</comment>
   </data>
   <data name="InsertFieldCategoryType" xml:space="preserve">
@@ -162,11 +162,11 @@
     <comment>10</comment>
   </data>
   <data name="InsertFieldPhotoSelection" xml:space="preserve">
-    <value>Upload Property Photo</value>
+    <value>Upload Property Photos</value>
     <comment>12</comment>
   </data>
   <data name="InsertFieldPropertySize" xml:space="preserve">
-    <value>Property size</value>
+    <value>What is the property size?</value>
     <comment>4</comment>
   </data>
   <data name="InsertFieldSaleRentPriceCount" xml:space="preserve">
@@ -174,23 +174,23 @@
     <comment>5</comment>
   </data>
   <data name="InsertFieldZipCodeText" xml:space="preserve">
-    <value>Property's area zip code</value>
+    <value>What is the property's area zip code?</value>
     <comment>8</comment>
   </data>
   <data name="InsertFormAddressError" xml:space="preserve">
-    <value>the address format is incorrect</value>
+    <value>the address format is incorrect!</value>
   </data>
   <data name="InsertFormAddressText" xml:space="preserve">
-    <value>Enter the property address </value>
+    <value>What is the property address?</value>
   </data>
   <data name="InsertFormAddressTextDescription" xml:space="preserve">
-    <value>Enter the property's Address</value>
+    <value>What is the property address?</value>
   </data>
   <data name="InsertFormBathroomCountDescription" xml:space="preserve">
-    <value>Enter the property's number of bathrooms</value>
+    <value>What is the property's number of bathrooms?</value>
   </data>
   <data name="InsertFormBedroomCountDescription" xml:space="preserve">
-    <value>Enter the property's number of bedrooms</value>
+    <value>What is the property's number of bedrooms?</value>
   </data>
   <data name="InsertFormCitySelection" xml:space="preserve">
     <value>Select City</value>
@@ -208,7 +208,7 @@
     <value>Select Country</value>
   </data>
   <data name="InsertFormFloorCountDescription" xml:space="preserve">
-    <value>Enter the number of floors for the property</value>
+    <value>What is the number of floors for the property?</value>
   </data>
   <data name="InsertFormFloorLevelCountDescription" xml:space="preserve">
     <value>In which floor is the property?( -1 is basment , 2 is secnd floor)</value>
@@ -229,7 +229,7 @@
     <value>Upload the Photos of the Property (4 Max)</value>
   </data>
   <data name="InsertFormPropertySizeDescription" xml:space="preserve">
-    <value>what is the Property Size in square meters</value>
+    <value>what is the Property Size in square meters?</value>
   </data>
   <data name="InsertFormRentPriceCountDescription" xml:space="preserve">
     <value>What is the rent Price?</value>
